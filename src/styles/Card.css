@@ -1,0 +1,74 @@
+.card{
+    border:none;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    background-color: #f1f8fe;
+}
+.card-header{
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.card__headrButton{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    position: absolute;
+    top:0;
+    right:0;
+    opacity: 0;
+}
+.card:hover .card__headrButton{
+    opacity: 1;
+}
+.card-body{
+    padding-top: 10px;
+    text-align: center;
+    align-items: center;
+}
+.company__name{
+    display: flex;
+    flex-direction: column;
+    flex-direction: 0.8;
+    margin-left: 15px;
+}
+.company__name > .company__title{
+    color: rgb(110, 117, 124);
+    margin-bottom: 8px;
+    font-size: 15px;
+
+}
+.company__name > .job__title{
+    font-size: 17px;
+
+}
+.card__headrSub{
+    display: flex;
+    padding:15px;
+    font-size: 16px;
+    justify-content: space-between;
+}
+.job__skills{
+    border:none;
+    border-radius: 7px;
+    background-color: #03a9f4;
+    color: #fff;
+    padding: 6px 10px;
+    align-items: center;
+    text-align: center;
+}
+.button__box{
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.jobview__button{
+    background-color: #106cc8;
+    padding: 8px 12px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+.jobview__button:hover{
+    background-color: #03a9f4;
+}

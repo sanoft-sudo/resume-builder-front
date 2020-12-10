@@ -1,0 +1,44 @@
+.jobsearchlist{
+    background-color: #fff;
+    border: none;
+    padding:3% 5%;
+}
+
+.jobsearchlist__map{
+    justify-content: space-between;
+}
+.map__titles{
+    margin-right:10px;
+    font-size: 15px;
+}
+.jobtitles__span{
+    cursor: pointer;
+}
+.jobtitles__span:hover{
+    color:blue;
+    text-decoration: underline;
+}
+.first__column{
+    flex: 0.8;
+    padding-left: 15px;
+}
+.second__column{
+    padding-right: 15px;
+    
+}
+.aviability{
+    display: flex;
+    flex-direction: column;
+}
+.aviability__title{
+    display: inline-block;
+}
+.aviability__icon{
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center !important;
+}
+.aviability__icon > .MuiSvgIcon-root{
+    color: lightgray;
+    
+}

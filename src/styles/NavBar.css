@@ -1,0 +1,158 @@
+li{
+    list-style-type: none;
+}
+a{
+    
+    text-decoration: none;
+    color:#000000
+}
+a:hover{
+    text-decoration: none;
+    color: #000000;
+}
+ul{
+    margin: 0;
+}
+li > a > h4, a > h4{
+    font-size: 15px;
+    margin: 0;
+}
+.logo > a > img{
+    width: 100px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f8fe;
+    padding: 10px;
+}
+nav > .logo{
+    flex:0.15;
+    margin-left:3%;
+}
+
+nav > .nav__container> .nav__links{
+    display: flex;
+    justify-content: space-around;
+    flex: 0.77;
+    margin-right: 0;
+    padding-top: 9px;
+}
+.nav__container{
+    display: flex;
+    flex:0.85;
+    align-items: center;
+}
+
+.nav__right{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 0.23;
+    padding-top: 9px;
+}
+a{
+    outline: none !important;
+}
+
+.MuiIconButton-root, .MuiButtonBase-root, .MuiTouchRipple-root{
+    outline: none !important;
+}
+.nav__burger >.MuiSvgIcon-root{
+    font-size: 35px !important;
+}
+.nav__burger{
+    display: none;
+}
+
+.nav__links li , .nav__right li {
+    transition: all 0.4s ease-in 0s;
+    /* padding-bottom: 9px; */
+    
+}
+
+.nav__links li a::after, .nav__right li a::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    margin-top: 9px;
+    background-color: lightgreen;
+    transition: all 0.3s ease-in;
+    display: block;
+    transform: scaleX(0) translateY(-8px);
+  }
+  .nav__links li a:hover, .nav__right a:hover{
+    color: lightgreen;
+    
+}
+.nav__links li a:hover::after, .nav__right li a:hover:after{
+    color: lightgreen;
+    transform: scaleX(1) translateY(0);
+    /* border-bottom: 1px solid lightgreen; */
+    
+}
+.nav__links li a.active::after, .nav__right li a.active:after{
+    color: lightgreen;
+    transform: scaleX(1) translateY(0);
+    /* border-bottom: 1px solid lightgreen; */
+    
+}
+.nav__links li a.active h4, .nav__right li a.active h4{
+    color: lightgreen;
+    
+}
+
+h4{
+    padding-bottom: 8px;
+}
+
+.active h4{
+    color: lightgreen;
+}
+
+@media all and (max-width:895px){
+    nav > .logo{
+        flex:1
+    }
+    .nav__burger{
+        display: block;
+    }
+    .nav__container, .nav__links, .nav__right{
+        display: block;
+        flex-direction: column;
+
+    }
+    nav > .nav__container >.nav__links, .nav__right{
+        width: 100%;
+    }
+    .nav__right{
+        justify-content: start;
+    }
+    .nav__container{
+        position: absolute;
+        top: 68px;
+        left: 0;
+        background-color: #f1f8fe;
+        width: 50%;
+        transform: translateX(-500px);
+        transition:  0.4s ease-in-out;
+        z-index: 100;
+    }
+    a{padding: 10px;}
+     li:hover, .nav__right--reg:hover{
+        background-color: lightblue;
+    }
+    li > a > h4, a > h4{
+        padding: 10px 25px 10px 25px;
+        font-size: 20px;
+    }
+    
+   
+}
+/* @media all and (max-width:890px){
+    .nav__container{
+        width:75%;
+    }
+} */
+

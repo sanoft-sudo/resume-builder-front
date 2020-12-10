@@ -1,0 +1,116 @@
+.profileCard{
+    padding: 10px;
+  box-shadow: 0 0 15px #333;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 300px;
+
+}
+.card__header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profileCard__image{
+    border: none;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 85pxpx;
+}
+.card__avatar{
+    object-fit: contain;
+    width: 85px;
+    height: 85px;
+}
+
+.profileCard__title{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.profileCard__name{
+    color: #03a9f4;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.profileCard__name:hover{
+    color: green;
+}
+
+.profileCard__jobTitle{
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.profileCard__embaded{
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #03a9f4;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.profileCard__embaded > i{
+    font-size: 12px;
+}
+
+.profileCard_topRated{
+    text-transform: uppercase;
+    margin-left: 10px;
+    font-size: 12px;
+    
+}
+
+.card__headerBottom{
+    display: flex;
+    justify-content: first baseline;
+    align-items: center;
+}
+.card__headerSalary{
+    font-weight: 600;
+}
+.card__headerAddress{
+    font-weight: 600;
+    color: gray;
+    font-size: 15px;
+    margin-left: auto;
+}
+
+.card__skills{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.card__skill{
+    background-color: #03a9f4;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 13px;
+}
+.card__fotter{
+    margin-top: 10px;
+    text-align: center;
+}
+.cardFooterButton{
+    background-color: #106cc8;
+    color: #fff;
+    border: none;
+    padding: 3px 6px;
+    border-radius: 7px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+

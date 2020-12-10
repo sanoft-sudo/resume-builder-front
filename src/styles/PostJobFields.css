@@ -1,0 +1,38 @@
+.jobpost__form > input, .jobpost__form > select, .salary_inputs> select, .salary_inputs> input, .sal_type > select{
+    height:40px;
+    margin-bottom: 15px;
+    border-color: blue;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.jobpost__form > label{
+    font-size: 16px;
+    font-weight: 700;
+}
+.radios{
+    display: flex;
+    flex-direction: column;
+}
+.radio__btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.radio__btn > input, .nightShift> input{
+    margin-right: 10px;
+}
+.salary_inputs >.salary_box> .col-md-4> input{
+    height: 40px;
+    border-color: blue;
+    border-radius: 5px;
+    width: 100%;
+}
+.sal_type{
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
+}
+.sal_type>select{
+    margin-right: 0;
+    border-color: blue;
+}

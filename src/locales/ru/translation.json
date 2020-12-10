@@ -1,0 +1,36 @@
+{
+    
+    "header_link1": "Дом",
+    "header_link2": "Опубликовать вакансию",
+    "header_link3": "Найти работу",
+    "header_link4": "Создать резюме",
+    "header_link5": "Контакты",
+    "header_link6": "Войти/ Регистрация",
+
+
+    "banner_post_job_title": "бизнес",
+    "banner_post_job_title2": "Кого я должен нанять?",
+    "banner_post_job_label1": "что",
+    "banner_post_job_label2": "где",
+    "banner_post_job_placeholder1": "Название работы",
+    "banner_post_job_placeholder2": "местонахождение",
+    "banner_post_job_post_button1": "Разместить вакансию",
+    "banner_post_job_post_button2": "Найти кандидатов",
+
+    "banner_find_job_title": "ИНДИВИДУАЛЬНЫМ",
+    "banner_find_job_title2": "Где я должен работать?",
+    "banner_find_job_label1": "что",
+    "banner_find_job_label2": "где",
+    "banner_find_job_placeholder1": "Название работы",
+    "banner_find_job_placeholder2": "Местонахождение",
+    "banner_find_job_find_button1": "Найти работу",
+    "banner_find_job_find_button2": "Создайте свое резюме",
+
+    
+    "resume_title": "Быстро получите работу с нашим лучшим конструктором резюме",
+    "resume_offer": "Выберите свой шаблон, следуйте успешным примерам и начните подавать заявку сегодня!",
+    "resume_or": "или",
+    "resume_start_google_button": "Начни с Google",
+    "resume_srart_cv_button": "Запустить CV Builder",
+    "resume_upload_button": "Загрузите свое резюме"
+}

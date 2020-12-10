@@ -1,0 +1,35 @@
+{
+    
+    "header_link1": "Asosiy",
+    "header_link2": "Ish e'lon qilish",
+    "header_link3": "Ish topish",
+    "header_link4": "Rezume yaratish",
+    "header_link5": "Aloqa",
+    "header_link6": "Kirish/ Ro'yhatdan o'tish",
+
+
+    "banner_post_job_title": "ish beruvchilar",
+    "banner_post_job_title2": "Kimni ishga olichim mumkin?",
+    "banner_post_job_label1": "Nima",
+    "banner_post_job_label2": "Qaerda",
+    "banner_post_job_placeholder1": "Mutahassislik",
+    "banner_post_job_placeholder2": "Hudud",
+    "banner_post_job_post_button1": "Ish e'lon qilish",
+    "banner_post_job_post_button2": "Mutahassis topish",
+
+    "banner_find_job_title": "Ish izlovchilar",
+    "banner_find_job_title2": "Qaerda ishlashim mumkin?",
+    "banner_find_job_label1": "Nima",
+    "banner_find_job_label2": "Qaerda",
+    "banner_find_job_placeholder1": "Mutahassislik",
+    "banner_find_job_placeholder2": "Hudud",
+    "banner_find_job_find_button1": "Ish topish",
+    "banner_find_job_find_button2": "Rezumeingizni yarating",
+
+    "resume_title": "BIzning Rezume yaratuvchimiz bilan eng qisqa muddat ichida ishga joyilashing",
+    "resume_offer": "O'zingizning shabloningizni tanlang, muvaffaqiyatli misollarni ko'zdan kechiring va bugunoq murojaat qilishni boshlang!",
+    "resume_or": "yoki",
+    "resume_start_google_button": "Google bilan boshlang",
+    "resume_srart_cv_button": "CV Builder ni ishga tushiring",
+    "resume_upload_button": "O'z rezumeingizni yuklang"
+}

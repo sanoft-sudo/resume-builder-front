@@ -1,0 +1,34 @@
+{
+    
+    "header_link1": "Home",
+    "header_link2": "Post Job",
+    "header_link3": "Find Job",
+    "header_link4": "Build Resume",
+    "header_link5": "Contacts",
+    "header_link6": "Login/ Register",
+
+    "banner_post_job_title": "business",
+    "banner_post_job_title2": "Whom should I hire?",
+    "banner_post_job_label1": "what",
+    "banner_post_job_label2": "where",
+    "banner_post_job_placeholder1": "Job Title",
+    "banner_post_job_placeholder2": "Location",
+    "banner_post_job_post_button1": "Post a job",
+    "banner_post_job_post_button2": "Find candidates",
+
+    "banner_find_job_title": "individuals",
+    "banner_find_job_title2": "Where should I work?",
+    "banner_find_job_label1": "what",
+    "banner_find_job_label2": "where",
+    "banner_find_job_placeholder1": "Job Title",
+    "banner_find_job_placeholder2": "Location",
+    "banner_find_job_find_button1": "Find job",
+    "banner_find_job_find_button2": "Create your resume",
+
+    "resume_title": "Get hired fast with our best CV Builder",
+    "resume_offer": "Choose your template, follow winning examples, and start applying today!",
+    "resume_or": "or",
+    "resume_start_google_button": "Start with Google",
+    "resume_srart_cv_button": "Start CV Builder",
+    "resume_upload_button": "Upload your own CV"
+}

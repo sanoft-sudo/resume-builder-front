@@ -1,0 +1,65 @@
+p, h4{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.resume{
+    background-color: #fff;
+    border: none;
+    padding:3% 5%;
+}
+.resume__row{
+    align-items: center;
+}
+.resume__left{
+    display: flex;
+    flex-direction: column;
+    text-align: center !important;
+}
+.resume__left > h1{
+    font-weight: 700;
+}
+.resume__left > p{
+    font-size: 14px;
+}
+.resume__left > .resume__leftButtons{
+    /* display: flex; */
+    justify-content: space-around;
+    text-align: center !important;
+}
+.resume__left > .resume__leftButtons > button{
+        display: block;
+        padding: 10px 20px;
+        border-radius: 7px;
+        background:#f1f8fe;
+        border:none;
+        outline: none;
+        cursor: pointer;
+        align-items: center;
+        margin-top: 20px;
+        width:232px;
+          box-shadow: 
+        4px 4px 6px 0 rgba(0, 0, 0, 0.25),
+        -5px -5px 4px 0 rgba(255, 255, 255, 0.3);
+}
+.resume__left > .resume__leftButtons > button:hover{
+    background-color:rgb(32, 120, 178);;
+    color: #fff;
+}
+.resume__left > h4{
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.resume__right{
+    text-align: center;
+}
+
+.resume__right > img{
+    width: 200px;
+}
+@media all and (max-width:769px){
+    .resume__right{
+        margin-top: 30px;
+    }
+}

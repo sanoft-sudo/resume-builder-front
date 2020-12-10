@@ -1,0 +1,13 @@
+.banner{
+    background-color: #fff;
+    border: none;
+    padding:3% 5%;
+}
+
+
+@media all and (max-width:768px){
+    .banner__col{
+    margin-bottom: 35px;
+    margin-top: 20px;
+}
+}

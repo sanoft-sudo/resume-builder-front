@@ -1,0 +1,21 @@
+.language__select{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.language__select > button{
+    outline: none !important;
+    text-transform: inherit !important;
+    color: lightgreen !important;
+    padding-bottom: 9px !important;
+}
+@media all and (max-width:890px){
+    .language__select{
+        justify-content: inherit;
+    }
+    .language__select >button {
+        margin: 10px 25px 10px 25px !important;
+    }
+}
+   

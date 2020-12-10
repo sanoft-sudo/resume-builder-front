@@ -1,0 +1,98 @@
+.postJob{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.postJob__title{
+    text-align: center;
+}
+.postJob__title > h3{
+    text-transform: uppercase;
+    padding-top: 8px;
+    border-top: 2px solid blue;
+    display: inline-block;
+}
+.postJob__img{
+    text-align: center;
+}
+.postJob__img > img{
+width: 200px;
+}
+.postJob__title2{
+    display: flex;
+    flex-direction: column;
+}
+.postJob__title2 > h1{
+    text-align: center;
+    font-weight: 700;
+}
+.postJob__title2 > p{
+    font-size: 14px;
+    text-align: center;
+}
+.button__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    
+}
+ .postJob__buttonFind > .MuiSvgIcon-root{
+    width: 20px;
+    color: #6f6767;
+}
+.postJob__buttonFind{
+    display: block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background:#f1f8fe;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    align-items: center;
+    margin-top: 15px;
+    width:232px;
+      box-shadow: 
+    4px 4px 6px 0 rgba(0, 0, 0, 0.25),
+    -5px -5px 4px 0 rgba(255, 255, 255, 0.3);
+}
+
+ .postJob__buttonFind:hover{
+    background-color: lightseagreen;
+    color: #fff;
+}
+ .postJob__buttonFind:hover .MuiSvgIcon-root{
+    color:#fff
+}
+@media all and (max-width:576px){
+    .postJob__img > img{
+        width: 115px;
+        }
+    .postJob__title > h3{
+        font-size: 20px;
+    }
+    .postJob__title2 > h1{
+        font-size: 26px;
+    }
+    #findCandidateSubmit > label >h3{
+        font-size: 17px !important;
+    }
+    .MuiFormControl-marginNormal{
+         margin-top: 0;
+        margin-bottom: 12px;
+    }
+    .logo > a > img {
+        width: 80px;
+    }
+    
+}
+@media all and (min-width:577px) and (max-width:768px){
+    .postJob__img > img{
+        width: 150px;
+        }
+}
+
+@media all and (min-width:769px) and (max-width:990px){
+    .postJob__img > img{
+        width: 135px;
+        }
+}
