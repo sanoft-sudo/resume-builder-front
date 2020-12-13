@@ -18,6 +18,9 @@
     flex-direction: row;
     align-items: center;
 }
+.radios > .radio__btn> label{
+    margin-bottom: 0;
+}
 .radio__btn > input, .nightShift> input{
     margin-right: 10px;
 }
@@ -45,6 +48,7 @@
     width: 100%;
     border-radius: 5px;
     border-color: blue;
+    margin-bottom: 15px;
 }
 
 .react-tel-input, .radios, .hightShift{
@@ -61,4 +65,14 @@
 }
 .postJobFieldButton{
     margin-top: 65px !important;
+}
+
+.language__title{
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.error__message{
+    color: red;
+    text-transform: uppercase;
 }

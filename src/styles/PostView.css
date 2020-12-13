@@ -36,3 +36,13 @@
    
 
 }
+.laguages__list, .skills_list{
+    text-transform: capitalize;
+    margin-left: 10px;
+}
+.language__box{
+    display: flex;
+}
+.languages{
+    display: flex;
+}

@@ -7,8 +7,14 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import ProgressBar from '../components/ProgressBar';
+
 
 function TemplateOne() {
+const completed1 = 75;
+const completed2 = 85;
+const completed3 = 80;
+
     return (
         <div className="template__one container">
             <div className="row">
@@ -101,19 +107,19 @@ function TemplateOne() {
                                 <p className="temp__oneTechSkillTitle">
                                     javascripr
                                 </p>
-                                <p className="template__oneTechProgress">progress bar here...</p>
+                                <ProgressBar bgcolor ={"#6a1b9a"} completed={completed1}/>
                             </div>
                             <div className="temp__oneTechSkill">
                                 <p className="temp__oneTechSkillTitle">
                                     react
                                 </p>
-                                <p className="template__oneTechProgress">progress bar here...</p>
+                                <ProgressBar bgcolor ={"#00695c"} completed={completed2}/>
                             </div>
                             <div className="temp__oneTechSkill">
                                 <p className="temp__oneTechSkillTitle">
                                     java
                                 </p>
-                                <p className="template__oneTechProgress">progress bar here...</p>
+                                <ProgressBar bgcolor ={"#ef6c00"} completed={completed3}/>
                             </div>
                             
                         </div>

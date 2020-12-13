@@ -149,6 +149,7 @@ margin-right:5px;
 .template__oneFullname{
     text-transform: capitalize;
     font-size: 70px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .template__oneJobTitleContainer{

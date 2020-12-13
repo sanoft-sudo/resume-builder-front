@@ -8,46 +8,68 @@ import isEmail from "validator/lib/isEmail";
 import "../styles/PostJobFields.css";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import ProfileCardPost from './ProfileCardPost';
+import PostView1 from './PostView1';
+import Select from "react-select"
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+    adRegion: yup.string().required(),
+    city: yup.string().required(),
+    companyName: yup.string().required(),
+    country: yup.string().required(),
+    email: yup.string().required(),
+    fromSalary: yup.number().positive().integer().required(),
+    fullName: yup.string().required(),
+    industry: yup.string().required(),
+    jobCondition: yup.string().required(),
+    jobTitle: yup.string().required(),
+    jobType: yup.string().required(),
+    region: yup.string().required(),
+    salaryType: yup.string().required(),
+    workplace: yup.string().required(),
+    toSalary: yup.number().positive().integer().required(),
+  });
 
 function PostJobFields() {
     const { t } = useTranslation();
+    const { register, errors, handleSubmit, control, formState } = useForm({resolver: yupResolver(schema)});
+    
     const [phone, setPhone] = useState('');
-    const [data, setData] = useState({});
-    const [employer, setEmployer] = useState({
-        company_name: "",
-        full_name: "",
-        emal: "",
-        phone: "",
-        country: "",
-        industry: "",
-        job_title: "",
-        working_area: "",
-        advert_region: "",
-        job_condition: "",
-        isNightshift: false,
-        job_type: "",
-        salary_from: 0,
-        salary_to:0,
-        salary_type: "",
-        empoyee_amount: 0
-    })
-    const { register, errors, handleSubmit, control, formState } = useForm();
+    const [postedData, setPostedData] = useState({});
+    const [checked, setChecked] = useState(false);
+
+    const toggleChecked = () => {
+      setChecked((prev) => !prev);
+    };
     const onSubmit = (data, e) => {
         console.log("manaaaa>>>", data);
-        setData(data);
+        setPostedData(data);
         // e.target.reset();
         // setPhone("")
+
     }
     const top100Films = [
-        { title: 'The Shawshank Redemption', year: 1994 },
-        { title: 'The Godfather', year: 1972 },
-        { title: 'The Godfather: Part II', year: 1974 },
-        { title: 'The Dark Knight', year: 2008 },
-        { title: '12 Angry Men', year: 1957 },
-        { title: "Schindler's List", year: 1993 },
-        { title: 'Pulp Fiction', year: 1994 },
-        { title: 'The Lord of the Rings: The Return of the King', year: 2003 }]
+        { value: 'react', label: 'REACT' },
+        { value: 'html', label: 'HTML' },
+        { value: 'css', label: 'CSS' },
+        { value: 'javascript', label: 'JAVASCRIPT' },
+        { value: 'vue', label: 'VUE' },
+        { value: 'redux', label: 'REDUX' },
+        { value: 'angular', label: 'ANGULAR' },
+        { value: 'english teacher', label: 'English teacher' },
+        { value: 'nurse', label: 'Nurse' },
+        { value: 'accountant', label: 'Accountant' },
+        { value: 'cleaner', label: 'Cleaner' }
+        ]
+    const languages = [
+        {value: 'uzbek', label: "Uzbek"},
+        {value: 'russian', label: "Russian"},
+        {value: 'english', label: "English"}
+    ]
     
     return (
             <div id="jobPostFields">
@@ -58,11 +80,11 @@ function PostJobFields() {
                                 <form className="jobpost__form" id="jobfields" onSubmit={handleSubmit(onSubmit)}>               
                                 <label name="companyLabel"  htmlFor="company">Your company name <span className="required">*</span></label>
                                 <input name="companyName" id="company" ref={register({ required: true})} />
-                                <p>{errors?.companyName?.message}</p>
+                                <p className="error__message">{errors?.companyName?.message}</p>
 
                                 <label name="fullNameLabel" htmlFor="fullname">Your full name <span className="required">*</span></label>
                                 <input type="text" id="fullname" name="fullName" ref={register({ required: true})}/>
-                                <p>{errors.fullName?.message}</p>
+                                <p className="error__message">{errors.fullName?.message}</p>
 
                                 <label name="emailLabel" htmlFor="email">Your Email <span className="required">*</span></label>
                                 <input name="email" id="email"
@@ -72,7 +94,7 @@ function PostJobFields() {
                                         })}
                                         placeholder="Email"
                                 />
-                                <p>{errors.fullName?.message}</p>
+                                <p className="error__message">{errors.email?.message}</p>
 
                                 <label name="phoneLabel" htmlFor="phone">Your number (optional)</label>
                                 <Controller
@@ -89,17 +111,24 @@ function PostJobFields() {
                                 /> }
                                 name="phone"
                                 control={control}
-                                rules= {{required: true}}
+                                rules= {{required: false}}
                                 /> 
                                 {/* <input type="tel" id="tel" name="tel" ref={register({ required: true})}/> */}
+                                <label name="cityLabel" htmlFor="city">City <span className="required">*</span></label>
+                                <input type="text" id="city" name="city" ref={register({ required: true})}/>
+                                <p className="error__message">{errors.city?.message}</p>
+
+                                <label name="regionLabel" htmlFor="region">Region <span className="required">*</span></label>
+                                <input type="text" id="region" name="region" ref={register({ required: true})}/>
+                                <p className="error__message">{errors.region?.message}</p>
 
                                 <label name="countryLabel" htmlFor="country">Country <span className="required">*</span></label>
                                 <input type="text" id="country" name="country" ref={register({ required: true})}/>
-                                <p>{errors.country?.message}</p>
+                                <p className="error__message">{errors.country?.message}</p>
 
                                 <label name="industryLabel" htmlFor="industry">Industry <span className="required">*</span></label>
                                 <p>Select the industry thst best describes your company.</p>
-                                <select name="industry" ref={register}>
+                                <select name="industry" ref={register({required:true})}>
                                     <option value="industry1">industry1</option>
                                     <option value="industry2">industry2</option>
                                     <option value="industry3">industry3</option>
@@ -107,7 +136,7 @@ function PostJobFields() {
 
                                 <label name="jobTitleLabel" htmlFor="jobTitle">Job title <span className="required">*</span></label>
                                 <input type="text" id="jobTitle" name="jobTitle" ref={register({ required: true})}/>
-                                <p>{errors.jobTitle?.message}</p>
+                                <p className="error__message">{errors.jobTitle?.message}</p>
 
                                 <label name="question">Where will employee work? <span className="required">*</span></label>
                                 <div className="radios">
@@ -117,7 +146,7 @@ function PostJobFields() {
                                     </div>
                                     <div className="radio__btn">
                                         <input type="radio" id="multiloc" name="workplace" value="multilocation" ref={register({ required: true})}/>
-                                        <label name="multilocLabel" htmlFor="multiloc">Multi ocations</label>
+                                        <label name="multilocLabel" htmlFor="multiloc">Multi Locations</label>
                                     </div>
                                     <div className="radio__btn">
                                         <input type="radio" id="remote-19" name="workplace" value="remoteDuToCovid"/>
@@ -172,10 +201,6 @@ function PostJobFields() {
                                     </div>
                                     
                                 </div>
-                                <div className="nightShift">
-                                    <input type="checkbox" id="nightshift" name="nightshift" value="nightshift" ref={register({ required: false})}/>
-                                    <label name="nightShiftLabel" htmlFor="nightshift">Is it nightshift? </label>
-                                </div>
                                 <label name="salaryLabel" htmlFor="salfrom">Salary</label>
 
                                 <div className="salary_inputs">
@@ -183,10 +208,12 @@ function PostJobFields() {
                                     <div className="col-md-4 inp">
                                         <label name="fromLabel" htmlFor="from">From </label>
                                         <input type="number" id="salfrom" name="fromSalary" ref={register({ required: true})}/>
+                                        <p className="error__message">{errors.fromSalary?.message}</p>
                                     </div>
                                     <div className="col-md-4 inp">
                                         <label name="toLabel" htmlFor="to">To </label>
                                         <input type="number" id="to" name="toSalary" ref={register({ required: true})}/>
+                                        <p className="error__message">{errors.toSalary?.message}</p>
                                     </div>
                                     <div className="col-md-4 inp">
                                     <div className="sal_type">
@@ -197,8 +224,29 @@ function PostJobFields() {
                                             <option key="value" value="day">day</option>
                                             <option key="value" value="month">month</option>
                                         </select>
+                                        <p className="error__message">{errors.salaryType?.message}</p>
                                     </div> 
                                     </div>
+                                </div>
+                                <div className="nightShift">
+                                <Controller
+                                    as={
+                                <FormGroup>
+                                <FormControlLabel
+                                    control={<Switch checked={checked} color="primary" 
+                                    defaultValue={checked} ref={register({required:false})} 
+                                    name="isNightShift" 
+                                    onChange={toggleChecked} 
+                                    value={checked? "Day Job" : "Night Job"}
+                                    />}
+                                    label={checked? "Nightshift" : "Dayshift"}
+                                />
+                                </FormGroup>
+                                }
+                                name="isNightShift"
+                                control={control}
+                                // rules= {{required:false}} 
+                         />
                                 </div>
                                 <div className="additional">
                                     <label name="aboutJob" htmlFor="aboutJob">About job </label>
@@ -207,25 +255,42 @@ function PostJobFields() {
                                     <textarea name="addRequirement" id="addRequirement" cols="30" rows="7" ref={register({ required: false})}></textarea>
                                 </div>
                                 <div>
+                                <label className="language__title">Skills</label>
+                                 <Controller
+                                    as={
+                                <Select
+                                    defaultValue={[]}
+                                    isMulti
+                                    name="skills"
+                                    options={top100Films}
+                                    className="basic-multi-select"
+                                    classNamePrefix="select"
+                                />
+                                    }
+                                    name="skills"
+                                    control={control}
+                                    rules= {{required: true}}
+                                />
+                                <p className="error__message">{errors.skills?.message}</p>
+                                <label className="language__title">Languages</label>
                                 <Controller
                                     as={
-                                    <Autocomplete
-                                        multiple
-                                        id="size-small-standard-multi"
-                                        size="small"
-                                        options={top100Films}
-                                        name="skills"
-                                        getOptionLabel={(option) => option.title}
-                                        defaultValue={[top100Films[3]]}
-                                        renderInput={(params) => (
-                                        <TextField {...params} variant="standard" value={params} name="skills" label="Size small" placeholder="Favorites" />
-                                        )}
-                                        />
-                                            }
-                                        name="skills"
-                                        control={control}
-                                        rules= {{required: true}}
-                                /> 
+                                <Select
+                                    defaultValue={[]}
+                                    isMulti
+                                    name="languages"
+                                    options={languages}
+                                    className="basic-multi-select"
+                                    classNamePrefix="select"
+                                />
+                                    }
+                                    name="languages"
+                                    control={control}
+                                    rules= {{required: true}}
+                                />
+                                <p className="error__message">{errors.languages?.message}</p>      
+
+                               
                                 </div>
                                     
                                 </div>
@@ -234,11 +299,9 @@ function PostJobFields() {
                                 
                             </div>
                             <div className="col-md-6">
-                                <ProfileCardPost data={data}/>
+                                <PostView1 data={postedData}/>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde impedit ipsa asperiores nesciunt repudiandae dolor dolores quis eius eaque cupiditate, nihil quod sequi alias itaque labore quae quas reprehenderit ea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos molestiae id nulla totam cupiditate! Ducimus, maxime, nisi voluptatibus modi, soluta laudantium expedita aliquid voluptate sapiente optio dolor ea asperiores odio!</p>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita eaque voluptas possimus, pariatur laudantium ut perspiciatis, autem fugit nihil quasi in aliquam doloribus, accusamus voluptatem impedit velit ab inventore magnam.</p>
                         
                 </div>
                 {
