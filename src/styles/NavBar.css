@@ -1,27 +1,30 @@
-li{
-    list-style-type: none;
+.nav__items{
+    list-style-type: none !important;
 }
-a{
+.nav__items a{
     
-    text-decoration: none;
-    color:#000000
+    text-decoration: none !important;
+    color:#000000 !important;
 }
 a:hover{
-    text-decoration: none;
-    color: #000000;
+    text-decoration: none !important;
 }
-ul{
+.nav__links{
     margin: 0;
 }
-li > a > h4, a > h4{
+.nav__items > a > h4, a > h4{
     font-size: 15px;
     margin: 0;
+}
+.logo{
+    display: inline-block;
 }
 .logo > a > img{
     width: 100px;
 }
 nav{
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     justify-content: space-between;
     align-items: center;
     background-color: #f1f8fe;
@@ -32,7 +35,7 @@ nav > .logo{
     margin-left:3%;
 }
 
-nav > .nav__container> .nav__links{
+nav > .nav__container .nav__links{
     display: flex;
     justify-content: space-around;
     flex: 0.77;
@@ -41,8 +44,9 @@ nav > .nav__container> .nav__links{
 }
 .nav__container{
     display: flex;
-    flex:0.85;
+    flex:0.9;
     align-items: center;
+    padding-right: 15px;
 }
 
 .nav__right{
@@ -66,13 +70,13 @@ a{
     display: none;
 }
 
-.nav__links li , .nav__right li {
+.nav__links .nav__items , .nav__right .nav__items {
     transition: all 0.4s ease-in 0s;
     /* padding-bottom: 9px; */
     
 }
 
-.nav__links li a::after, .nav__right li a::after {
+.nav__links .nav__items a::after, .nav__right .nav__items a::after {
     content: "";
     width: 100%;
     height: 2px;
@@ -82,23 +86,23 @@ a{
     display: block;
     transform: scaleX(0) translateY(-8px);
   }
-  .nav__links li a:hover, .nav__right a:hover{
-    color: lightgreen;
+  .nav__links .nav__items a:hover, .nav__right .nav__items a:hover{
+    color: lightgreen !important;
     
 }
-.nav__links li a:hover::after, .nav__right li a:hover:after{
-    color: lightgreen;
-    transform: scaleX(1) translateY(0);
-    /* border-bottom: 1px solid lightgreen; */
-    
-}
-.nav__links li a.active::after, .nav__right li a.active:after{
+.nav__links .nav__items a:hover::after, .nav__right .nav__items a:hover:after{
     color: lightgreen;
     transform: scaleX(1) translateY(0);
     /* border-bottom: 1px solid lightgreen; */
     
 }
-.nav__links li a.active h4, .nav__right li a.active h4{
+.nav__links .nav__items a.active::after, .nav__right .nav__items a.active:after{
+    color: lightgreen;
+    transform: scaleX(1) translateY(0);
+    /* border-bottom: 1px solid lightgreen; */
+    
+}
+.nav__links .nav__items a.active h4, .nav__right .nav__items a.active h4{
     color: lightgreen;
     
 }
@@ -132,7 +136,7 @@ h4{
     .nav__container{
         position: absolute;
         top: 68px;
-        left: 0;
+        left: 16px;
         background-color: #f1f8fe;
         width: 50%;
         transform: translateX(-500px);
@@ -140,10 +144,10 @@ h4{
         z-index: 100;
     }
     a{padding: 10px;}
-     li:hover, .nav__right--reg:hover{
+     .nav__items:hover, .nav__right--reg:hover{
         background-color: lightblue;
     }
-    li > a > h4, a > h4{
+    .nav__items > a > h4, a > h4{
         padding: 10px 25px 10px 25px;
         font-size: 20px;
     }

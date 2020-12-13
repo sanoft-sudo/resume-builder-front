@@ -1,0 +1,233 @@
+  /* Profile left side style */
+.template__oneLeft{
+    background-color: #e4e0dc;
+    padding: 15px 25px 25px 25px;
+}
+.template__oneImage > img{
+    width: 175px;
+    border-radius: 100%;   
+}
+.template__oneImage{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.left__box{
+    padding-left: 15px;
+}
+
+/* Contact info style  */
+
+.template__oneContacts{
+    display: flex;
+    flex-direction: column;
+}
+.template__onePhone, .template__oneEmail, .template__oneAddress, .template__oneLinkedIn, .template__oneTelegram{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+}
+.contactP{
+    padding-left: 15px;
+}
+.tempOne__line{
+    display: flex;
+    justify-content: center;
+    border:none;
+    border-bottom: 2px solid #c5b9ac;
+    margin-top: 15px;
+}
+
+/* Education info style */
+
+.tempOne__educationTitle{
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.temp__oneUniversity{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.temp__oneUniDegreeNMajor{
+    display: flex;
+}
+
+.temp__oneUniversityDegree, .temp__oneUniSlash, .temp__oneUniversityDegree{
+    font: size 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-right:5px;
+}
+.temp__oneUniversityName, .temp__oneDash, .temp__oneStartYear, .temp__oneEndYear{
+    margin-bottom: 0;
+}
+.temp__oneEductationYears{
+    display: flex; 
+}
+.temp__oneDash, .temp__oneStartYear, .temp__oneEndYear{
+margin-right:5px;
+}
+
+/* Language style  */
+.temp__oneSkillsList, .temp__oneLanguagesList{
+    display: flex;
+    flex-direction: column;
+}
+.temp__oneSkill{
+    margin-bottom: 10px;
+}
+
+.temp__oneLanguage{
+    display: flex;
+}
+.temp__oneLangTitle{
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.temp__oneLaguageStick, .temp__oneLangLevel{
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+/* Technical skills */
+
+.temp__oneTechSkillsList{
+    display: flex;
+    flex-direction: column;
+}
+.temp__oneTechSkill{
+    display: flex;
+    flex-direction: column;
+}
+.temp__oneTechSkillTitle{
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+/* Achievements style */
+.template__oneAward{
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.temp__oneAwardTitle{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.temp__oneAwards{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+
+/* Template right side style */
+
+.template__oneRight{
+    background-color: #fff;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.template__oneCandidate{
+    background-color: #e4e0dc;;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding:20px 50px !important;
+}
+
+.template__oneFullname{
+    text-transform: capitalize;
+    font-size: 70px;
+}
+
+.template__oneJobTitleContainer{
+    display: flex;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgb(110, 104, 104);
+    font-size: 17px;
+}
+.template__oneJobTitle, .template__oneJobTitleSlash, .template__oneJobTitle{
+    margin-right: 5px;
+}
+
+.template__oneMainContent{
+    padding:20px 0 40px 50px !important;
+}
+.template__oneMainContentTitle{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+.template__oneProfessionalProf > .tempOne__line, .template__oneProfessionalExpr> .tempOne__line, .template__oneProfessionalDev > .tempOne__line {
+    margin-top: 0;
+}
+.template__oneProfessionalProfContent{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding-right: 20px;
+}
+.template__oneExpJobTitle{
+    display: flex;
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: rgb(110, 104, 104);
+}
+.template__oneExpJobContainer{
+    display:flex;
+    flex-direction: column
+}
+
+.template__oneExpJobAddress{
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+
+}
+.template__oneExpDate{
+    display: flex;
+}
+.template__oneExpCompany, .template__oneExpDateDash, .template__oneExpLocation, .template__oneExpStartDate, .template__oneExpEndDate{
+    margin-right:5px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.template__oneProfessionalProfContentResp{
+    padding-left: 50px;
+    padding-right: 20px;
+    margin-bottom: 0;
+}
+.template__oneProfessionalLists > li::marker{
+    color: rgb(110, 104, 104) !important;
+}
+
+
+/* Proffesional development styles */
+
+.template__oneProfDevAddress{
+    display: flex;
+    font-size: 14px;
+}
+.template__oneProfDevBox{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}

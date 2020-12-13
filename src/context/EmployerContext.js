@@ -7,8 +7,9 @@ const EmployerContextProvider = (props) =>{
     const [employers, setEmployers] = useState([]);
     useEffect(() => {
         const getEmployers = async () =>{
-            await axios.get('http://localhost:5000/postedJob')
+           await axios.get('http://localhost:5000/postedJob')
             .then(res =>{
+                
                 setEmployers(res.data)
             })
             .catch(err =>{

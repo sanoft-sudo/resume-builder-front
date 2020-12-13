@@ -5,7 +5,7 @@
     border-radius: 5px;
     margin-right: 10px;
 }
-.jobpost__form > label{
+.jobpost__form > label, .additional > label{
     font-size: 16px;
     font-weight: 700;
 }
@@ -35,4 +35,30 @@
 .sal_type>select{
     margin-right: 0;
     border-color: blue;
+}
+.additional{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.additional > textarea{
+    width: 100%;
+    border-radius: 5px;
+    border-color: blue;
+}
+
+.react-tel-input, .radios, .hightShift{
+    margin-bottom: 15px !important;
+}
+
+.react-tel-input .flag-dropdown{
+    border: 1px solid blue;
+}
+.react-tel-input .form-control{
+    border-color: blue;
+    width:98% !important;
+    height:40px !important;
+}
+.postJobFieldButton{
+    margin-top: 65px !important;
 }

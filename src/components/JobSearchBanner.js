@@ -3,10 +3,12 @@ import {useHistory} from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
-import PostAddIcon from '@material-ui/icons/PostAdd';
 import { useTranslation } from "react-i18next";
 import {EmployerContext} from "../context/EmployerContext";
 import "../styles/JobSearchBanner.css"
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import RoomIcon from '@material-ui/icons/Room';
 
 function JobSearchBanner() {
     const { t } = useTranslation();
@@ -16,35 +18,49 @@ function JobSearchBanner() {
     return (
         <div className="jobsearchbanner">
             <div className="form__container">
-                <form action="#" id="findJobSubmit">
+                <form className="custom__form" action="#" id="findJobSubmit">
                     <div className="row form_row">
                         <div className="col-md-8">
                             <div className="row form__searchRow">
                                 <div className="col-md-6">
-                            <label htmlFor="free-solo-demo"><h3>{t("banner_find_job_label1")}</h3></label>
+                            <label className="labelWhat" htmlFor="free-solo-demo"><h3>{t("banner_find_job_label1")}</h3></label>
                             <Autocomplete
                                 id="free-solo-demo"
                                 freeSolo
                                 options={jobs.map((job) => job.job_title)}
                                 renderInput={(params) => (
-                                <TextField {...params} label={t("banner_find_job_placeholder1")} margin="normal" variant="outlined" />
+                                    <TextField
+                                    {...params}
+                                    label={t("banner_find_job_placeholder1")}
+                                    margin="normal"
+                                    variant="outlined"
+                                    InputProps={{ ...params.InputProps, type: 'search', startAdornment: (
+                                        <InputAdornment position="start">
+                                          <BusinessCenterIcon/>
+                                        </InputAdornment>
+                                      ), }}
+                                
+                                />
                                 )}
                             />
                         </div>
                                 <div className="col-md-6">
-                           <label htmlFor="free-solo-2-demo"><h3>{t("banner_find_job_label2")}</h3></label>
+                           <label className="labelWhat" htmlFor="free-solo-2-demo"><h3>{t("banner_find_job_label2")}</h3></label>
                             <Autocomplete
                                 freeSolo
                                 id="free-solo-2-demo"
-                                disableClearable
-                                options={jobs.map((job) => job.address)}
+                                options={jobs.map((job) => job.country)}
                                 renderInput={(params) => (
                                 <TextField
                                     {...params}
                                     label={t("banner_find_job_placeholder2")}
                                     margin="normal"
                                     variant="outlined"
-                                    InputProps={{ ...params.InputProps, type: 'search' }}
+                                    InputProps={{ ...params.InputProps, type: 'search', startAdornment: (
+                                        <InputAdornment position="start">
+                                          <RoomIcon/>
+                                        </InputAdornment>
+                                      ), }}
                                 />
                             )}
                             />    
@@ -52,7 +68,7 @@ function JobSearchBanner() {
                             </div>
                             <div className="row form__salaryRow">
                                 <div className="col">
-                                  <label><h4>Salary</h4></label>
+                                  <label className="labelWhat"><h4>Salary</h4></label>
                                   <div className="row">
                                   <div className="col-md-4 salary__range">
                                     <label htmlFor="from">From </label>
@@ -78,7 +94,7 @@ function JobSearchBanner() {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <button className="btn btn-info form__searchButton findJob__buttonFind" htmlFor="findJobSubmit">{t("banner_find_job_find_button1")} <SearchIcon/></button>
+                            <button className="btn btn-info form__searchButton findJob__buttonFind" htmlFor="findJobSubmit">{t("banner_find_job_find_button1")} <SearchIcon color="white"/></button>
                         </div>
                     </div>
                 </form>

@@ -54,7 +54,7 @@ function BannerJob() {
                 </form>
             </div>
             <div className="button__container">
-                <button className="btn postJob__buttonFind" htmlFor="findCandidateSubmit">{t("banner_post_job_post_button2")} <SearchIcon/></button>
+                <button className="btn postJob__buttonFind" htmlFor="findCandidateSubmit"  onClick={e => history.push("/searchcandidates")}>{t("banner_post_job_post_button2")} <SearchIcon/></button>
                 <button className="btn postJob__buttonFind" onClick={e => history.push("/jobpost")}>{t("banner_post_job_post_button1")} <PostAddIcon/></button>
             </div>
             

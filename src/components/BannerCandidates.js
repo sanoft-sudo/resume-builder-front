@@ -14,8 +14,6 @@ function BannerCandidates() {
     const history = useHistory();
   const {employers} = useContext(EmployerContext);
   let jobs = employers;
-
-    console.log("jobs>>>",jobs);
     return (
         <div id="findJob">
             <div className="findJob__title">
@@ -43,7 +41,7 @@ function BannerCandidates() {
                           freeSolo
                           id="free-solo-2-demo"
                           disableClearable
-                          options={jobs.map((job) => job.address)}
+                          options={jobs.map((job) => job.country)}
                           renderInput={(params) => (
                          <TextField
                               {...params}
@@ -56,7 +54,7 @@ function BannerCandidates() {
                      />   
                 </form>
                 <div className="button__container">
-                    <button className="btn findJob__buttonFind" htmlFor="findJobSubmit">{t("banner_find_job_find_button1")} <SearchIcon/></button>
+                    <button className="btn findJob__buttonFind" htmlFor="findJobSubmit" onClick={e => history.push("/jobsearch")}>{t("banner_find_job_find_button1")} <SearchIcon/></button>
                     <button className="btn findJob__buttonFind" onClick={e => history.push("/buildresume")}>{t("banner_find_job_find_button2")} <PostAddIcon/></button>
                 </div>
                 

@@ -1,15 +1,16 @@
 import React from 'react';
 import "../styles/JobSearchRight.css";
-import PostViewCard from './PostViewCard';
+import ProfileCard from "../components/ProfileCard"
 
-function JobSearchRight() {
+function CandidateSearchRight() {
+
     return (
         <div className="jobsearchright">
             <div className="row job__lists">
-                <PostViewCard/>
+                <ProfileCard/>
             </div>
         </div>
     )
 }
 
-export default JobSearchRight
+export default CandidateSearchRight

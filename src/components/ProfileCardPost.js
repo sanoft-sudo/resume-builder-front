@@ -1,59 +1,68 @@
 import React, {useContext} from 'react';
 import "../styles/ProfileCard.css";
 
-import {CandidatesContext} from "../context/CandidatesContext";
+import {EmployerContext} from "../context/EmployerContext";
 
-function ProfileCard() {
+function ProfileCardPost(data) {
     
-    const {candidates} = useContext(CandidatesContext);
+    const {employers} = useContext(EmployerContext);
+    const employer = data;
     return (
         
             <div className="cards">
-            {
-                candidates.map(candidate =>(
-                <div className="profileCard col-lg-6">
-                    <div key={candidate.id}>
-                    <div className="card__Header">
+            {/* {
+                data.map(employer =>( */}
+                <div className="profileCard col-lg-6 col-md-12 col-sm-12">
+                    <div key={employer.id}>
+                    <div className="card__header">
                         <div className="profileCard__image">
-                            <img className="card__avatar" src={candidate.avatar} alt="profile avatar"/>
+                            <img className="card__avatar" src={employer?.avatar} alt="profile avatar"/>
                         </div>
                         <div className="profileCard__title">
                             <p className="profileCard__name">
-                                {candidate.name}
+                                {employer.company}
                             </p>
                             
                             <p className="profileCard__jobTitle">
-                                {candidate.job_title}
+                                {employer.job_title}
                             </p>
                                                
                         </div>
                     </div>
                     <div className="profileCard__embaded">
-                                <i class="fas fa-crown"></i>
+                                {/* <i class="fas fa-crown"></i>
                                 <p className="profileCard_topRated">
                                     top rated
-                                </p>
+                                </p> */}
                             </div>
                     <div className="card__headerBottom">
                         <p className="card__headerSalary">
-                            {candidate.salary_per_hour} / hr
+                            {employer.fromSalary} / {employer.salaryType}
                         </p>
                         <p className="card__headerAddress">
-                            {candidate.address}
+                            {employer.country}
                         </p>
                     </div>
-                    <div className="card__skills">
+                    <div className="card__headerBottom">
+                        <p className="card__headerSalary">
+                            {employer.jobType}
+                        </p>
+                        <p className="card__headerAddress">
+                            {employer.jobCondition}
+                        </p>
+                    </div>
+                    {/* <div className="card__skills">
                         <p className="card__skill">
-                            {candidate.skills.first}
+                            {employer.skills.first}
                         </p>
                         <p className="card__skill">
-                           {candidate.skills.second}
+                           {employer.skills.second}
                         </p>
                         <p className="card__skill">
-                            {candidate.skills.third}
+                            {employer.skills.third}
                         </p>
                        
-                    </div>
+                    </div> */}
                     <div className="card__fotter">
                         <button className="cardFooterButton">
                             View profile
@@ -62,12 +71,12 @@ function ProfileCard() {
             
             </div>
             </div>
-                ))
+                {/* ))
             }
-            
+             */}
             
         </div>
     )
 }
 
-export default ProfileCard
+export default ProfileCardPost

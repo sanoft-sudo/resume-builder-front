@@ -22,27 +22,27 @@ function NavBar() {
                     style={{transform: showSider? "translateX(0px)" : ""}}
                 >
                     <ul className="nav__links">
-                    <li onClick={()=>setShowSider(false)}>
+                    <li className="nav__items" onClick={()=>setShowSider(false)}>
                         <NavLink to="/" key="/" exact strict>
                             <h4>{t("header_link1")}</h4>
                         </NavLink>
                     </li>
-                    <li onClick={()=>setShowSider(false)} >
-                        <NavLink to="/jobpost" key="/jobpost">
+                    <li className="nav__items" onClick={()=>setShowSider(false)} >
+                        <NavLink  to="/jobpost" key="/jobpost">
                         <h4>{t("header_link2")}</h4>
                         </NavLink>
                     </li>
-                    <li onClick={()=>setShowSider(false)} >
+                    <li className="nav__items" onClick={()=>setShowSider(false)} >
                         <NavLink to="/jobsearch" key="/jobsearch" >
                         <h4>{t("header_link3")}</h4>
                         </NavLink>
                     </li>
-                    <li onClick={()=>setShowSider(false)} >
+                    <li className="nav__items" onClick={()=>setShowSider(false)} >
                         <NavLink to="/buildresume" key="/buildresume">
                         <h4>{t("header_link4")}</h4>
                         </NavLink>
                     </li>
-                    <li onClick={()=>setShowSider(false)} >
+                    <li className="nav__items" onClick={()=>setShowSider(false)} >
                         <NavLink to="/contact" key="/contact">
                         <h4>{t("header_link5")}</h4>
                         </NavLink>
@@ -51,7 +51,7 @@ function NavBar() {
                     <div className="nav__right">
                     <LanguageSelect/>
                     <div className="nav__right--reg">
-                        <li onClick={()=>setShowSider(false)}>
+                        <li className="nav__items" onClick={()=>setShowSider(false)}>
                             <NavLink to="/login" key="/login">
                             <h4>{t("header_link6")}</h4>
                         </NavLink> 

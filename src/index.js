@@ -10,7 +10,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
     <Suspense fallback={(<div>Loding...</div>)}>
       <Router>
-        <div className="container">
+        <div className="container-fluid container-lg">
           <App />
         </div>
       </Router>

@@ -1,9 +1,9 @@
 import React from 'react';
 import JobSearchList from './JobSearchList';
 import "../styles/JobSearchMain.css"
-import JobSearchRight from './JobSearchRight';
+import CandidateSearchRight from './CandidateSearchRight';
 
-function JobSearchMain() {
+function CandidateSearchMain() {
     return (
         <div className="jobsearchmain__container">
             <div className="row">
@@ -11,11 +11,11 @@ function JobSearchMain() {
                     <JobSearchList/>
                 </div>
                 <div className="col-md-8">
-                    <JobSearchRight/>
+                    <CandidateSearchRight/>
                 </div>
             </div>
         </div>
     )
 }
 
-export default JobSearchMain
+export default CandidateSearchMain
