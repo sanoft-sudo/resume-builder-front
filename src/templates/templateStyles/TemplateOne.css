@@ -43,7 +43,7 @@
 .tempOne__educationTitle{
     margin-top: 15px;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 2px;
 }
@@ -51,14 +51,14 @@
 .temp__oneUniversity{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .temp__oneUniDegreeNMajor{
     display: flex;
 }
 
 .temp__oneUniversityDegree, .temp__oneUniSlash, .temp__oneUniversityDegree{
-    font: size 20px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 0;
@@ -69,6 +69,7 @@
 }
 .temp__oneEductationYears{
     display: flex; 
+    font-size:14px;
 }
 .temp__oneDash, .temp__oneStartYear, .temp__oneEndYear{
 margin-right:5px;
@@ -78,6 +79,7 @@ margin-right:5px;
 .temp__oneSkillsList, .temp__oneLanguagesList{
     display: flex;
     flex-direction: column;
+    font-size: 14px;
 }
 .temp__oneSkill{
     margin-bottom: 10px;
@@ -110,6 +112,7 @@ margin-right:5px;
 .temp__oneTechSkillTitle{
     margin-bottom: 0;
     text-transform: uppercase;
+    font-size:12px
 }
 
 /* Achievements style */
@@ -121,12 +124,14 @@ margin-right:5px;
     margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 600;
+    font-size:15px;
 }
 
 .temp__oneAwards{
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    font-size: 12px;
 }
 
 
@@ -148,7 +153,7 @@ margin-right:5px;
 
 .template__oneFullname{
     text-transform: capitalize;
-    font-size: 70px;
+    font-size: 60px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -157,7 +162,8 @@ margin-right:5px;
     text-transform: uppercase;
     font-weight: 500;
     color: rgb(110, 104, 104);
-    font-size: 17px;
+    font-size: 16px
+    7px;
 }
 .template__oneJobTitle, .template__oneJobTitleSlash, .template__oneJobTitle{
     margin-right: 5px;
@@ -169,7 +175,7 @@ margin-right:5px;
 .template__oneMainContentTitle{
     margin-bottom: 0;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 2px;
     margin-top: 20px;
@@ -186,7 +192,7 @@ margin-right:5px;
     display: flex;
     margin-top: 5px;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     margin-bottom: 0;
     color: rgb(110, 104, 104);
@@ -198,7 +204,7 @@ margin-right:5px;
 
 .template__oneExpJobAddress{
     display: flex;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 600;
 
 }
@@ -214,7 +220,11 @@ margin-right:5px;
 .template__oneProfessionalProfContentResp{
     padding-left: 50px;
     padding-right: 20px;
+    font-size:10px;
     margin-bottom: 0;
+}
+.template__oneProfessionalProfContent{
+    font-size: 10px;
 }
 .template__oneProfessionalLists > li::marker{
     color: rgb(110, 104, 104) !important;
@@ -225,10 +235,12 @@ margin-right:5px;
 
 .template__oneProfDevAddress{
     display: flex;
-    font-size: 14px;
+    font-size: 11px;
 }
 .template__oneProfDevBox{
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    font-size: 11px;
 }
+

@@ -1,3 +1,12 @@
 .progressbar__label{
     font-size: 12px;
 }
+.bar__parent{
+    position: relative;
+}
+.bar__child{
+    position:absolute;
+    top:0;
+    right:15px
+
+}

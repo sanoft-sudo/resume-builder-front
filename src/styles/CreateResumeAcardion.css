@@ -1,0 +1,6 @@
+.MuiAccordionSummary-expandIcon.Mui-expanded {
+    transform: rotateY(180deg) !important;
+}
+.fas , .far{
+    color: #3d9ee3;
+}

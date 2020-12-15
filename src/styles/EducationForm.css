@@ -1,0 +1,9 @@
+.educationForm{
+    display: flex;
+    flex-direction: column;
+}
+.study__years{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

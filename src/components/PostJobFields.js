@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext}  from 'react';
-import axios from 'axios';
+import React, { useState}  from 'react';
 import { useTranslation } from "react-i18next";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { Controller, useForm } from "react-hook-form";
 import isEmail from "validator/lib/isEmail";
 import "../styles/PostJobFields.css";
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from '@material-ui/core/TextField';
 import PostView1 from './PostView1';
 import Select from "react-select"
 import Switch from '@material-ui/core/Switch';
@@ -15,6 +12,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import {useDispatch, useSelector} from "react-redux";
+import {savePostJob} from "../stores/actions/postJobFieldsAction"
 
 const schema = yup.object().shape({
     adRegion: yup.string().required(),
@@ -36,6 +35,8 @@ const schema = yup.object().shape({
 
 function PostJobFields() {
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const postjob = useSelector(state => state.postjobReducer.postjob)
     const { register, errors, handleSubmit, control, formState } = useForm({resolver: yupResolver(schema)});
     
     const [phone, setPhone] = useState('');
@@ -45,12 +46,13 @@ function PostJobFields() {
     const toggleChecked = () => {
       setChecked((prev) => !prev);
     };
+    
     const onSubmit = (data, e) => {
         console.log("manaaaa>>>", data);
+        dispatch(savePostJob(data))
         setPostedData(data);
-        // e.target.reset();
-        // setPhone("")
-
+        e.target.reset();
+        setPhone("")
     }
     const top100Films = [
         { value: 'react', label: 'REACT' },
@@ -237,7 +239,7 @@ function PostJobFields() {
                                     defaultValue={checked} ref={register({required:false})} 
                                     name="isNightShift" 
                                     onChange={toggleChecked} 
-                                    value={checked? "Day Job" : "Night Job"}
+                                    value={!checked? "Night job" : "Day job"}
                                     />}
                                     label={checked? "Nightshift" : "Dayshift"}
                                 />
@@ -299,7 +301,7 @@ function PostJobFields() {
                                 
                             </div>
                             <div className="col-md-6">
-                                <PostView1 data={postedData}/>
+                                <PostView1/>
                             </div>
                         </div>
                         

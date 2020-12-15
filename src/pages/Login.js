@@ -1,8 +1,10 @@
-import React, {useContext} from 'react'
-import ProfileCard from "../components/ProfileCard";
+import React, {useContext} from 'react';
 import {JobsContext} from "../context/JobsContext";
 import {CountriesContext} from "../context/CountriesContext";
-import PostViewCard from '../components/PostViewCard';
+import CreateResumeMain from '../components/resumeBuilder/CreateResumeMain';
+import Completed from '../components/resumeBuilder/Completed';
+
+
 function Login() {
 
     const {jobList} = useContext(JobsContext);
@@ -12,11 +14,11 @@ function Login() {
     console.log("countries", countries);
     return (
         // <div id="login">
-            <div className="row d-flex">
-                {/* <ProfileCard/> */}
-                <PostViewCard/>
-                <PostViewCard/>
-                <PostViewCard/>
+            <div className="row">
+                <div className="col">
+                    <CreateResumeMain/>
+                </div>
+                
             </div>
             
             

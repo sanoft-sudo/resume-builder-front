@@ -5,11 +5,12 @@ const {bgcolor, completed} = props;
 console.log("completed", completed);
 
 const containerStyles = {
-    height: 20,
+    height: 13,
     width: '80%',
     backgroundColor: "#fff",
     borderRadius: 50,
-    marginBottom: 8
+    marginBottom: 8,
+    position: 'relative'
   }
 
   const fillerStyles = {
@@ -22,14 +23,17 @@ const containerStyles = {
 
   const labelStyles = {
     paddingRight: 15,
-    fontSize:13,
+    fontSize:10,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 0,
+    right:40,
   }
     return (
         <div style={containerStyles}>
-            <div style={fillerStyles}>
-                <span style={labelStyles}>
+            <div className="bar__parent" style={fillerStyles}>
+                <span className="bar__child" style={labelStyles}>
                     {`${completed}%`}
                 </span>
             </div>

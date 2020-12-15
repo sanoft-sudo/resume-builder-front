@@ -1,0 +1,37 @@
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    
+}
+.MuiAccordionDetails-root{
+    justify-content: center;
+}
+
+.profileInfo > input, .profileInfo > textarea{
+    width: 100%;
+    border-radius: 5px;
+    border-color: #afd4f5;
+    outline:none;
+    margin-bottom: 5px;
+    padding:10px;
+    border-width: 1px;
+}
+.profileInfo > textarea{
+    overflow: auto;
+}
+.profileInfo > input{
+    height: 40px;
+}
+
+.editableProfileInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:10px;
+    width:100%;
+}
+.profileInfoFields{
+    margin-bottom: 23px !important;
+}
