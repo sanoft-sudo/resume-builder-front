@@ -10,6 +10,7 @@ import ContactInformation from "../createContacts/ContactInformation"
 import EducationForm from '../education/EducationForm';
 import ExperienceForm from '../experience/ExperienceForm';
 import CreateKeySkills from '../keySkills/CreateKeySkills';
+import TechSkills2 from '../technicalSkills/TechSkills2';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +32,8 @@ const fields = [
     data: <ExperienceForm/>},
     {id: "fb", label: "Key Skills", icon: <i class="fas fa-shapes"></i>,
     data: <CreateKeySkills/>},
+    {id: "gb", label: "Technical Skills", icon: <i class="fas fa-chart-bar"></i>,
+    data: <TechSkills2/>},
    
 
 ]

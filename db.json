@@ -16062,87 +16062,138 @@
           "JobFamily": "9900"
         }
       ],
+      "technicalSkills":
+      [
+        {
+            "id": "python",
+            "title": "PYTHON"
+        },
+        {
+            "id": "java",
+            "title": "JAVA"
+        },
+        {
+            "id": "redux",
+            "title": "REDUX"
+        },
+        {
+            "id": "react",
+            "title": "REACT"
+        },
+        {
+            "id": "javascript",
+            "title": "JAVASCRIPT"
+        },
+        {
+            "id": "bootstrap",
+            "title": "BOOTSTRAP"
+        },
+        {
+            "id": "css",
+            "title": "CSS"
+        },
+        {
+            "id": "html",
+            "title": "HTML"
+        },
+      {
+          "id": "postgresql",
+          "title": "PostgreSQL"
+      },
+      {
+          "id": "oracle",
+          "title": "Oracle"
+      },
+      {
+          "id": "mysql",
+          "title": "MySQL"
+      },
+      {
+          "id": "mongodb",
+          "title": "MongoDB"
+      },
+      {
+          "id": "jquery",
+          "title": "jQuery"
+      },
+      {
+          "id": "wordpress",
+          "title": "Wordpress"
+      },
+      {
+          "id": "springboot",
+          "title": "SpringBoot"
+      },
+      {
+          "id": "ui",
+          "title": "UI"
+      },
+      {
+          "id": "ux",
+          "title": "UX"
+      }
+    ],
       "keySkills":
       [
         {
-            "id": "9999",
-            "name": "Backend Development"
+            "value": "backend_development",
+            "label": "Backend Development"
         },
         {
-            "id": "9998",
-            "name": "Front-end Development"
+            "value": "front-end_development",
+            "label": "Front-end Development"
         },
         {
-            "id": "9997",
-            "name": "PYTHON"
+            "value": "artificial_intelegence",
+            "label": "Artificial Inteligence"
         },
         {
-            "id": "9996",
-            "name": "JAVE"
+            "value": "software_enginering",
+            "label": "Software Enginering"
         },
         {
-            "id": "9995",
-            "name": "REDUX"
+            "value": "web_development",
+            "label": "Web Development"
         },
         {
-            "id": "9994",
-            "name": "REACT"
+            "value": "cyber_security",
+            "label": "Cyber Security"
         },
         {
-            "id": "9993",
-            "name": "JAVASCRIPT"
+            "value": "business_marketing",
+            "label": "Business Marketing"
         },
         {
-            "id": "9991",
-            "name": "BOOTSTRAP"
+            "value": "full-stack_web_development",
+            "label": "Full-stack Web Development"
         },
         {
-            "id": "9990",
-            "name": "CSS"
+            "value": "mern_stack_web_development",
+            "label": "MERN-stack Web Development"
         },
         {
-            "id": "9989",
-            "name": "HTML"
+            "value": "business_analisys",
+            "label": "Business Analisys"
         },
         {
-          "id": "9988",
-          "name": "DataBase Development"
+          "value": "database_development",
+          "label": "DataBase Development"
       },
       {
-          "id": "9987",
-          "name": "PostgreSQL"
+          "value": "machine_learning",
+          "label": "Medicine Administration"
       },
       {
-          "id": "9986",
-          "name": "Oracle"
+          "value": "data_structure",
+          "label": "Data Structure"
       },
       {
-          "id": "9985",
-          "name": "MySQL"
+          "value": "bio_informatics",
+          "label": "Bio Informatics"
       },
       {
-          "id": "9984",
-          "name": "MongoDB"
-      },
-      {
-          "id": "9983",
-          "name": "jQuery"
-      },
-      {
-          "id": "9982",
-          "name": "Wordpress"
-      },
-      {
-          "id": "9981",
-          "name": "SpringBoot"
-      },
-      {
-          "id": "9980",
-          "name": "UI"
-      },
-      {
-          "id": "9973",
-          "name": "UX"
+          "value": "financial_modeling",
+          "label": "Financial Modelling"
       }
     ]
 }

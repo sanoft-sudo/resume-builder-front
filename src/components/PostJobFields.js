@@ -1,4 +1,4 @@
-import React, { useState}  from 'react';
+import React, { useState, useContext}  from 'react';
 import { useTranslation } from "react-i18next";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -14,6 +14,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import {useDispatch, useSelector} from "react-redux";
 import {savePostJob} from "../stores/actions/postJobFieldsAction"
+import {TechnicalSkillsContext} from "../context/TechnicalSkillsContext";
+import { CountriesContext } from '../context/CountriesContext';
 
 const schema = yup.object().shape({
     adRegion: yup.string().required(),
@@ -36,6 +38,9 @@ const schema = yup.object().shape({
 function PostJobFields() {
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const {technicalSkills} = useContext(TechnicalSkillsContext);
+    const countries = useContext(CountriesContext)
+    console.log("counties", countries);
     const postjob = useSelector(state => state.postjobReducer.postjob)
     const { register, errors, handleSubmit, control, formState } = useForm({resolver: yupResolver(schema)});
     
@@ -54,7 +59,7 @@ function PostJobFields() {
         e.target.reset();
         setPhone("")
     }
-    const top100Films = [
+    const techSkill = [
         { value: 'react', label: 'REACT' },
         { value: 'html', label: 'HTML' },
         { value: 'css', label: 'CSS' },
@@ -143,24 +148,24 @@ function PostJobFields() {
                                 <label name="question">Where will employee work? <span className="required">*</span></label>
                                 <div className="radios">
                                     <div className="radio__btn">
-                                        <input type="radio" id="atoffice" name="workplace" value="atOffice" ref={register({ required: true})}/>
+                                        <input type="radio" id="atoffice" name="workplace" value="At Office" ref={register({ required: true})}/>
                                         <label name="atofficeLabel " htmlFor="atoffice">At Office</label>
                                     </div>
                                     <div className="radio__btn">
-                                        <input type="radio" id="multiloc" name="workplace" value="multilocation" ref={register({ required: true})}/>
+                                        <input type="radio" id="multiloc" name="workplace" value="Multi-location" ref={register({ required: true})}/>
                                         <label name="multilocLabel" htmlFor="multiloc">Multi Locations</label>
                                     </div>
                                     <div className="radio__btn">
-                                        <input type="radio" id="remote-19" name="workplace" value="remoteDuToCovid"/>
+                                        <input type="radio" id="remote-19" name="workplace" value="Remote Due To Covid-19"/>
                                         <label name="remoteDueToLabel" htmlFor="remote-19" ref={register({ required: true})}>Remote due to Covid-19</label>
                                     </div>
                                     <div className="radio__btn">
-                                        <input type="radio" id="fulRemote" name="workplace" value="fullRemote" ref={register({ required: true})}/>
+                                        <input type="radio" id="fulRemote" name="workplace" value="Full Remote" ref={register({ required: true})}/>
                                         <label name="fullRemoteLabel" htmlFor="fulRemote">Fully remote</label>
 
                                     </div>
                                     <div className="radio__btn">
-                                        <input type="radio" id="ontheroad" name="workplace" value="onTheRoad" ref={register({ required: true})}/>
+                                        <input type="radio" id="ontheroad" name="workplace" value="On The Road" ref={register({ required: true})}/>
                                         <label name="onTheRoadLabel" htmlFor="ontheroad">On the road</label>
                                     </div>
                                 </div>
@@ -173,15 +178,15 @@ function PostJobFields() {
                                 <label>Is this job full time or part time? <span className="required">*</span></label>
                                 <div className="radios">
                                     <div className="radio__btn">
-                                        <input type="radio" id="full" name="jobCondition" value="fullTime" ref={register({ required: true})}/>
+                                        <input type="radio" id="full" name="jobCondition" value="Full Time" ref={register({ required: true})}/>
                                     <label name="fullTimeLabel" htmlFor="full">Full time</label>
                                     </div>
                                     <div className="radio__btn">
-                                        <input type="radio" id="part" name="jobCondition" value="partTime" ref={register({ required: true})}/>
+                                        <input type="radio" id="part" name="jobCondition" value="Part Time" ref={register({ required: true})}/>
                                     <label name="partTimeLabel" htmlFor="part">Part time</label>
                                     </div>
                                     <div className="radio__btn">
-                                        <input type="radio" id="fullandpart" name="jobCondition" value="partAndFullTime" ref={register({ required: true})}/>
+                                        <input type="radio" id="fullandpart" name="jobCondition" value="Part And Full Time" ref={register({ required: true})}/>
                                     <label name="fullAndPartLabel" htmlFor="fullandpart">Either full-time or paer-time</label>
                                     </div>
                                     
@@ -264,7 +269,7 @@ function PostJobFields() {
                                     defaultValue={[]}
                                     isMulti
                                     name="skills"
-                                    options={top100Films}
+                                    options={technicalSkills}
                                     className="basic-multi-select"
                                     classNamePrefix="select"
                                 />

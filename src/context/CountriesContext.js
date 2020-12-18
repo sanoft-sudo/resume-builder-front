@@ -7,10 +7,12 @@ const CountriesContextProvider = (props) =>{
     const [countries, setCountries] = useState([]);
     useEffect(() => {
         const getCountries = async () =>{
-            await axios.get('http://localhost:5000/countries')
+            await axios.get('https://country.register.gov.uk/records.json?page-size=5000')
             .then(res =>{
-                let data = res.data
-                setCountries(data)
+                let countryList = res.data;
+                setCountries(Object.keys(countryList).map((key) => countryList[key].item[0]))
+               
+               
             })
             .catch(err =>{
                 console.log(err.message);

@@ -18,46 +18,49 @@ import CountriesContextProvider from './context/CountriesContext';
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import KeySkillsContextProvider from './context/KeySkillsContext';
+import TechnicalSkillsContextProvider from "./context/TechnicalSkillsContext";
 function App() {
   return (
     <>
-    <KeySkillsContextProvider>
-    <JobsContextProvider>
-      <CountriesContextProvider>
-        <CandidatesContextProvider>
+    <TechnicalSkillsContextProvider>
+      <KeySkillsContextProvider>
+        <JobsContextProvider>
+          <CountriesContextProvider>
+            <CandidatesContextProvider>
               <EmployerContextProvider>
                 <NavBar/>
                   <Route render={({ location }) => {
-                      const { pathname, key } = location;
+                          const { pathname, key } = location;
 
-                      return (
-                        <TransitionGroup component={null}>
-                          <Transition
-                            key={key}
-                            appear={true}
-                            onEnter={(node, appears) => play(pathname, node, appears)}
-                            onExit={(node, appears) => exit(node, appears)}
-                            timeout={{enter: 750, exit: 150}}
-                          >
-                            <Switch location={location}>
-                              <Route exact path="/" component={Home}/>
-                              <Route path="/jobpost" component={JobPost} />
-                              <Route path="/jobsearch" component={JobSearch} />
-                              <Route path="/buildresume" component={BuildCV} />
-                              <Route path="/contact" component={Contacts} />
-                              <Route path="/login" component={Login} />
-                              <Route path="/searchcandidates" component={Candidates}/>
-                              <Route path="/pagenotfount" component={PageNotFound} />
-                            </Switch>
-                          </Transition>
-                        </TransitionGroup>
-                      )
+                          return (
+                            <TransitionGroup component={null}>
+                              <Transition
+                                key={key}
+                                appear={true}
+                                onEnter={(node, appears) => play(pathname, node, appears)}
+                                onExit={(node, appears) => exit(node, appears)}
+                                timeout={{enter: 750, exit: 150}}
+                              >
+                                <Switch location={location}>
+                                  <Route exact path="/" component={Home}/>
+                                  <Route path="/jobpost" component={JobPost} />
+                                  <Route path="/jobsearch" component={JobSearch} />
+                                  <Route path="/buildresume" component={BuildCV} />
+                                  <Route path="/contact" component={Contacts} />
+                                  <Route path="/login" component={Login} />
+                                  <Route path="/searchcandidates" component={Candidates}/>
+                                  <Route path="/pagenotfount" component={PageNotFound} />
+                                </Switch>
+                              </Transition>
+                            </TransitionGroup>
+                          )
                     }}/>
               </EmployerContextProvider>
-            </CandidatesContextProvider>
-      </CountriesContextProvider>
-    </JobsContextProvider>
-    </KeySkillsContextProvider>
+                </CandidatesContextProvider>
+          </CountriesContextProvider>
+        </JobsContextProvider>
+      </KeySkillsContextProvider>
+    </TechnicalSkillsContextProvider>
     
    
     

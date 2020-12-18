@@ -5,6 +5,7 @@ import {postjobReducer} from "./postjobReducer";
 import {educationReducer} from "./educationFormReducer";
 import {experienceReducer} from "./experienceReducer";
 import {keySkillsReducer} from "./keySkillsReducer";
+import {technicalSkillsReducer} from "./technicalSkillsReducer";
 
 export const rootReducer = combineReducers({
     profileReducer,
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
     postjobReducer,
     educationReducer,
     experienceReducer,
-    keySkillsReducer
+    keySkillsReducer,
+    technicalSkillsReducer,
     
 })
