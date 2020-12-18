@@ -7,11 +7,6 @@ import Completed from '../components/resumeBuilder/Completed';
 
 function Login() {
 
-    const {jobList} = useContext(JobsContext);
-    const {countries} = useContext(CountriesContext);
-
-    console.log("jobs", jobList);
-    console.log("countries", countries);
     return (
         // <div id="login">
             <div className="row">

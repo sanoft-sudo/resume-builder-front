@@ -55,12 +55,7 @@
     margin-bottom: 15px !important;
 }
 
-.react-tel-input .flag-dropdown{
-    border: 1px solid blue;
-}
 .react-tel-input .form-control{
-    border-color: blue;
-    width:98% !important;
     height:40px !important;
 }
 .postJobFieldButton{

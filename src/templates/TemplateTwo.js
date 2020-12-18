@@ -18,7 +18,8 @@ const completed3 = 80;
 
 const dispatch = useDispatch();
 const profileInfo = useSelector(state => state.profileReducer.profileInfo);
-const contact = useSelector(state => state.contactReducer.contact)
+const contact = useSelector(state => state.contactReducer.contact);
+const educations = useSelector(state => state.educationReducer.educations)
 
     return (
         <div className="template__one container">
@@ -33,20 +34,25 @@ const contact = useSelector(state => state.contactReducer.contact)
                             contacts
                         </p>
                         <div className="template__onePhone">
-                            <CallIcon/> <p className="contactP">{contact.phone}</p>
+                           {contact.phone ? <><CallIcon/> <p className="contactP">{contact.phone}</p> </> :""} 
                         </div>
                         <div className="template__oneEmail">
-                            <MailOutlineIcon/> <p className="contactP">{contact.email}</p>
+                           {contact.email ? <><MailOutlineIcon/> <p className="contactP">{contact.email}</p> </> : ""} 
                         </div>
                         <div className="template__oneAddress">
-                            <RoomIcon/>
-                            <p className="contactP">{contact.address}</p>
+                           {contact.address ?<> <RoomIcon/> <p className="contactP">{contact.address}</p></> :""}
                         </div>
                         <div className="template__oneLinkedIn">
-                            <LinkedInIcon/> <p className="contactP">{contact.linkedIn}</p>
+                        {contact.linkedIn ?<> <LinkedInIcon/> <p className="contactP">{contact.linkedIn}</p></> :""}
                         </div>
                         <div className="template__oneTelegram">
-                            <TelegramIcon/> <p className="contactP">{contact.telegram}</p>
+                        {contact.telegram ?<> <TelegramIcon/> <p className="contactP">{contact.telegram}</p></> :""}
+                        </div>
+                        <div className="template__oneTelegram">
+                        {contact.facebook ?<> <FacebookIcon/> <p className="contactP">{contact.facebook}</p></> :""}
+                        </div>
+                        <div className="template__oneTelegram">
+                        {contact.instagram ?<> <InstagramIcon/> <p className="contactP">{contact.instagram}</p></> :""}
                         </div>
                     </div>
                     <div className="tempOne__line"></div>

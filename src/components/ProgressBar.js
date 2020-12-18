@@ -2,7 +2,6 @@ import React from 'react';
 
 function ProgressBar(props) {
 const {bgcolor, completed} = props;
-console.log("completed", completed);
 
 const containerStyles = {
     height: 13,

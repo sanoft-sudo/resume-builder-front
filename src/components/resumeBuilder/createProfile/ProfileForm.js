@@ -4,10 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {saveProfileInfo,} from "../../../stores/actions/profileInfoAction";
 import { withStyles, makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
+import Button from '@material-ui/core/Button';
 
 const ValidationTextField = withStyles({
   root: {
@@ -26,17 +24,11 @@ const ValidationTextField = withStyles({
   },
 })(TextField);
 
-const schema = yup.object().shape({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  aboutMe: yup.string().required(),
-  
-});
 
 function ProfileInformationForm() {
 const [postedData, setPostedData] = useState();
 
-  const { register, errors, handleSubmit, control, formState } = useForm({resolver: yupResolver(schema)});
+  const {handleSubmit, register, control} = useForm();
   const dispatch = useDispatch();
 
   const profileInfo  = useSelector(state => state.profileReducer.profileInfo);
@@ -84,7 +76,6 @@ const handleInputChange = (e)=>{
                   control={control}
                   rules= {{required: true}}
                   /> 
-                    <p className="error__message">{errors?.firstName?.message}</p>
                     <Controller
                                     as={
                    <ValidationTextField
@@ -96,6 +87,7 @@ const handleInputChange = (e)=>{
                       onChange={e => handleInputChange(e)}
                       value={profileInfo.lastName}
                       variant="outlined"
+                      ref={register({ required:true})}
                       id="lastName"
                       name="lastName"
                     />
@@ -104,9 +96,6 @@ const handleInputChange = (e)=>{
                                 control={control}
                                 rules= {{required: true}}
                                 /> 
-
-
-                    <p className="error__message">{errors?.lastName?.message}</p>
                     <Controller
                                     as={
                    <ValidationTextField
@@ -124,26 +113,29 @@ const handleInputChange = (e)=>{
                                 control={control}
                                 rules= {{required: false}}
                                 /> 
-
-                  <Controller
-                                    as={
-                   <TextareaAutosize 
-                   className="profileInfoFields"
-                   aria-label="minimum height" 
-                   rowsMin={7} 
-                   name="aboutMe"
-                   onChange={e => handleInputChange(e)}
-                   value={profileInfo.aboutMe}
-                   placeholder="Describe your professinal career" 
-                   />
-                  }
+                    <div className="special_box">
+                       <Controller
+                            as={
+                              <TextField
+                                id="aboutMe__text"
+                                label="About me"
+                                multiline
+                                className="aboutMe__text"
+                                rows={6}
                                 name="aboutMe"
-                                control={control}
-                                rules= {{required: true}}
-                                /> 
-
-                   <p className="error__message">{errors?.aboutMe?.message}</p>
-                        <button type="submit">save</button>
+                                onChange={e => handleInputChange(e)}
+                                value={profileInfo.aboutMe}
+                                placeholder="Describe your professinal career" 
+                                defaultValue=""
+                                variant="outlined"
+                              />
+                            }
+                          name="aboutMe"
+                          control={control}
+                          rules= {{required: true}}
+                        /> 
+                    </div>
+                    <button type="submit" className="btn btn-success btn-block">save</button>
                 </form>
                   // <div className="editableProfileInfo">
                   //   <div className="profileInfoEditableTitle">

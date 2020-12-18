@@ -17,9 +17,11 @@ import JobsContextProvider, { JobsContext } from './context/JobsContext';
 import CountriesContextProvider from './context/CountriesContext';
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+import KeySkillsContextProvider from './context/KeySkillsContext';
 function App() {
   return (
     <>
+    <KeySkillsContextProvider>
     <JobsContextProvider>
       <CountriesContextProvider>
         <CandidatesContextProvider>
@@ -55,6 +57,7 @@ function App() {
             </CandidatesContextProvider>
       </CountriesContextProvider>
     </JobsContextProvider>
+    </KeySkillsContextProvider>
     
    
     

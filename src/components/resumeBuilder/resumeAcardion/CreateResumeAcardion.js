@@ -8,6 +8,8 @@ import "../../../styles/CreateResumeAcardion.css";
 import ProfileForm from "../createProfile/ProfileForm";
 import ContactInformation from "../createContacts/ContactInformation"
 import EducationForm from '../education/EducationForm';
+import ExperienceForm from '../experience/ExperienceForm';
+import CreateKeySkills from '../keySkills/CreateKeySkills';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +27,11 @@ const fields = [
     data: <ContactInformation/>},
     {id: "db", label: "Education", icon: <i class="fas fa-user-graduate"></i>,
     data: <EducationForm/>},
+    {id: "eb", label: "Experience", icon: <i class="fas fa-suitcase"></i>,
+    data: <ExperienceForm/>},
+    {id: "fb", label: "Key Skills", icon: <i class="fas fa-shapes"></i>,
+    data: <CreateKeySkills/>},
+   
 
 ]
  function CreateResumeAcardion() {
@@ -37,7 +44,8 @@ const fields = [
 
 
   return (
-    <div className={classes.root}>
+    <div className="container-fluild">
+       <div className={classes.root}>
         {fields?.map((field, index) =>(
             <Accordion key={index} expanded={expanded === "panel"+field.id} onChange={handleChange("panel"+field.id)}>
                 <AccordionSummary
@@ -54,6 +62,8 @@ const fields = [
             </Accordion>
         ))}
     </div>
+    </div>
+   
   );
 }
 

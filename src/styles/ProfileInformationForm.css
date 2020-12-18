@@ -35,3 +35,29 @@
 .profileInfoFields{
     margin-bottom: 23px !important;
 }
+.fields__container > textarea, .MuiFormControl-root{
+    box-sizing: border-box !important;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.special_box > .MuiFormControl-root{
+    margin-bottom: 116px !important;
+}
+
+.contactInfo> .react-tel-input .form-control {
+    height: 56px !important;
+    margin-right: 0;
+    width: 100%;
+    padding-left: 40px;
+
+}
+.contactInfo> .react-tel-input .special-label {
+    position: absolute;
+    z-index: 1;
+    font-size: 13px;
+    left: 13px;
+    top: -11px;
+    background: #fff;
+    padding: 0 2px;
+    white-space: nowrap;
+}

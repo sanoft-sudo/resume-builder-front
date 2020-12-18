@@ -7,3 +7,25 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+.year__input{
+    border:none;
+    outline: none;
+    height: 32px;
+    width:100%;
+    overflow: hidden;
+}
+.special_box2 > .MuiFormControl-root{
+    margin-bottom: 60px;
+}
+
+.button__box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.save__form{
+    background-color: green !important;
+    color: white !important;
+}

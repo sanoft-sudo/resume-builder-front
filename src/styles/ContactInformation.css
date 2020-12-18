@@ -1,3 +1,7 @@
 .special__phone{
     width: 100% !important;
 }
+.contactInfo{
+    display: flex;
+    flex-direction: column;
+}
