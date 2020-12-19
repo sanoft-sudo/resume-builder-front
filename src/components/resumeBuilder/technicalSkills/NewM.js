@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     },
   })(TextField);
 
+
+  
+
 function TechSkills2() {
     const dispatch = useDispatch();
     const techskills = useSelector(state => state.technicalSkillsReducer.techSkillsList)
