@@ -1,0 +1,34 @@
+.tech__skillbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border: 1px lightgray solid;
+}
+.technical__skillsHeader{
+    margin-bottom: 10px;
+}
+.technical__skillsContainer, .technical__skillsHeader, .technical__skillsForm{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.tech__skillTitle{
+    margin-bottom: 0;
+}
+.tech__skillEdit .MuiSvgIcon-root, .tech__skillDelete .MuiSvgIcon-root{
+    font-size: 1rem !important;
+    
+}
+
+.tech_skillButtons > .MuiFab-sizeSmall{
+    width: 30px !important;
+    height:30px !important;
+    margin-right: 5px;
+}
+.special_box2 >.tech__skillsInput{
+    margin-bottom: 10px !important;
+}
+.special_box2 > .MuiFormControl-marginNormal{
+    margin-bottom: 25px;
+}

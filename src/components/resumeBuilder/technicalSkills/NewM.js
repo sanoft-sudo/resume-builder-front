@@ -30,30 +30,26 @@ const useStyles = makeStyles((theme) => ({
     },
   })(TextField);
 
-  export default function TechSkills2() {
+function TechSkills2() {
     const dispatch = useDispatch();
     const techskills = useSelector(state => state.technicalSkillsReducer.techSkillsList)
     const {technicalSkills} = useContext(TechnicalSkillsContext);
     console.log("tech---->", technicalSkills);
     const classes = useStyles();
-  const {control } = useForm();
+  const {control,reset } = useForm();
     const [techSkill, setTechSkill] = useState({});
     const [selected, setSelected] = useState(null);
     
     const onSubmit = (e) => {
         console.log("tech before onsubmit", techSkill);
         e.preventDefault();
-        if(techSkill!==null){
-            dispatch(saveTechSkills(techSkill))
-        
+      dispatch(saveTechSkills(techSkill))
+     e.target.reset();
       setSelected(null)
       setTechSkill({})
-      resetForm();
       console.log("techSkill after submit", techSkill);
     };
-  const resetForm =() =>{
-    setTechSkill(techSkill.tech_skill_rank="")
-  }
+  
     const handleRemoveTechSkill =(i)=>{
         let list = [...techSkill];
         list.splice(i, 1);
@@ -63,18 +59,14 @@ const useStyles = makeStyles((theme) => ({
     const handleAddTechSkill =()=>{
         setTechSkill([...techSkill, {tech_skill: "",  tech_skill_rank: ""}]);
     }
+  
       
       const handleChange = (e)=>{
       const {name,value} = e.target
-      console.log("VALUE", value);
-      console.log("SELECTED", selected.title);
-      if(value){
-           techSkill.tech_skill = selected.title
+     
+        techSkill.tech_skill = selected.title
         techSkill.tech_skill_rank=value
       setTechSkill(techSkill)
-      }
-     
-       
       }
       console.log("TECHSKILL", techSkill);
     return (
@@ -84,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
             techskills.map((sk, i) =>(
                <div className="tech__skillbox">
                    <div className="tech__skillTitleBox">
-                        <h5 className="tech__skillTitle">{sk.tech_skill +" "+ sk.tech_skill_rank} %</h5>
+                        <h5 className="tech__skillTitle">{sk.tech__skill!=="" &&sk.tech_skill +" "+ sk.tech_skill_rank} %</h5>
                    </div>
                   <div className="tech_skillButtons">
                     <Fab size="small" color="primary" aria-label="edit"  className={classes.margin}>
@@ -100,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
             }
            
           </div>
-            <form className="technical__skillsForm" onSubmit={onSubmit} id="tech_skillsForm" onReset={resetForm}>
+            <form className="technical__skillsForm" onSubmit={onSubmit} id="tech_skillsForm" >
                     <div className="special_box2">
                         <Controller
                             render={({onChange, value}) =>
@@ -110,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
                                 className="tech__skillsInput"
                                 getOptionLabel={(option) => option.title}
                                 id={"tech_skill"}
+                                required
                                 name={"tech_skill"}
                                 value={selected}
                                 onChange={((e, newValue)=>{
@@ -124,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
                             name={"tech_skill"}
                            control={control}
                            rules= {{required: true}}
+                           defaultValue={""}
                          /> 
                         <Controller
                             render={({onChange, value}) =>
@@ -131,10 +125,11 @@ const useStyles = makeStyles((theme) => ({
                                 label="Technical skill rank"
                                 className="tech__skillsInput"
                                 id="tech_rank"
-                                defaultValue={techSkill.tech_skill_rank}
-                                onChange={e=>handleChange(e)}
+                                defaultValue={""}
+                                onChange={(e=>handleChange(e))}
                                 placeholder="from 1 to 100"
                                 required
+                                value={techSkill.tech_skill_rank}
                                 name="tech_skill_rank"
                                 variant="outlined"
                                 multiline
@@ -148,12 +143,20 @@ const useStyles = makeStyles((theme) => ({
                             rules= {{required: true}}
                         /> 
                     </div>
-            <button type="submit" className="btn btn-success btn-block">save</button>
+            <button type="submit" onClick={()=>{
+                 reset({
+                    tech_skill_rank:''
+                  });
+            }} className="btn btn-success btn-block">save</button>
             </form>
             
         </div>
     )
 }
+
+export default TechSkills2
+
+
 
 function NumberFormatCustom(props) {
     const { inputRef, onChange, ...other } = props;
@@ -170,8 +173,8 @@ function NumberFormatCustom(props) {
             },
           });
         }}
-        minLength="1"
-        maxLength="3"
+        minLength="4"
+        maxLength="4"
         isNumericString
       />
     );

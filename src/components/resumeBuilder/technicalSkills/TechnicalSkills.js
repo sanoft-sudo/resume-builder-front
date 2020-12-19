@@ -135,6 +135,7 @@ function TechnicalSkills() {
                              <Fab size="small" color="primary" aria-label="add" onClick={handleAddTechSkill} className={classes.margin}>
                                <AddIcon/>
                              </Fab>
+                             
                              }
                          </div>
                     </div>

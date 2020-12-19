@@ -16136,64 +16136,64 @@
       "keySkills":
       [
         {
-            "value": "backend_development",
-            "label": "Backend Development"
+            "id": "backend_development",
+            "title": "Backend Development"
         },
         {
-            "value": "front-end_development",
-            "label": "Front-end Development"
+            "id": "front-end_development",
+            "title": "Front-end Development"
         },
         {
-            "value": "artificial_intelegence",
-            "label": "Artificial Inteligence"
+            "id": "artificial_intelegence",
+            "title": "Artificial Inteligence"
         },
         {
-            "value": "software_enginering",
-            "label": "Software Enginering"
+            "id": "software_enginering",
+            "title": "Software Enginering"
         },
         {
-            "value": "web_development",
-            "label": "Web Development"
+            "id": "web_development",
+            "title": "Web Development"
         },
         {
-            "value": "cyber_security",
-            "label": "Cyber Security"
+            "id": "cyber_security",
+            "title": "Cyber Security"
         },
         {
-            "value": "business_marketing",
-            "label": "Business Marketing"
+            "id": "business_marketing",
+            "title": "Business Marketing"
         },
         {
-            "value": "full-stack_web_development",
-            "label": "Full-stack Web Development"
+            "id": "full-stack_web_development",
+            "title": "Full-stack Web Development"
         },
         {
-            "value": "mern_stack_web_development",
-            "label": "MERN-stack Web Development"
+            "id": "mern_stack_web_development",
+            "title": "MERN-stack Web Development"
         },
         {
-            "value": "business_analisys",
-            "label": "Business Analisys"
+            "id": "business_analisys",
+            "title": "Business Analisys"
         },
         {
-          "value": "database_development",
-          "label": "DataBase Development"
+          "id": "database_development",
+          "title": "DataBase Development"
       },
       {
-          "value": "machine_learning",
-          "label": "Medicine Administration"
+          "id": "machine_learning",
+          "title": "Medicine Administration"
       },
       {
-          "value": "data_structure",
-          "label": "Data Structure"
+          "id": "data_structure",
+          "title": "Data Structure"
       },
       {
-          "value": "bio_informatics",
-          "label": "Bio Informatics"
+          "id": "bio_informatics",
+          "title": "Bio Informatics"
       },
       {
-          "value": "financial_modeling",
-          "label": "Financial Modelling"
+          "id": "financial_modeling",
+          "title": "Financial Modelling"
       }
     ]
 }
