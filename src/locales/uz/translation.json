@@ -1,4 +1,11 @@
 {
+    "autocomplete_country": "Mamlakatni tanlang *",
+    "autocomplete_language": "Tilni tanlang *",
+    "autocomplete_languageLevel": "Daraja *",
+    "languageLevel_option1": "Boshlang'ich ",
+    "languageLevel_option2": "Mustaqil ",
+    "languageLevel_option3": "Mukammal ",
+    "add_language": "Til qo'shish *",
     
     "header_link1": "Asosiy",
     "header_link2": "Ish e'lon qilish",

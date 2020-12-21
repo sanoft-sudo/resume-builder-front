@@ -9,7 +9,7 @@ import axios from 'axios';
 import { useTranslation } from "react-i18next";
 import {CandidatesContext} from "../context/CandidatesContext";
 function BannerJob() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const history = useHistory();
     const {candidates} = useContext(CandidatesContext);
     return (

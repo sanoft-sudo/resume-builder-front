@@ -1,4 +1,11 @@
 {
+    "autocomplete_country": "Select a country *",
+    "autocomplete_language": "Select language *",
+    "autocomplete_languageLevel": "Level *",
+    "languageLevel_option1": "Basic ",
+    "languageLevel_option2": "Independent ",
+    "languageLevel_option3": "Proficient ",
+    "add_language": "Add language *",
     
     "header_link1": "Home",
     "header_link2": "Post Job",

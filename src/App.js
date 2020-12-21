@@ -24,6 +24,7 @@ function App() {
     <>
     <TechnicalSkillsContextProvider>
       <KeySkillsContextProvider>
+       
         <JobsContextProvider>
           <CountriesContextProvider>
             <CandidatesContextProvider>
@@ -59,10 +60,9 @@ function App() {
                 </CandidatesContextProvider>
           </CountriesContextProvider>
         </JobsContextProvider>
+       
       </KeySkillsContextProvider>
     </TechnicalSkillsContextProvider>
-    
-   
     
     </>
   );

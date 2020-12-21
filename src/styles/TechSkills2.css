@@ -32,3 +32,7 @@
 .special_box2 > .MuiFormControl-marginNormal{
     margin-bottom: 25px;
 }
+
+.keySkills__autocomlete{
+    margin-bottom: 15px !important;
+}

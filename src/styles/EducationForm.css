@@ -29,3 +29,28 @@
     background-color: green !important;
     color: white !important;
 }
+/* Achievement styles */
+.achievement__boxContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.achievement__box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+.achievement_boxInfo{
+    display: flex;
+    flex-direction: column;
+}
+.achievement__address{
+    font-size: 12px;
+    margin-bottom: 0;
+}

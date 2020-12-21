@@ -16195,5 +16195,344 @@
           "id": "financial_modeling",
           "title": "Financial Modelling"
       }
-    ]
+    ],
+    "languagesEN":
+    [
+{"id" :"ar", 
+  "name" : "Arabic"},
+{"id" :"az", 
+  "name" : "Azerbaijani"},
+{"id" :"be", 
+  "name" : "Belorussian"},
+{"id" :"bg", 
+  "name" : "Bulgarian"},
+{"id" :"bn", 
+  "name" : "Bengali"},
+{"id" :"bs", 
+  "name" : "Bosnian"},
+{"id" :"ca", 
+  "name" : "Catalan"},
+{"id" :"cs", 
+  "name" : "Czech"},
+{"id" :"da", 
+  "name" : "Danish"},
+{"id" :"de", 
+  "name" : "German"},
+{"id" :"en", 
+  "name" : "English"},
+{"id" :"es", 
+  "name" : "Spanish"},
+{"id" :"et", 
+  "name" : "Estonian"},
+{"id" :"fa", 
+  "name" : "Persian"},
+{"id" :"fi", 
+  "name" : "Finnish"},
+{"id" :"fr", 
+  "name" : "French"},
+{"id" :"gl", 
+  "name" : "Galician"},
+{"id" :"el", 
+  "name" : "Greek"},
+{"id" :"he", 
+  "name" : "Hebrew"},
+{"id" :"hi", 
+  "name" : "Hindi"},
+{"id" :"hr", 
+  "name" : "Croatian"},
+{"id" :"hu", 
+  "name" : "Hungarian"},
+{"id" :"hy", 
+  "name" : "Armenian"},
+{"id" :"is", 
+  "name" : "Icelandic"},
+{"id" :"it", 
+  "name" : "Italian"},
+{"id" :"id", 
+  "name" : "Indonesian"},
+{"id" :"ja", 
+  "name" : "Japanese"},
+{"id" :"ka", 
+  "name" : "Georgian"},
+{"id" :"kk", 
+  "name" : "Kazakh"},
+{"id" :"ko", 
+  "name" : "Korean"},
+{"id" :"ky", 
+  "name" : "Kyrgyz"},
+{"id" :"lt", 
+  "name" : "Lithuanian"},
+{"id" :"lv", 
+  "name" : "Latvian"},
+{"id" :"mk", 
+  "name" : "Macedonian"},
+{"id" :"mn", 
+  "name" : "Mongolian"},
+{"id" :"ms", 
+  "name" : "Malay"},
+{"id" :"nb", 
+  "name" : "NorwegianBokmål"},
+{"id" :"nl", 
+  "name" : "Dutch"},
+{"id" :"nn", 
+  "name" : "NorwegianNynorsk"},
+{"id" :"pl", 
+  "name" : "Polish"},
+{"id" :"pt", 
+  "name" : "Portuguese"},
+{"id" :"ro", 
+  "name" : "Romanian"},
+{"id" :"ru", 
+  "name" : "Russian"},
+{"id" :"sk", 
+  "name" : "Slovak"},
+{"id" :"sl", 
+  "name" : "Slovene"},
+{"id" :"sr", 
+  "name" : "Serbian"},
+{"id" :"sv", 
+  "name" : "Swedish"},
+{"id" :"th", 
+  "name" : "Thai"},
+{"id" :"tr", 
+  "name" : "Turkish"},
+{"id" :"uk", 
+  "name" : "Ukrainian"},
+{"id" :"ur", 
+  "name" : "Urdu"},
+{"id" :"uz", 
+  "name" : "Uzbek"},
+{"id" :"ql",     "name" : "Karakapak"},
+{"id" :"zh", 
+  "name" : "Chinese"},
+{"id" :"vi", 
+  "name" : "Vietnamese"}
+],
+"languagesRU":
+[
+  {"id" :"ar",     "name" : "Арабский"},
+  
+  {"id" :"az",     "name" : "Азербайджанский"},
+  
+  {"id" :"be",     "name" : "Белорусский"},
+  
+  {"id" :"bg",     "name" : "Болгарский"},
+  
+  {"id" :"bn",     "name" : "Бенгальский"},
+  
+  {"id" :"bs",     "name" : "Боснийский"},
+  
+  {"id" :"ca",     "name" : "Каталонский"},
+  
+  {"id" :"cs",     "name" : "Чешский"},
+  
+  {"id" :"da",     "name" : "Датский"},
+  
+  {"id" :"de",     "name" : "Немецкий"},
+  
+  {"id" :"en",     "name" : "Английский"},
+  
+  {"id" :"es",     "name" : "Испанский"},
+  
+  {"id" :"et",     "name" : "Эстонский"},
+  
+  {"id" :"fa",     "name" : "Персидский"},
+  
+  {"id" :"fi",     "name" : "Финский"},
+  
+  {"id" :"fr",     "name" : "Французский"},
+  
+  {"id" :"gl",     "name" : "Галисийский"},
+  
+  {"id" :"el",     "name" : "Греческий"},
+  
+  {"id" :"he",     "name" : "Иврит"},
+  
+  {"id" :"hi",     "name" : "Хинди"},
+  
+  {"id" :"hr",     "name" : "Хорватский"},
+  
+  {"id" :"hu",     "name" : "Венгерский"},
+  
+  {"id" :"hy",     "name" : "Армянский"},
+  
+  {"id" :"is",     "name" : "Исландский"},
+  
+  {"id" :"it",     "name" : "Итальянский"},
+  
+  {"id" :"id",     "name" : "Индонезийский"},
+  
+  {"id" :"ja",     "name" : "Японский"},
+  
+  {"id" :"ka",     "name" : "Грузинский"},
+  
+  {"id" :"kk",     "name" : "Казахский"},
+  
+  {"id" :"ko",     "name" : "Корейский"},
+  
+  {"id" :"ky",     "name" : "Киргизский"},
+  
+  {"id" :"lt",     "name" : "Литовский"},
+  
+  {"id" :"lv",     "name" : "Латышский"},
+  
+  {"id" :"mk",     "name" : "Македонский"},
+  
+  {"id" :"mn",     "name" : "Монгольский"},
+  
+  {"id" :"ms",     "name" : "Малайский"},
+  
+  {"id" :"nb",     "name" : "Норвежскийбукмол"},
+  
+  {"id" :"nl",     "name" : "Голландский"},
+  
+  {"id" :"nn",     "name" : "Норвежскийнюнорск"},
+  
+  {"id" :"pl",     "name" : "Польский"},
+  
+  {"id" :"pt",     "name" : "Португальский"},
+  
+  {"id" :"ro",     "name" : "Румынский"},
+  
+  {"id" :"ru",     "name" : "Русский"},
+  
+  {"id" :"sk",     "name" : "Словацкий"},
+  
+  {"id" :"sl",     "name" : "Словенский"},
+  
+  {"id" :"sr",    "name" : "Сербский"},
+  
+  {"id" :"sv",    "name" : "Шведский"},
+  
+  {"id" :"th",    "name" : "Тайский"},
+  
+  {"id" :"tr",    "name" : "Турецкий"},
+  
+  {"id" :"uk",     "name" : "Украинский"},
+  
+  {"id" :"ur",     "name" : "Урду"},
+  
+  {"id" :"uz",     "name" : "Узбекский"},
+
+  {"id" :"ql",     "name" : "Каракалпак"},
+  
+  {"id" :"zh",     "name" : "Китайский"},
+  
+  {"id" :"vi",    "name" : "Вьетнамский"}
+  
+],
+
+"languagesUZ":
+[
+  {"id" :"ar",     "name" : "Arab"},
+  
+  {"id" :"az",     "name" : "Ozarbayjon"},
+  
+  {"id" :"be",     "name" : "Belorussiya"},
+  
+  {"id" :"bg",     "name" : "Bolgar"},
+  
+  {"id" :"bn",     "name" : "Bengal"},
+  
+  {"id" :"bs",     "name" : "Bosniya"},
+  
+  {"id" :"ca",     "name" : "Kataloniya"},
+  
+  {"id" :"cs",     "name" : "Chex"},
+  
+  {"id" :"da",     "name" : "Daniya"},
+  
+  {"id" :"de",     "name" : "Nemis"},
+  
+  {"id" :"en",     "name" : "Ingliz tili"},
+  
+  {"id" :"es",     "name" : "Ispaniya"},
+  
+  {"id" :"et",     "name" : "Estoniya"},
+  
+  {"id" :"fa",     "name" : "Fors tili"},
+  
+  {"id" :"fi",     "name" : "Finlyandiya"},
+  
+  {"id" :"fr",     "name" : "Frantsuzcha"},
+  
+  {"id" :"gl",     "name" : "Galitsiya"},
+  
+  {"id" :"el",     "name" : "Yunoncha"},
+  
+  {"id" :"he",     "name" : "Ibroniycha"},
+  
+  {"id" :"hi",     "name" : "Hind"},
+  
+  {"id" :"hr",     "name" : "Xorvat"},
+  
+  {"id" :"hu",     "name" : "Venger"},
+  
+  {"id" :"hy",     "name" : "Arman"},
+  
+  {"id" :"is",     "name" : "Islandcha"},
+  
+  {"id" :"it",     "name" : "Italyancha"},
+  
+  {"id" :"id",     "name" : "Indoneziyalik"},
+  
+  {"id" :"ja",     "name" : "Yapon"},
+  
+  {"id" :"ka",     "name" : "Gruzin"},
+  
+  {"id" :"kk",     "name" : "Qozoq"},
+  
+  {"id" :"ko",     "name" : "Koreys"},
+  
+  {"id" :"ky",     "name" : "Qirg'izlar"},
+  
+  {"id" :"lt",     "name" : "Litva"},
+  
+  {"id" :"lv",     "name" : "Latviya"},
+  
+  {"id" :"mk",     "name" : "Makedoniya"},
+  
+  {"id" :"mn",     "name" : "Mo'g'ul"},
+  
+  {"id" :"ms",     "name" : "Malaycha"},
+  
+  {"id" :"nb",     "name" : "Norvegiya beechmeal"},
+  
+  {"id" :"nl",     "name" : "Golland"},
+  
+  {"id" :"nn",     "name" : "Norvegiya"},
+  
+  {"id" :"pl",     "name" : "Polsha"},
+  
+  {"id" :"pt",     "name" : "Portugal"},
+  
+  {"id" :"ro",     "name" : "Rumin"},
+  
+  {"id" :"ru",     "name" : "Ruscha"},
+  
+  {"id" :"sk",     "name" : "Slovak"},
+  
+  {"id" :"sl",     "name" : "Slovencha"},
+  
+  {"id" :"sr",     "name" : "Serb"},
+  
+  {"id" :"sv",     "name" : "Shved"},
+  
+  {"id" :"th",     "name" : "Tailandcha"},
+  
+  {"id" :"tr",     "name" : "Turkcha"},
+  
+  {"id" :"uk",     "name" : "Ukrain"},
+  
+  {"id" :"ur",     "name" : "Urdu"},
+  
+  {"id" :"uz",     "name" : "O'zbek"},
+
+  {"id" :"ql",     "name" : "Qoraqalpoq"},
+  
+  {"id" :"zh",     "name" : "Xitoy"},
+  
+  {"id" :"vi",     "name" : "Vetnam"}
+  
+]
 }

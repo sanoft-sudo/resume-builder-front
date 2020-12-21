@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {savePostJob} from "../stores/actions/postJobFieldsAction"
 import {TechnicalSkillsContext} from "../context/TechnicalSkillsContext";
 import { CountriesContext } from '../context/CountriesContext';
+import AutocompleteCountry from './autocomleteInputs/AutocompleteCountry';
 
 const schema = yup.object().shape({
     adRegion: yup.string().required(),
@@ -130,7 +131,14 @@ function PostJobFields() {
                                 <p className="error__message">{errors.region?.message}</p>
 
                                 <label name="countryLabel" htmlFor="country">Country <span className="required">*</span></label>
-                                <input type="text" id="country" name="country" ref={register({ required: true})}/>
+                                <Controller
+                                    as={
+                                        <AutocompleteCountry/>
+                                    }
+                                    name="isNightShift"
+                                    control={control}
+                                    />
+                                {/* <input type="text" id="country" name="country" ref={register({ required: true})}/> */}
                                 <p className="error__message">{errors.country?.message}</p>
 
                                 <label name="industryLabel" htmlFor="industry">Industry <span className="required">*</span></label>

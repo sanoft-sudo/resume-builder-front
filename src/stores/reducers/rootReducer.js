@@ -6,6 +6,10 @@ import {educationReducer} from "./educationFormReducer";
 import {experienceReducer} from "./experienceReducer";
 import {keySkillsReducer} from "./keySkillsReducer";
 import {technicalSkillsReducer} from "./technicalSkillsReducer";
+import {achievementsReducer} from "./achievementsReducer";
+import {languagesReducer} from "./languagesReducer";
+import { drivingLReducer } from "./drivingLReducer";
+import { personalDevReducer } from "./personalDevReducer";
 
 export const rootReducer = combineReducers({
     profileReducer,
@@ -15,5 +19,9 @@ export const rootReducer = combineReducers({
     experienceReducer,
     keySkillsReducer,
     technicalSkillsReducer,
+    achievementsReducer,
+    languagesReducer,
+    drivingLReducer,
+    personalDevReducer
     
 })

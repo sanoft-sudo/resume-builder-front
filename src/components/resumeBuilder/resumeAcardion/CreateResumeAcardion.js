@@ -13,6 +13,10 @@ import CreateKeySkills from '../keySkills/CreateKeySkills';
 // import TechSkills2 from '../technicalSkills/TechSkills2';
 import NewM from "../technicalSkills/NewM";
 import KeySkillsSelect from '../keySkills/KeySkillsSelect';
+import AchievementForm from '../achivements/AchievementForm';
+import LanguageForm from '../languageFrom/LanguageForm';
+import DrivingLicence from '../drivingL/DrivingLicence';
+import PersonalDevelopment from '../personalDevelopment/PersonalDevelopment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +40,14 @@ const fields = [
     data: <KeySkillsSelect/>},
     {id: "gb", label: "Technical Skills", icon: <i class="fas fa-chart-bar"></i>,
     data: <NewM/>},
+    {id: "hb", label: "Achievements", icon: <i class="fas fa-award"></i>,
+    data: <AchievementForm/>},
+    {id: "ib", label: "Languages", icon: <i class="fas fa-language"></i>,
+    data: <LanguageForm/>},
+    {id: "Jb", label: "Driving licence", icon: <i class="far fa-address-card"></i>,
+    data: <DrivingLicence/>},
+    {id: "kb", label: "Personal Development", icon: <i class="fas fa-chart-line"></i>,
+    data: <PersonalDevelopment/>},
    
 
 ]

@@ -34,7 +34,6 @@ const [postedData, setPostedData] = useState();
   const profileInfo  = useSelector(state => state.profileReducer.profileInfo);
  
   const onSubmit = (data, e) => {
-    console.log("manaaaa>>>", data);
     dispatch(saveProfileInfo(data))
     setPostedData(data);
     e.target.reset();
@@ -112,6 +111,24 @@ const handleInputChange = (e)=>{
                                 name="fatherName"
                                 control={control}
                                 rules= {{required: false}}
+                                /> 
+                    <Controller
+                                    as={
+                   <ValidationTextField
+                      className={"profileInfoFields"}
+                      label="Current Job"
+                      placeholder="Accontant"
+                      multiline
+                      required
+                      onChange={e => handleInputChange(e)}
+                      value={profileInfo.fatherName}
+                      variant="outlined"
+                      id="currentJob"
+                    />
+                    }
+                                name="fatherName"
+                                control={control}
+                                rules= {{required: true}}
                                 /> 
                     <div className="special_box">
                        <Controller

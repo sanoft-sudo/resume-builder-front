@@ -13,7 +13,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import Button from '@material-ui/core/Button';
+
 
 
 
@@ -49,10 +49,15 @@ function ExperienceForm() {
   const onSubmit = (e) => {
       e.preventDefault();
     dispatch(saveExperience(experience))
+    setValues({ endYear: '',
+    startYear:''})
+    setChecked(false)
+    setProjectInputList({project:""})
   };
 
-  const toggleChecked = () => {
+  const toggleChecked = (e) => {
     setChecked((prev) => !prev);
+    console.log(e.target.value);
   };
 
   const handleRemoveProject =(i)=>{
@@ -68,19 +73,18 @@ function ExperienceForm() {
       
     const handleChange = (e)=>{
     const {name, value} = e.target
-
     
-      if(checked && (name==="endYear" && value==="") ){
-            setValues({
-                ...values,
-                endYear: "to present"
-            })
-      }
+      if(checked===true){
+      
+           
 
         setValues({
-          ...values,
-          [e.target.name]: e.target.value,
+          endYear:"To present",
+          startYear:value
+          // ...values,
+          // [e.target.name]: e.target.value,
         });
+      }
       experience[name]=value
     }
 
@@ -193,9 +197,9 @@ function ExperienceForm() {
                    <FormGroup>
                    <FormControlLabel
                        control={<Switch checked={checked} color="primary" 
-                       name="toPresent" 
-                       onChange={e => handleChange(e)} 
-                       value={checked}
+                       name="To present" 
+                       onChange={toggleChecked} 
+                       value={!checked}
                        />}
                        label={checked? "To present" : ""}
                    />

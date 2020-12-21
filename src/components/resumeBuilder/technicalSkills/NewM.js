@@ -30,9 +30,6 @@ const useStyles = makeStyles((theme) => ({
     },
   })(TextField);
 
-
-  
-
 function TechSkills2() {
     const dispatch = useDispatch();
     const techskills = useSelector(state => state.technicalSkillsReducer.techSkillsList)
@@ -150,7 +147,7 @@ function TechSkills2() {
                  reset({
                     tech_skill_rank:''
                   });
-            }} className="btn btn-success btn-block">save</button>
+            }} className="btn btn-success btn-block mt-3">save</button>
             </form>
             
         </div>

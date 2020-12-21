@@ -4,14 +4,12 @@ import { withStyles, makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Controller, useForm } from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {saveEducation} from "../../../stores/actions/educationFormAction";
+import {savePersonalDev} from "../../../stores/actions/personalDevAction";
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
-import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import countries from "i18n-iso-countries";
-import uzbek from "i18n-iso-countries/langs/uz.json";
+import Fab from '@material-ui/core/Fab';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,56 +28,72 @@ const ValidationTextField = withStyles({
   },
 })(TextField);
 
-function EducationForm() {
-  const [checked, setChecked] = useState(false); 
+function PersonalDevelopment() {
   const [values, setValues] = useState({
-    endYear: '',
-    startYear:'',
+    year:'',
   });
   const classes = useStyles();
   const {control } = useForm();
-  const education  = useSelector(state => state.educationReducer.education);
+  const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
   const dispatch = useDispatch();
-   
- const onSubmit = (e) => {
+  const [personalD, setPersonalD] =useState({})
+
+  const onSubmit = (e) => {
       e.preventDefault();
-    dispatch(saveEducation(education))
-    setValues({endYear: '',
-    startYear:''})
-    setChecked(false)
+    dispatch(savePersonalDev(personalD))
+    setPersonalD({})
+    e.target.reset()
+    setValues("")
   };
 
-    const handleChange = (e)=>{
-      setValues({
-        ...values,
-        [e.target.name]: e.target.value,
-      });
-      const {name, value} = e.target
-      education[name]=value
-      
-      console.log("education>>>", education);
+  const handleChange = (e)=>{
+    // const {name,value} = e.target
+    setPersonalD(prev => ({...prev, ...{
+       [e.target.name] : e.target.value
+     }}))
     }
-    countries.registerLocale(uzbek);
-    const uz = countries.getNames("uz", {select: "official"})
-    console.log(uz);
+
     return (
-      <div>
+      <div className="technical__skillsContainer">
+        <div className="achievement__boxContainer">
+            {personalDevInfo && 
+            personalDevInfo.map((personal, index)=>(
+            <div className="achievement__box" key={index}>
+              <div className="achievement_boxInfo">
+                  <h5 className="tech__skillTitle">{personal.achievement}</h5>
+                  <p className="achievement__address">{personal.organizationName} / {personal.address}</p>
+                  <p className="achievement__address">{personal.year}</p>
+              </div>
+              <div className="tech_skillButtons">
+                <Fab size="small" color="primary" aria-label="edit"  className={classes.margin}>
+                    <EditIcon className="tech__skillEdit"/>
+                </Fab>
+                <Fab size="small" color="secondary" aria-label="delete" className={classes.margin}>
+                    <DeleteOutlineIcon className="tech__skillDelete"/>
+                </Fab>
+              </div>
+            </div>
+              )
+            )
+          }
+        </div>
+       
         {<form className="educationForm" onSubmit={onSubmit}>
             <Controller
                render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
-                      label="Degree"
+                      label="Theme"
                       required
-                      placeholder="Bachelor's"
+                      placeholder="Web dev course"
                       multiline
                       onChange={e => handleChange(e)}
                       variant="outlined"
-                      id="degree"
-                      name="degree"
+                      id="achievement"
+                      name="achievement"
                     />
                   }
-                name="degree"
+                name="achievement"
                 control={control}
                 rules= {{required: true}}
             /> 
@@ -87,17 +101,17 @@ function EducationForm() {
                 render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
-                      label="Major"
+                      label="Organization"
                       required
-                      placeholder="Computer Science"
+                      placeholder="Udemy"
                       multiline
                       onChange={e => handleChange(e)}
                       variant="outlined"
-                      id="major"
-                      name="major"
+                      id="organizationName"
+                      name="organizationName"
                     />
                   }
-                name="major"
+                name="organizationName"
                 control={control}
                 rules= {{required: true}}
             /> 
@@ -105,17 +119,17 @@ function EducationForm() {
                 render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
-                      label="University"
+                      label="Address"
                       required
-                      placeholder="Harvard"
+                      placeholder="213, ...Street, Tashkent, Uzb"
                       multiline
                       variant="outlined"
                       onChange={e => handleChange(e)}
-                      id="university"
-                      name="university"
+                      id="address"
+                      name="address"
                     />
                   }
-                name="university"
+                name="address"
                 control={control}
                 rules= {{required: true}}
             /> 
@@ -124,66 +138,23 @@ function EducationForm() {
                 render={({onChange, value}) =>
                    <ValidationTextField
                       className="profileInfoFields"
-                      label="Start"
+                      label="Year"
                       required
-                      value={values.startYear}
-                      placeholder="2016"
+                      placeholder="2019"
                       multiline
-                      onChange={handleChange}
+                      onChange={e => handleChange(e)}
                       variant="outlined"
-                      id="startYear"
-                      name="startYear"
+                      id="year"
+                      name="year"
                       InputProps={{
                         inputComponent: NumberFormatCustom,
                       }}
                     />
                   }
-                name="startYear"
+                name="year"
                 control={control}
                 rules= {{required: true}}
-            /> 
-            {checked ? " " : ( 
-            <Controller
-                render={({onChange, value}) =>
-                <ValidationTextField
-                    label="End"
-                    className="profileInfoFields"
-                    value={values.endYear}
-                    onChange={handleChange}
-                    placeholder="2021"
-                    required
-                    name="endYear"
-                    variant="outlined"
-                    multiline
-                    id="endYear"
-                    InputProps={{
-                      inputComponent: NumberFormatCustom,
-                    }}
-              />
-                  }
-                name="endYear"
-                control={control}
-                rules= {{required: true}}
-            /> 
-            )} 
-            <Controller
-                render={({onChange, value}) =>
-                   <FormGroup>
-                   <FormControlLabel
-                       control={<Switch checked={checked} color="primary" 
-                       name="toPresent" 
-                       onChange={handleChange} 
-                       value={checked}
-                       />}
-                       label={checked? "To present" : ""}
-                   />
-                   </FormGroup>
-                   }
-                   name="toPresent"
-                   control={control}
-                   // rules= {{required:false}} 
             />
-
             </div>
             <button type="submit" className="btn btn-success btn-block">save</button>
         </form>}
@@ -191,7 +162,7 @@ function EducationForm() {
     )
 }
 
-export default EducationForm
+export default PersonalDevelopment
 
 
 

@@ -1,0 +1,34 @@
+.language__box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: space-around;
+    width: 100%;
+}
+.language__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.language__autocomlete{
+    margin-bottom: 15px !important;
+}
+
+.languages__list{
+    margin-bottom: 15px;
+}
+.tech__skillbox{
+    margin-bottom: 10px;
+}
+.languages__list{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.language__formContainer{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}

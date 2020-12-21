@@ -1,4 +1,11 @@
 {
+    "autocomplete_country": "Выберите страну *",
+    "autocomplete_language": "Выберите язык *",
+    "autocomplete_languageLevel": "Уровень *",
+    "languageLevel_option1": "Базовые знания ",
+    "languageLevel_option2": "Свободно владение ",
+    "languageLevel_option3": "Владение в совершенстве ",
+    "add_language": "Добавить язык *",
     
     "header_link1": "Дом",
     "header_link2": "Опубликовать вакансию",
