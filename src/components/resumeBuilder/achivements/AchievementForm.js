@@ -29,10 +29,10 @@ const ValidationTextField = withStyles({
 })(TextField);
 
 function AchievementForm() {
-  const [values, setValues] = useState({
-    startYear:'',
-  });
-  const [projectInputList, setProjectInputList] = useState([{project: ""}]);
+  const initialYear ={
+     startYear:'',
+  }
+  const [values, setValues] = useState(initialYear);
   const classes = useStyles();
   const {control } = useForm();
   const achievements  = useSelector(state => state.achievementsReducer.achievements);
@@ -43,7 +43,8 @@ function AchievementForm() {
       e.preventDefault();
     dispatch(saveAchievement(achievementsArr))
     setAchievementsArr({})
-    setValues({startYear:''})
+    setValues(initialYear)
+    e.target.reset()
   };
 
   const handleChange = (e)=>{
@@ -61,7 +62,7 @@ function AchievementForm() {
             <div className="achievement__box" key={index}>
               <div className="achievement_boxInfo">
                   <h5 className="tech__skillTitle">{achievement.achievement}</h5>
-                  <p className="achievement__address">{achievement.organizationName} / {achievement.address}</p>
+                  <p className="achievement__address">{achievement.organizationName} / {achievement.organizationName}</p>
                   <p className="achievement__address">{achievement.startYear}</p>
               </div>
               <div className="tech_skillButtons">

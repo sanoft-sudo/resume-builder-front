@@ -8,9 +8,7 @@ import "../../../styles/CreateResumeAcardion.css";
 import ProfileForm from "../createProfile/ProfileForm";
 import ContactInformation from "../createContacts/ContactInformation"
 import EducationForm from '../education/EducationForm';
-import ExperienceForm from '../experience/ExperienceForm';
-import CreateKeySkills from '../keySkills/CreateKeySkills';
-// import TechSkills2 from '../technicalSkills/TechSkills2';
+import ExperienceForm2 from '../experience/ExperienceForm2';
 import NewM from "../technicalSkills/NewM";
 import KeySkillsSelect from '../keySkills/KeySkillsSelect';
 import AchievementForm from '../achivements/AchievementForm';
@@ -35,7 +33,7 @@ const fields = [
     {id: "db", label: "Education", icon: <i class="fas fa-user-graduate"></i>,
     data: <EducationForm/>},
     {id: "eb", label: "Experience", icon: <i class="fas fa-suitcase"></i>,
-    data: <ExperienceForm/>},
+    data: <ExperienceForm2/>},
     {id: "fb", label: "Key Skills", icon: <i class="fas fa-shapes"></i>,
     data: <KeySkillsSelect/>},
     {id: "gb", label: "Technical Skills", icon: <i class="fas fa-chart-bar"></i>,

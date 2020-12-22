@@ -10,7 +10,7 @@ import {achievementsReducer} from "./achievementsReducer";
 import {languagesReducer} from "./languagesReducer";
 import { drivingLReducer } from "./drivingLReducer";
 import { personalDevReducer } from "./personalDevReducer";
-
+import { colorReducer } from "./colorReducer";
 export const rootReducer = combineReducers({
     profileReducer,
     contactReducer,
@@ -22,6 +22,7 @@ export const rootReducer = combineReducers({
     achievementsReducer,
     languagesReducer,
     drivingLReducer,
-    personalDevReducer
+    personalDevReducer,
+    colorReducer
     
 })

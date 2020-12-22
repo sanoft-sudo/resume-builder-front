@@ -9,10 +9,10 @@ export const experienceReducer = (state = initialState, action) =>{
 
     switch (action.type) {
         case CREATE_EXPERIENCE:
-            return { ...state, experience: action.payload}
+            return     { ...state, experiences: state.experiences.concat(action.payload) }
         
         case EDIT_EXPERIENCE:
-            return {...state, experience: action.payload}
+            return { ...state, experiences: state.experiences.concat(action.payload) }
     
         default: return state;
     }

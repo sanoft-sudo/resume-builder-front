@@ -34,20 +34,24 @@ function TechSkills2() {
     const dispatch = useDispatch();
     const techskills = useSelector(state => state.technicalSkillsReducer.techSkillsList)
     const {technicalSkills} = useContext(TechnicalSkillsContext);
-    console.log("tech---->", technicalSkills);
+
     const classes = useStyles();
   const {control,reset } = useForm();
+  const initialSkill = {
+    tech__skill:"",
+    tech_skill_rank:""
+  }
     const [techSkill, setTechSkill] = useState({});
     const [selected, setSelected] = useState(null);
     
     const onSubmit = (e) => {
-        console.log("tech before onsubmit", techSkill);
         e.preventDefault();
       dispatch(saveTechSkills(techSkill))
      e.target.reset();
       setSelected(null)
-      setTechSkill({})
-      console.log("techSkill after submit", techSkill);
+      setTechSkill({
+        tech_skill_rank:""
+      })
     };
   
     const handleRemoveTechSkill =(i)=>{
@@ -64,7 +68,7 @@ function TechSkills2() {
       const handleChange = (e)=>{
       const {name,value} = e.target
      
-        techSkill.tech_skill = selected.title
+        techSkill.tech_skill = selected
         techSkill.tech_skill_rank=value
       setTechSkill(techSkill)
       }

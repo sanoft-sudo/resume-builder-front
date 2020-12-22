@@ -16428,7 +16428,7 @@
   
   {"id" :"az",     "name" : "Ozarbayjon"},
   
-  {"id" :"be",     "name" : "Belorussiya"},
+  {"id" :"be",     "name" : "Belorus"},
   
   {"id" :"bg",     "name" : "Bolgar"},
   
@@ -16436,7 +16436,7 @@
   
   {"id" :"bs",     "name" : "Bosniya"},
   
-  {"id" :"ca",     "name" : "Kataloniya"},
+  {"id" :"ca",     "name" : "Katalon"},
   
   {"id" :"cs",     "name" : "Chex"},
   
@@ -16444,23 +16444,23 @@
   
   {"id" :"de",     "name" : "Nemis"},
   
-  {"id" :"en",     "name" : "Ingliz tili"},
+  {"id" :"en",     "name" : "Ingliz"},
   
-  {"id" :"es",     "name" : "Ispaniya"},
+  {"id" :"es",     "name" : "Ispan"},
   
-  {"id" :"et",     "name" : "Estoniya"},
+  {"id" :"et",     "name" : "Eston"},
   
-  {"id" :"fa",     "name" : "Fors tili"},
+  {"id" :"fa",     "name" : "Fors"},
   
-  {"id" :"fi",     "name" : "Finlyandiya"},
+  {"id" :"fi",     "name" : "Fin"},
   
-  {"id" :"fr",     "name" : "Frantsuzcha"},
+  {"id" :"fr",     "name" : "Fransuz"},
   
   {"id" :"gl",     "name" : "Galitsiya"},
   
-  {"id" :"el",     "name" : "Yunoncha"},
+  {"id" :"el",     "name" : "Yunon"},
   
-  {"id" :"he",     "name" : "Ibroniycha"},
+  {"id" :"he",     "name" : "Ibroniy"},
   
   {"id" :"hi",     "name" : "Hind"},
   
@@ -16470,11 +16470,11 @@
   
   {"id" :"hy",     "name" : "Arman"},
   
-  {"id" :"is",     "name" : "Islandcha"},
+  {"id" :"is",     "name" : "Island"},
   
-  {"id" :"it",     "name" : "Italyancha"},
+  {"id" :"it",     "name" : "Italyan"},
   
-  {"id" :"id",     "name" : "Indoneziyalik"},
+  {"id" :"id",     "name" : "Indonez"},
   
   {"id" :"ja",     "name" : "Yapon"},
   
@@ -16484,19 +16484,19 @@
   
   {"id" :"ko",     "name" : "Koreys"},
   
-  {"id" :"ky",     "name" : "Qirg'izlar"},
+  {"id" :"ky",     "name" : "Qirg'iz"},
   
   {"id" :"lt",     "name" : "Litva"},
   
   {"id" :"lv",     "name" : "Latviya"},
   
-  {"id" :"mk",     "name" : "Makedoniya"},
+  {"id" :"mk",     "name" : "Makedon"},
   
   {"id" :"mn",     "name" : "Mo'g'ul"},
   
-  {"id" :"ms",     "name" : "Malaycha"},
+  {"id" :"ms",     "name" : "Malay"},
   
-  {"id" :"nb",     "name" : "Norvegiya beechmeal"},
+  {"id" :"nb",     "name" : "Norvegi"},
   
   {"id" :"nl",     "name" : "Golland"},
   
@@ -16508,19 +16508,19 @@
   
   {"id" :"ro",     "name" : "Rumin"},
   
-  {"id" :"ru",     "name" : "Ruscha"},
+  {"id" :"ru",     "name" : "Rus"},
   
   {"id" :"sk",     "name" : "Slovak"},
   
-  {"id" :"sl",     "name" : "Slovencha"},
+  {"id" :"sl",     "name" : "Sloven"},
   
   {"id" :"sr",     "name" : "Serb"},
   
   {"id" :"sv",     "name" : "Shved"},
   
-  {"id" :"th",     "name" : "Tailandcha"},
+  {"id" :"th",     "name" : "Tai"},
   
-  {"id" :"tr",     "name" : "Turkcha"},
+  {"id" :"tr",     "name" : "Turk"},
   
   {"id" :"uk",     "name" : "Ukrain"},
   

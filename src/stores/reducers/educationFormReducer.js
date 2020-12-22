@@ -13,9 +13,9 @@ export const educationReducer = (state = initialState, action) => {
         //         ...state, educations: action.payload
         //     }
         case CREATE_EDUCATION:
-            return {...state, education: action.payload}
+            return { ...state, educations: state.educations.concat(action.payload) }
         case EDIT_EDUCATION:
-            return { ...state, education: action.payload}
+            return { ...state, educations: state.educations.concat(action.payload) }
         
     
         default: return state;

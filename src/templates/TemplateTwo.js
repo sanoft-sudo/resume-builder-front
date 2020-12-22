@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./templateStyles/TemplateOne.css";
 import CallIcon from '@material-ui/icons/Call';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -12,19 +12,48 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 function TemplateOne() {
-const completed1 = 75;
-const completed2 = 85;
-const completed3 = 80;
+const [progressColors, setProgressColors] = useState([
+    {id:777, color: "#6a1b9a"},
+    {id:888, color: "#32a852"},
+    {id:999, color: "#3250a8"},
+    {id:666, color: "#dbd144"},
+    {id:555, color: "#c42121"},
+])
+
 
 const dispatch = useDispatch();
 const profileInfo = useSelector(state => state.profileReducer.profileInfo);
 const contact = useSelector(state => state.contactReducer.contact);
 const educations = useSelector(state => state.educationReducer.educations)
+const experiences = useSelector(state => state.experienceReducer.experiences)
+const keyskillsList = useSelector(state => state.keySkillsReducer.keyskillsList)
+const techSkillsList = useSelector(state => state.technicalSkillsReducer.techSkillsList)
+const achievements = useSelector(state => state.achievementsReducer.achievements)
+const languagesList = useSelector(state => state.languagesReducer.languagesList)
+const drLicences = useSelector(state => state.drivingLReducer.drLicences)
+const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
+const selectedColor = useSelector(state => state.colorReducer.selectedColor)
+
+let tempBcolor = ""
+let tempFcolor = ""
+
+
+const changeColor =()=>{
+    let myColor = selectedColor
+    if(myColor==="#6a1b9a"){
+        tempFcolor="#fff"
+    }
+    tempFcolor="#000"
+    const myStyle={
+        backgroundColor: selectedColor,
+        color: tempFcolor
+    }
+}
 
     return (
         <div className="template__one container">
             <div className="row">
-                <div className="col-md-4 template__oneLeft">
+                <div className="col-md-4 template__oneLeft"  style={{backgroundColor:selectedColor}}>
                     <div className="template__oneImage">
                         <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
                     </div>
@@ -56,56 +85,58 @@ const educations = useSelector(state => state.educationReducer.educations)
                         </div>
                     </div>
                     <div className="tempOne__line"></div>
-                    <div className="template__oneEducation">
-                        <p className="tempOne__educationTitle">
-                            education
-                        </p>
-                        <div className="temp__oneUniversity">
-                            <div className="temp__oneUniDegreeNMajor">
-                                <p className="temp__oneUniversityDegree">
-                                    Bachelor's
+                   
+                            <div className="template__oneEducation" >
+                                <p className="tempOne__educationTitle">
+                                    education
                                 </p>
-                                <p className="temp__oneUniSlash">
-                                    /
-                                </p>
-                                <p className="temp__oneUniversityDegree">
-                                    Computer Science
-                                </p>
+                            {educations &&
+                                educations.map((education, index) =>(
+                                <div className="temp__oneUniversity" key={index}>
+                                    <div className="temp__oneUniDegreeNMajor">
+                                        <p className="temp__oneUniversityDegree">
+                                           {education.degree}
+                                        </p>
+                                        <p className="temp__oneUniSlash">
+                                            /
+                                        </p>
+                                        <p className="temp__oneUniversityDegree">
+                                            {education.major}
+                                        </p>
+                                    </div>
+                                    <p className="temp__oneUniversityName">
+                                        {education.university}
+                                    </p>
+                                    <div className="temp__oneEductationYears">
+                                        <p className="temp__oneStartYear">
+                                            {education.startYear}
+                                        </p>
+                                        <p className="temp__oneDash">
+                                            -
+                                        </p>
+                                        <p className="temp__oneEndYear">
+                                            {education.endYear ? education.endYear : "To present"}
+                                        </p>
+                                    </div>
+                                </div>
+                                ))
+                            }
                             </div>
-                            <p className="temp__oneUniversityName">
-                                Harvard University
-                            </p>
-                            <div className="temp__oneEductationYears">
-                                <p className="temp__oneStartYear">
-                                    2015
-                                </p>
-                                <p className="temp__oneDash">
-                                    -
-                                </p>
-                                <p className="temp__oneEndYear">
-                                    2019
-                                </p>
-                            </div>
-                        </div> 
-                    </div>
+                       
+                    
                     <div className="tempOne__line"></div>
                     <div className="template__oneSkills">
                         <p className="tempOne__educationTitle">
                             key skills
                         </p>
                         <div className="temp__oneSkillsList">
-                            <p className="temp__oneSkill">
-                                Front-end Development
-                            </p>
-                            <p className="temp__oneSkill">
-                                Backend Development
-                            </p>
-                            <p className="temp__oneSkill">
-                                Data Base Development
-                            </p>
-                            <p className="temp__oneSkill">
-                                UI and UX Design
-                            </p>
+                            {keyskillsList &&
+                                keyskillsList.map((keyskills, index)=>(
+                                <p className="temp__oneSkill" key={index}>
+                                   {keyskills.title}
+                                </p>
+                                ))
+                            }
                         </div>
                     </div>
                     <div className="tempOne__line"></div>
@@ -114,24 +145,21 @@ const educations = useSelector(state => state.educationReducer.educations)
                             technical skills
                         </p>
                         <div className="temp__oneTechSkillsList">
-                            <div className="temp__oneTechSkill">
-                                <p className="temp__oneTechSkillTitle">
-                                    javascripr
-                                </p>
-                                <ProgressBar bgcolor ={"#6a1b9a"} completed={completed1}/>
-                            </div>
-                            <div className="temp__oneTechSkill">
-                                <p className="temp__oneTechSkillTitle">
-                                    react
-                                </p>
-                                <ProgressBar bgcolor ={"#00695c"} completed={completed2}/>
-                            </div>
-                            <div className="temp__oneTechSkill">
-                                <p className="temp__oneTechSkillTitle">
-                                    java
-                                </p>
-                                <ProgressBar bgcolor ={"#ef6c00"} completed={completed3}/>
-                            </div>
+                            {techSkillsList &&
+                                techSkillsList.map((techSkill, index) =>(
+                                <div className="temp__oneTechSkill" key={index}>
+                                    <p className="temp__oneTechSkillTitle">
+                                        {techSkill.tech_skill}
+                                    </p>
+                                    {/* {progressColors &&
+                                        progressColors.map(color =>( */}
+                                            <ProgressBar bgcolor ={"#6a1b9a"} completed={techSkill.tech_skill_rank}/>
+                                        {/* ))
+                                    } */}
+                                   
+                                </div>
+                                ))
+                            }
                             
                         </div>
                     </div>
@@ -141,13 +169,16 @@ const educations = useSelector(state => state.educationReducer.educations)
                         achievements
                         </p>
                         <div className="temp__oneTechSkillsList">
-                            <div className="temp__oneAwards">
-                                <p className="temp__oneAwardTitle">
-                                    Ielts score 6
-                                </p>
-                                <p className="template__oneAward">british council, uk, tashkent</p>
-                                <p className="template__oneAward">2018</p>
-                            </div>
+                            { achievements && achievements.map((achievement, index) =>(
+                                <div className="temp__oneAwards">
+                                    <p className="temp__oneAwardTitle">
+                                        {achievement.achievement}
+                                    </p>
+                                    <p className="template__oneAward">{achievement.organizationName} / {achievement.address} </p>
+                                    <p className="template__oneAward">{achievement.startYear}</p>
+                                </div>
+                            ))}
+                            
                         </div>
                     </div>
                     <div className="tempOne__line"></div>
@@ -156,39 +187,21 @@ const educations = useSelector(state => state.educationReducer.educations)
                             languages
                         </p>
                         <div className="temp__oneLanguagesList">
-                            <div className="temp__oneLanguage">
-                                <p className="temp__oneLangTitle">
-                                    English
-                                </p>
-                                <p className="temp__oneLaguageStick">
-                                    |
-                                </p>
-                                <p className="temp__oneLangLevel">
-                                    Proficient
-                                </p>
-                            </div>
-                            <div className="temp__oneLanguage">
-                                <p className="temp__oneLangTitle">
-                                    Turkish
-                                </p>
-                                <p className="temp__oneLaguageStick">
-                                    |
-                                </p>
-                                <p className="temp__oneLangLevel">
-                                    Independent
-                                </p>
-                            </div>
-                            <div className="temp__oneLanguage">
-                                <p className="temp__oneLangTitle">
-                                    Russian
-                                </p>
-                                <p className="temp__oneLaguageStick">
-                                    |
-                                </p>
-                                <p className="temp__oneLangLevel">
-                                    Basic
-                                </p>
-                            </div>
+                            {languagesList &&
+                                languagesList.map((language, index)=>(
+                                    <div className="temp__oneLanguage">
+                                        <p className="temp__oneLangTitle">
+                                            {language.name}
+                                        </p>
+                                        <p className="temp__oneLaguageStick">
+                                            |
+                                        </p>
+                                        <p className="temp__oneLangLevel">
+                                            {language.level}
+                                        </p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                     <div className="tempOne__line"></div>
@@ -197,37 +210,30 @@ const educations = useSelector(state => state.educationReducer.educations)
                             driving licence
                         </p>
                         <div className="temp__oneLanguagesList">
-                            <div className="temp__oneLanguage">
-                                <p className="temp__oneLangTitle">
-                                    class B
-                                </p>
-                                <p className="temp__oneLaguageStick">
-                                    |
-                                </p>
-                                <p className="temp__oneLangLevel">
-                                    12 years
-                                </p>
-                            </div>
+                            {drLicences &&
+                                drLicences.map((drL, index)=>(
+                                    <div className="temp__oneLanguage" key={index}>
+                                        <p className="temp__oneLangTitle mt-0">
+                                            class | {drL.title}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                            
                         </div>
                     </div>
                  
                     </div>
                     
                 </div>
-                <div className="col-md-8 template__oneRight">
-                    <div className="template__oneCandidate">
+                <div className="col-md-8 template__oneRight" >
+                    <div className="template__oneCandidate" style={{backgroundColor:selectedColor}}>
                         <h2 className="template__oneFullname">
                            {profileInfo.firstName} {profileInfo.lastName}
                         </h2>
                         <div className="template__oneJobTitleContainer">
                             <p className="template__oneJobTitle">
-                                {profileInfo.jobTitle}
-                            </p>
-                            <p className="template__oneJobTitleSlash">
-                                /
-                            </p>
-                            <p className="template__oneJobTitle">
-                                UI & UX designer
+                                {profileInfo.currentJob}
                             </p>
                         </div>
                         
@@ -248,148 +254,59 @@ const educations = useSelector(state => state.educationReducer.educations)
                             </p>
                             <div className="tempOne__line"></div>
                             <div className="template__oneExperience">
-                                <div className="template__oneExpJobContainer">
+                            {experiences &&
+                                experiences.map((experience, index) =>(
+
+                                    <div key={index} className="template__oneExpJobContainer">
                                     <div className="template__oneExpJobBox">
                                         <p className="template__oneExpJobTitle">
-                                            backend developer
+                                            {experience.jobTitle}
                                         </p>
                                     </div>
                                     <div className="template__oneExpJobAddress">
                                         <p className="template__oneExpCompany">
-                                            AirBnB
+                                            {experience.companyName}
                                         </p>
                                         <p className="template__oneExpDateDash">
                                             /
                                         </p>
                                         <p className="template__oneExpLocation">
-                                            New york nt usa
+                                        {experience.address}
                                         </p>
                                         <p className="template__oneExpDateDash">
                                             /
                                         </p>
                                         <div className="template__oneExpDate">
                                         <p className="template__oneExpStartDate">
-                                            2019
+                                            {experience.startYear}
                                         </p>
                                         <p className="template__oneExpDateDash">
                                             -
                                         </p>
                                         <p className="template__oneExpEndDate">
-                                            present
+                                            {experience.endYear ? experience.endYear: "To present"}
                                         </p>
                                     </div>
                                     </div>
                                     <p className="template__oneProfessionalProfContent">
-                                        Brief description and responsibility you had in this position. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellat laborum, quia quae, commodi dolorum hic ipsam voluptatibus quaerat obcaecati nostrum facilis culpa architecto minima ex? Excepturi fugit eaque beatae?
+                                       {experience.aboutJob}
                                     </p>
                                     <p className="template__oneProfessionalProfContentResp">
                                         <ul className="template__oneProfessionalLists">
-                                            <li className="template__oneProfessionalList">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            </li>
-                                            <li className="template__oneProfessionalList">
-                                            Consequuntur, repellat laborum, quia quae, commodi dolorum hic ipsam voluptatibus quaerat obcaecati nostrum facilis culpa architecto minima ex.
-                                            </li>
+                                            {experience.projects.map((proj, index)=>(
+                                                <li key={index} className="template__oneProfessionalList">
+                                                       {proj.project}
+                                                 </li> 
+                                            ))}
+                                            
+                                           
                                         </ul>
                                     </p>
                                     
                                 </div>
-                                <div className="template__oneExpJobContainer">
-                                    <div className="template__oneExpJobBox">
-                                        <p className="template__oneExpJobTitle">
-                                            front-end developer
-                                        </p>
-                                    </div>
-                                    <div className="template__oneExpJobAddress">
-                                        <p className="template__oneExpCompany">
-                                            AirBnB
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            /
-                                        </p>
-                                        <p className="template__oneExpLocation">
-                                            New york nt usa
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            /
-                                        </p>
-                                        <div className="template__oneExpDate">
-                                        <p className="template__oneExpStartDate">
-                                            2018
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            -
-                                        </p>
-                                        <p className="template__oneExpEndDate">
-                                            2019
-                                        </p>
-                                    </div>
-                                    </div>
-                                    <p className="template__oneProfessionalProfContent">
-                                        Brief description and responsibility you had in this position. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellat laborum, quia quae, commodi dolorum hic ipsam voluptatibus quaerat obcaecati nostrum facilis culpa architecto minima ex? Excepturi fugit eaque beatae?
-                                    </p>
-                                    <p className="template__oneProfessionalProfContentResp">
-                                        <ul className="template__oneProfessionalLists">
-                                            <li className="template__oneProfessionalList">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            </li>
-                                            <li className="template__oneProfessionalList">
-                                            Consequuntur, repellat laborum, quia quae, commodi dolorum hic ipsam voluptatibus quaerat obcaecati nostrum facilis culpa architecto minima ex.
-                                            </li>
-                                            <li className="template__oneProfessionalList">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            </li>
-                                        </ul>
-                                    </p> 
-                                </div>
-                                <div className="template__oneExpJobContainer">
-                                    <div className="template__oneExpJobBox">
-                                        <p className="template__oneExpJobTitle">
-                                            UI & UX designer
-                                        </p>
-                                    </div>
-                                    <div className="template__oneExpJobAddress">
-                                        <p className="template__oneExpCompany">
-                                            AirBnB
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            /
-                                        </p>
-                                        <p className="template__oneExpLocation">
-                                            New york nt usa
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            /
-                                        </p>
-                                        <div className="template__oneExpDate">
-                                        <p className="template__oneExpStartDate">
-                                            2017
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            -
-                                        </p>
-                                        <p className="template__oneExpEndDate">
-                                            2018
-                                        </p>
-                                    </div>
-                                    </div>
-                                    <p className="template__oneProfessionalProfContent">
-                                        Brief description and responsibility you had in this position. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellat laborum, quia quae, commodi dolorum hic ipsam voluptatibus quaerat obcaecati nostrum facilis culpa architecto minima ex? Excepturi fugit eaque beatae?
-                                    </p>
-                                    <p className="template__oneProfessionalProfContentResp">
-                                        <ul className="template__oneProfessionalLists">
-                                            <li className="template__oneProfessionalList">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            </li>
-                                            <li className="template__oneProfessionalList">
-                                            Consequuntur, repellat laborum, quia quae, commodi dolorum hic ipsam voluptatibus quaerat obcaecati nostrum facilis culpa architecto minima ex.
-                                            </li>
-                                            <li className="template__oneProfessionalList">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            </li>
-                                        </ul>
-                                    </p> 
-                                </div>
+
+                                ))
+                            }
                             </div>
                             
                         </div>
@@ -398,93 +315,34 @@ const educations = useSelector(state => state.educationReducer.educations)
                                 Professional development
                             </p>
                             <div className="tempOne__line"></div>
-                            <div className="template__oneProfDevBox">
+                            {personalDevInfo && personalDevInfo.map((personal, index)=>(
+                            
+                                <div className="template__oneProfDevBox" key={index}>
                                 <p className="template__oneExpJobTitle">
-                                    complete react with hooks
+                                    {personal.achievement}
                                 </p>
                                 <div>
                                 <div className="template__oneProfDevAddress">
                                     <p className="template__oneExpCompany">
-                                        Udemy
+                                    {personal.organizationName}
                                     </p>
                                     <p className="template__oneExpDateDash">
                                         /
                                     </p>
                                     <p className="template__oneExpLocation">
-                                        London, England
+                                    {personal.address}
                                     </p>   
                                 </div>
                                 <div className="template__oneExpDate">
                                     <p className="template__oneExpStartDate">
-                                        2019
-                                    </p>
-                                    <p className="template__oneExpDateDash">
-                                        -
-                                    </p>
-                                    <p className="template__oneExpEndDate">
-                                        2020
+                                    {personal.year}
                                     </p>
                                 </div>
                                 </div>
                             </div>
-                            <div className="template__oneProfDevBox">
-                                <p className="template__oneExpJobTitle">
-                                    Full-stack web development bootcamp
-                                </p>
-                                <div>
-                                    <div className="template__oneProfDevAddress">
-                                        <p className="template__oneExpCompany">
-                                            Udemy
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            /
-                                        </p>
-                                        <p className="template__oneExpLocation">
-                                            London, England
-                                        </p>   
-                                    </div>
-                                    <div className="template__oneExpDate">
-                                        <p className="template__oneExpStartDate">
-                                            2019
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            -
-                                        </p>
-                                        <p className="template__oneExpEndDate">
-                                            2020
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="template__oneProfDevBox">
-                                <p className="template__oneExpJobTitle">
-                                    Ui & Ux design
-                                </p>
-                                <div>
-                                    <div className="template__oneProfDevAddress">
-                                        <p className="template__oneExpCompany">
-                                            Udemy
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            /
-                                        </p>
-                                        <p className="template__oneExpLocation">
-                                            London, England
-                                        </p>   
-                                    </div>
-                                    <div className="template__oneExpDate">
-                                        <p className="template__oneExpStartDate">
-                                            2019
-                                        </p>
-                                        <p className="template__oneExpDateDash">
-                                            -
-                                        </p>
-                                        <p className="template__oneExpEndDate">
-                                            2020
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            )
+                            )
+                           }
                         </div>
                     </div>
                 </div>

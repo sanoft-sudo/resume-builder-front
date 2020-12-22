@@ -32,30 +32,37 @@ const ValidationTextField = withStyles({
 
 function EducationForm() {
   const [checked, setChecked] = useState(false); 
-  const [values, setValues] = useState({
-    endYear: '',
+  const initialValue={
+     endYear: '',
     startYear:'',
-  });
+  }
+  const [values, setValues] = useState(initialValue);
   const classes = useStyles();
   const {control } = useForm();
   const education  = useSelector(state => state.educationReducer.education);
   const dispatch = useDispatch();
+  const [educationFields, setEducationFields] = useState([])
    
  const onSubmit = (e) => {
       e.preventDefault();
-    dispatch(saveEducation(education))
-    setValues({endYear: '',
-    startYear:''})
+    dispatch(saveEducation(educationFields))
     setChecked(false)
+    setValues(initialValue)
+    e.target.reset()
   };
-
+ 
     const handleChange = (e)=>{
+     
       setValues({
         ...values,
         [e.target.name]: e.target.value,
       });
-      const {name, value} = e.target
-      education[name]=value
+      setEducationFields({
+        ...educationFields,
+        ...{[e.target.name]: e.target.value}
+      })
+      // const {name, value} = e.target
+      // education[name]=value
       
       console.log("education>>>", education);
     }
@@ -172,7 +179,7 @@ function EducationForm() {
                    <FormControlLabel
                        control={<Switch checked={checked} color="primary" 
                        name="toPresent" 
-                       onChange={handleChange} 
+                       onChange={e=>{setChecked(!checked)}} 
                        value={checked}
                        />}
                        label={checked? "To present" : ""}

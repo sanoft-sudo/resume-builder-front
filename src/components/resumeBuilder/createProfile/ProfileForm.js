@@ -26,20 +26,22 @@ const ValidationTextField = withStyles({
 
 
 function ProfileInformationForm() {
-const [postedData, setPostedData] = useState();
+const [postedData, setPostedData] = useState({});
 
   const {handleSubmit, register, control} = useForm();
   const dispatch = useDispatch();
 
   const profileInfo  = useSelector(state => state.profileReducer.profileInfo);
  
-  const onSubmit = (data, e) => {
-    dispatch(saveProfileInfo(data))
-    setPostedData(data);
+  const onSubmit = (e) => {
+    e.preventDefault()
+    dispatch(saveProfileInfo(postedData))
     e.target.reset();
+    setPostedData({})
 }
 const handleInputChange = (e)=>{
-  console.log(e.target.value);
+  const {name,value} = e.target
+  postedData[name] =value;
 }
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,16 +57,17 @@ const handleInputChange = (e)=>{
     return (
       <>
           {
-                  <form className="profileInfo" onSubmit={handleSubmit(onSubmit)}>
+                  <form className="profileInfo" onSubmit={onSubmit}>
                   <Controller
-                                    as={
+                          render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
                       label="First name"
                       required
                       placeholder="First name"
                       multiline
-                      value={profileInfo.firstName}
+                      defaultValue=""
+                      value={postedData.firstName}
                       onChange={e => handleInputChange(e)}
                       variant="outlined"
                       id="firstName"
@@ -76,15 +79,16 @@ const handleInputChange = (e)=>{
                   rules= {{required: true}}
                   /> 
                     <Controller
-                                    as={
+                      render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
                       label="Last name"
                       required
                       placeholder="Last name"
                       multiline
+                      defaultValue=""
                       onChange={e => handleInputChange(e)}
-                      value={profileInfo.lastName}
+                      value={postedData.lastName}
                       variant="outlined"
                       ref={register({ required:true})}
                       id="lastName"
@@ -96,15 +100,17 @@ const handleInputChange = (e)=>{
                                 rules= {{required: true}}
                                 /> 
                     <Controller
-                                    as={
+                       render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
                       label="Father name"
                       placeholder="Father name"
                       multiline
+                      defaultValue=""
                       onChange={e => handleInputChange(e)}
-                      value={profileInfo.fatherName}
+                      value={postedData.fatherName}
                       variant="outlined"
+                      name="fatherName"
                       id="fatherName"
                     />
                     }
@@ -113,26 +119,28 @@ const handleInputChange = (e)=>{
                                 rules= {{required: false}}
                                 /> 
                     <Controller
-                                    as={
+                         render={({onChange, value}) =>
                    <ValidationTextField
                       className={"profileInfoFields"}
                       label="Current Job"
                       placeholder="Accontant"
                       multiline
+                      defaultValue=""
                       required
                       onChange={e => handleInputChange(e)}
-                      value={profileInfo.fatherName}
+                      value={postedData.currentJob}
                       variant="outlined"
                       id="currentJob"
+                      name="currentJob"
                     />
                     }
-                                name="fatherName"
+                                name="currentJob"
                                 control={control}
                                 rules= {{required: true}}
                                 /> 
                     <div className="special_box">
                        <Controller
-                            as={
+                            render={({onChange, value}) =>
                               <TextField
                                 id="aboutMe__text"
                                 label="About me"
@@ -140,10 +148,10 @@ const handleInputChange = (e)=>{
                                 className="aboutMe__text"
                                 rows={6}
                                 name="aboutMe"
-                                onChange={e => handleInputChange(e)}
-                                value={profileInfo.aboutMe}
-                                placeholder="Describe your professinal career" 
                                 defaultValue=""
+                                onChange={e => handleInputChange(e)}
+                                value={postedData.aboutMe}
+                                placeholder="Describe your professinal career" 
                                 variant="outlined"
                               />
                             }

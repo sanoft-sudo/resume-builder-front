@@ -36,22 +36,38 @@ const ValidationTextField = withStyles({
 
 function ExperienceForm() {
   const [checked, setChecked] = useState(false);  
-  const [values, setValues] = useState({
+  const initialDate={
     endYear: '',
     startYear:'',
-  });
+  }
+  const [values, setValues] = useState(initialDate);
   const [projectInputList, setProjectInputList] = useState([{project: ""}]);
+  const initialState = {
+    jobTitle:"",
+    companyName:"",
+    address:"",
+    startYear:"",
+    endYear:"",
+    aboutJob:"",
+    projects:[{project:""}]
+  }
+  const [expr, setExpr] = useState(
+     initialState
+  )
   const classes = useStyles();
   const {control } = useForm();
   const experience  = useSelector(state => state.experienceReducer.experience);
   const dispatch = useDispatch();
-  const [experiencenFields, setExperienceField] = useState([])
+
   const onSubmit = (e) => {
       e.preventDefault();
-    dispatch(saveExperience(experiencenFields))
+    dispatch(saveExperience(expr))
+    // setValues({ endYear: '',
+    // startYear:''})
     setChecked(false)
+    setExpr(initialState)
+    setValues(initialDate)
     e.target.reset()
-    setProjectInputList({project:""})
   };
 
   const toggleChecked = (e) => {
@@ -59,41 +75,53 @@ function ExperienceForm() {
     console.log(e.target.value);
   };
 
-  const handleRemoveProject =(i)=>{
-      let list = [...projectInputList];
-      list.splice(i, 1);
-      setProjectInputList(list);
+  const handleRemoveProject =(e,proI)=>{
+      e.preventDefault()
+      setExpr((prev) =>{
+           let temp= { ...prev, projects:[...prev.projects]}
+    temp.projects.splice(proI,1)
+    return temp
+      })
+   
+   
   }
 
-  const handleAddProject =()=>{
-      setProjectInputList([...projectInputList, {project: ""}]);
-  }
-  const handleProjectChange =(e, i)=>{
-    const {name, value} = e.target.value
-    projectInputList[name]=value
-    
-  }
- console.log("projects", projectInputList);
- 
-    
-      
-  const handleChange = (e)=>{
-     const {name, value} =e.target
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-    setProjectInputList({
-      ...projectInputList,
-      [e.target.name]: e.target.value,
-    })
-    setExperienceField({
-      ...experiencenFields,
-      ...{
-        [e.target.name]: e.target.value, }
-    })
+  const handleAddProject =(e)=>{
+      e.preventDefault()
+      setExpr((prev)=>{
+        let temp= { ...prev, projects:[...prev.projects, {project:""}]}
+        return temp
+      })
+  } 
 
-  }
+//   const handleProject = (e,proI)=>{
+//       const {name, value} = e.target.value
+//     setProjectInputList(prevState =>{
+//         let projects = [...prevState];
+//         projects[i] = {...projects[i], [name]:value}
+//         return {projects}
+//     })
+//   }
+  console.log("aaa>>>", expr);
+    
+    const handleChange =(e) =>{
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value,
+          });
+          setExpr({
+            ...expr,
+            ...{[e.target.name]: e.target.value}
+          }) 
+    }  
+    const handleProjectChange = (e, proI)=>{
+    const {name, value} = e.target
+      setExpr((prev)=>{
+          let temp= { ...prev, projects:[...prev.projects]}
+          temp.projects[proI][name]=value
+          return temp
+      })
+    }
 
     return (
       <div>
@@ -106,6 +134,7 @@ function ExperienceForm() {
                       required
                       placeholder="Web developer"
                       multiline
+                      value={expr.jobTitle}
                       onChange={e => handleChange(e)}
                       variant="outlined"
                       id="jobTitle"
@@ -124,6 +153,7 @@ function ExperienceForm() {
                       required
                       placeholder="Amazon"
                       multiline
+                      value={expr.companyName}
                       onChange={e => handleChange(e)}
                       variant="outlined"
                       id="companyName"
@@ -142,6 +172,7 @@ function ExperienceForm() {
                       required
                       placeholder="123, Street, Region..."
                       multiline
+                      value={expr.address}
                       variant="outlined"
                       onChange={e => handleChange(e)}
                       id="address"
@@ -228,6 +259,7 @@ function ExperienceForm() {
                          rows={6}
                          name="aboutJob"
                          onChange={e => handleChange(e)}
+                         value={expr.aboutJob}
                          placeholder="Brief description and responsibility you had in this position." 
                          defaultValue=""
                          variant="outlined"
@@ -238,7 +270,8 @@ function ExperienceForm() {
                    rules= {{required: true}}
                  /> 
             </div>
-            { projectInputList && projectInputList?.map((pro, i) =>{
+            {expr.projects&& expr.projects.map((pro, proI) =>{
+                console.log("projectInputList", projectInputList);
                 return(
                     <div className="special_box2">
                         <Controller
@@ -248,12 +281,11 @@ function ExperienceForm() {
                                  label={"Project"}
                                  multiline
                                  className="project__text"
-                                 value={pro?.project}
                                  rows={3}
                                  name={"project"}
-                                 onChange={e => handleChange(e)}
+                                 onChange={(e) => handleProjectChange(e,proI)}
                                  placeholder="Project you worked" 
-                                 
+                                //  defaultValue={pro.project}
                                  variant="outlined"
                                />
                              }
@@ -262,13 +294,13 @@ function ExperienceForm() {
                            rules= {{required: true}}
                          /> 
                          <div className="button__box">
-                             {projectInputList.length !==1 && 
-                             <Fab size="small" color="secondary" aria-label="add" onClick={()=> handleRemoveProject(i) } className={classes.margin}>
+                             {expr.projects.length !==1 && 
+                             <Fab size="small" color="secondary" aria-label="add" onClick={(e)=> handleRemoveProject(e, proI) } className={classes.margin}>
                                <DeleteOutlineIcon/>
                              </Fab>
                              }
-                             {projectInputList.length - 1 ===i && 
-                             <Fab size="small" color="primary" aria-label="add" onClick={handleAddProject} className={classes.margin}>
+                             {expr.projects.length - 1 ===proI && 
+                             <Fab size="small" color="primary" aria-label="add" onClick={e=>handleAddProject(e)} className={classes.margin}>
                                <AddIcon/>
                              </Fab>
                              }

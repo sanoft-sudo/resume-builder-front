@@ -9,7 +9,7 @@ const containerStyles = {
     backgroundColor: "#fff",
     borderRadius: 50,
     marginBottom: 8,
-    position: 'relative'
+    
   }
 
   const fillerStyles = {
@@ -17,7 +17,8 @@ const containerStyles = {
     width: `${completed}%`,
     backgroundColor: bgcolor,
     borderRadius: 'inherit',
-    textAlign: 'right'
+    textAlign: 'right',
+    position: 'relative'
   }
 
   const labelStyles = {
@@ -27,7 +28,7 @@ const containerStyles = {
     fontWeight: 'bold',
     position: 'absolute',
     top: 0,
-    right:40,
+    right:0,
   }
     return (
         <div style={containerStyles}>

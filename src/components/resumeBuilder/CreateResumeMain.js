@@ -2,6 +2,7 @@ import React from 'react';
 import "../../styles/CreateResumeMain.css";
 import CreateResumeAcardion from './resumeAcardion/CreateResumeAcardion';
 import TemplateTwo from "../../templates/TemplateTwo"
+import ColorPicker from './ColorPicker';
 
 
 function CreateResumeMain() {
@@ -12,6 +13,7 @@ function CreateResumeMain() {
                     <TemplateTwo/>
                 </div>
                 <div className="col-md-4">
+                    <ColorPicker/>
                     <CreateResumeAcardion/>
                 </div>
             </div>
