@@ -61,3 +61,8 @@
     padding: 0 2px;
     white-space: nowrap;
 }
+.profile__container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

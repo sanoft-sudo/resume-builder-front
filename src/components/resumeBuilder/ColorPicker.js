@@ -8,8 +8,9 @@ function ColorPicker() {
 
     const colors = useSelector(state => state.colorReducer.colors)
     const dispatch = useDispatch()
-    const handleClick = (color) =>{
-        dispatch(selectColor(color))
+    
+    const handleClick = (bgC) =>{
+        dispatch(selectColor(bgC))
     }
 
     return (
@@ -17,8 +18,8 @@ function ColorPicker() {
             <h5>Select color</h5>
             <div className="color__box">
                 {colors.map(bgC =>(
-                <IconButton key={bgC.id} onClick={e=>handleClick(bgC.color)}>
-                    <RadioButtonCheckedIcon style={{color:bgC.color}}/>
+                <IconButton key={bgC.id} onClick={e=>handleClick(bgC)}>
+                    <RadioButtonCheckedIcon style={{color:bgC.colorSide}}/>
                 </IconButton>
                 ))}
                

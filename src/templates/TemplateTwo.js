@@ -33,27 +33,13 @@ const languagesList = useSelector(state => state.languagesReducer.languagesList)
 const drLicences = useSelector(state => state.drivingLReducer.drLicences)
 const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
 const selectedColor = useSelector(state => state.colorReducer.selectedColor)
+console.log("selected color>>>>", selectedColor);
 
-let tempBcolor = ""
-let tempFcolor = ""
-
-
-const changeColor =()=>{
-    let myColor = selectedColor
-    if(myColor==="#6a1b9a"){
-        tempFcolor="#fff"
-    }
-    tempFcolor="#000"
-    const myStyle={
-        backgroundColor: selectedColor,
-        color: tempFcolor
-    }
-}
 
     return (
         <div className="template__one container">
             <div className="row">
-                <div className="col-md-4 template__oneLeft"  style={{backgroundColor:selectedColor}}>
+                <div className="col-md-4 template__oneLeft"  style={{backgroundColor:selectedColor.colorSide, color:selectedColor.textColor}}>
                     <div className="template__oneImage">
                         <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
                     </div>
@@ -97,10 +83,8 @@ const changeColor =()=>{
                                         <p className="temp__oneUniversityDegree">
                                            {education.degree}
                                         </p>
-                                        <p className="temp__oneUniSlash">
-                                            /
-                                        </p>
-                                        <p className="temp__oneUniversityDegree">
+                                       
+                                        <p className="temp__oneUniversityMajor">
                                             {education.major}
                                         </p>
                                     </div>
@@ -227,13 +211,13 @@ const changeColor =()=>{
                     
                 </div>
                 <div className="col-md-8 template__oneRight" >
-                    <div className="template__oneCandidate" style={{backgroundColor:selectedColor}}>
+                    <div className="template__oneCandidate" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                         <h2 className="template__oneFullname">
-                           {profileInfo.firstName} {profileInfo.lastName}
+                           {profileInfo.firstName && profileInfo?.firstName+" "+ profileInfo?.lastName}
                         </h2>
-                        <div className="template__oneJobTitleContainer">
+                        <div className="template__oneJobTitleContainer" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                             <p className="template__oneJobTitle">
-                                {profileInfo.currentJob}
+                                {profileInfo?.currentJob}
                             </p>
                         </div>
                         
@@ -245,7 +229,7 @@ const changeColor =()=>{
                             </p>
                             <div className="tempOne__line"></div>
                             <p className="template__oneProfessionalProfContent">
-                               {profileInfo.aboutMe}
+                               {profileInfo?.aboutMe}
                             </p>
                         </div>
                         <div className="template__oneProfessionalExpr">
@@ -318,28 +302,28 @@ const changeColor =()=>{
                             {personalDevInfo && personalDevInfo.map((personal, index)=>(
                             
                                 <div className="template__oneProfDevBox" key={index}>
-                                <p className="template__oneExpJobTitle">
-                                    {personal.achievement}
-                                </p>
-                                <div>
-                                <div className="template__oneProfDevAddress">
-                                    <p className="template__oneExpCompany">
-                                    {personal.organizationName}
+                                    <p className="template__oneExpJobTitle">
+                                        {personal.theme}
                                     </p>
-                                    <p className="template__oneExpDateDash">
-                                        /
-                                    </p>
-                                    <p className="template__oneExpLocation">
-                                    {personal.address}
-                                    </p>   
+                                    <div>
+                                    <div className="template__oneProfDevAddress">
+                                        <p className="template__oneExpCompany">
+                                        {personal.organizationName}
+                                        </p>
+                                        <p className="template__oneExpDateDash">
+                                            /
+                                        </p>
+                                        <p className="template__oneExpLocation">
+                                        {personal.address}
+                                        </p>   
+                                    </div>
+                                    <div className="template__oneExpDate">
+                                        <p className="template__oneExpStartDate">
+                                        {personal.year}
+                                        </p>
+                                    </div>
+                                    </div>
                                 </div>
-                                <div className="template__oneExpDate">
-                                    <p className="template__oneExpStartDate">
-                                    {personal.year}
-                                    </p>
-                                </div>
-                                </div>
-                            </div>
                             )
                             )
                            }

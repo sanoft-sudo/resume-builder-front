@@ -10,6 +10,8 @@ import ContactInformation from "../createContacts/ContactInformation"
 import EducationForm from '../education/EducationForm';
 import ExperienceForm2 from '../experience/ExperienceForm2';
 import NewM from "../technicalSkills/NewM";
+import TechSkills2 from "../technicalSkills/TechSkills2";
+import TechnicalSkills from "../technicalSkills/TechnicalSkills";
 import KeySkillsSelect from '../keySkills/KeySkillsSelect';
 import AchievementForm from '../achivements/AchievementForm';
 import LanguageForm from '../languageFrom/LanguageForm';

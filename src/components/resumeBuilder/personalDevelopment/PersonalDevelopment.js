@@ -90,10 +90,10 @@ function PersonalDevelopment() {
                       onChange={e => handleChange(e)}
                       variant="outlined"
                       id="achievement"
-                      name="achievement"
+                      name="theme"
                     />
                   }
-                name="achievement"
+                name="theme"
                 control={control}
                 rules= {{required: true}}
             /> 

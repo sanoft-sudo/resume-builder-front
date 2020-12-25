@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import "../../../styles/ProfileInformationForm.css"
 import {useDispatch, useSelector} from "react-redux";
-import {saveProfileInfo,} from "../../../stores/actions/profileInfoAction";
+import {deleteProfileInfo, getProfileInfo, saveProfileInfo,} from "../../../stores/actions/profileInfoAction";
 import { withStyles, makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Controller, useForm } from "react-hook-form";
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 const ValidationTextField = withStyles({
   root: {
@@ -26,23 +28,21 @@ const ValidationTextField = withStyles({
 
 
 function ProfileInformationForm() {
-const [postedData, setPostedData] = useState({});
 
   const {handleSubmit, register, control} = useForm();
   const dispatch = useDispatch();
 
   const profileInfo  = useSelector(state => state.profileReducer.profileInfo);
+  console.log("myprofile", profileInfo);
+  const initialValue = {
+    firstName:"",
+    lastName:"",
+    fatherName:"",
+    aboutMe:"",
+    currentJob:""
+  }
+  const [ fromFields, setFormFields] = useState({})
  
-  const onSubmit = (e) => {
-    e.preventDefault()
-    dispatch(saveProfileInfo(postedData))
-    e.target.reset();
-    setPostedData({})
-}
-const handleInputChange = (e)=>{
-  const {name,value} = e.target
-  postedData[name] =value;
-}
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -54,9 +54,49 @@ const handleInputChange = (e)=>{
   }));
   const classes = useStyles();
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    dispatch(saveProfileInfo(profileInfo))
+    e.target.reset();
+    setFormFields(initialValue)
+}
+const handleInputChange = (e)=>{
+  const {name,value} = e.target
+  profileInfo[name] =value;
+  profileInfo.id =Date.now().toString()
+}
+
+  const handleRemoveTechSkill =(e, id)=>{
+    e.preventDefault()
+    console.log("ID", id);
+    dispatch(deleteProfileInfo(id))
+  }
+  const handleEditTechSkill =(e,id)=>{
+    e.preventDefault()
+    dispatch(getProfileInfo(id))
+    setFormFields(profileInfo)
+   }
+
     return (
-      <>
-          {
+      <div className="profile__container">
+        {profileInfo.firstName &&
+        <div className="profile__header">
+            <div className="profile__titleBox">
+                        <h5 className="profile__title">{profileInfo?.firstName +" "+ profileInfo?.lastName}</h5>
+                   </div>
+                  <div className="profile__buttons">
+                    <Fab size="small" color="primary" aria-label="edit" onClick={e=>handleEditTechSkill(e, profileInfo?.id)}  className={classes.margin}>
+                        <EditIcon className="profile__edit"/>
+                    </Fab>
+                    <Fab size="small" color="secondary" aria-label="delete" onClick={e=>handleRemoveTechSkill(e, profileInfo?.id)} className={classes.margin}>
+                        <DeleteOutlineIcon className="profile__delete"/>
+                    </Fab>
+              </div>
+        </div>
+        
+        }
+        
+    
                   <form className="profileInfo" onSubmit={onSubmit}>
                   <Controller
                           render={({onChange, value}) =>
@@ -66,8 +106,8 @@ const handleInputChange = (e)=>{
                       required
                       placeholder="First name"
                       multiline
-                      defaultValue=""
-                      value={postedData.firstName}
+                      // defaultValue={fromFields.firstName}
+                      value={fromFields.firstName}
                       onChange={e => handleInputChange(e)}
                       variant="outlined"
                       id="firstName"
@@ -86,9 +126,9 @@ const handleInputChange = (e)=>{
                       required
                       placeholder="Last name"
                       multiline
-                      defaultValue=""
+                      // defaultValue={fromFields.lastName}
                       onChange={e => handleInputChange(e)}
-                      value={postedData.lastName}
+                      value={fromFields.lastName}
                       variant="outlined"
                       ref={register({ required:true})}
                       id="lastName"
@@ -106,9 +146,9 @@ const handleInputChange = (e)=>{
                       label="Father name"
                       placeholder="Father name"
                       multiline
-                      defaultValue=""
+                      // defaultValue=""
                       onChange={e => handleInputChange(e)}
-                      value={postedData.fatherName}
+                      value={fromFields.fatherName}
                       variant="outlined"
                       name="fatherName"
                       id="fatherName"
@@ -125,10 +165,10 @@ const handleInputChange = (e)=>{
                       label="Current Job"
                       placeholder="Accontant"
                       multiline
-                      defaultValue=""
+                      // defaultValue=""
                       required
                       onChange={e => handleInputChange(e)}
-                      value={postedData.currentJob}
+                      value={fromFields.currentJob}
                       variant="outlined"
                       id="currentJob"
                       name="currentJob"
@@ -148,9 +188,9 @@ const handleInputChange = (e)=>{
                                 className="aboutMe__text"
                                 rows={6}
                                 name="aboutMe"
-                                defaultValue=""
+                                // defaultValue=""
                                 onChange={e => handleInputChange(e)}
-                                value={postedData.aboutMe}
+                                value={fromFields.aboutMe}
                                 placeholder="Describe your professinal career" 
                                 variant="outlined"
                               />
@@ -162,18 +202,7 @@ const handleInputChange = (e)=>{
                     </div>
                     <button type="submit" className="btn btn-success btn-block">save</button>
                 </form>
-                  // <div className="editableProfileInfo">
-                  //   <div className="profileInfoEditableTitle">
-                  //     <h3>{profileInfo?.firstName +' ' + profileInfo?.lastName} ...</h3>
-                  //   </div>
-                  //   <Fab size="small" color="default" aria-label="edit" onClick={handleClickEdit}>
-                  //    <i className="fas fa-edit"></i>
-                  //   </Fab>
-                  // </div>
-                
-          
-        }
-        </>       
+        </div>       
            
     )
 }

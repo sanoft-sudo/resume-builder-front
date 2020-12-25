@@ -58,6 +58,7 @@ export default function DrivingLicence() {
         options={CLASSES}
         getOptionLabel={(option) => option.title}
         defaultValue={[]}
+        name="drLicence"
         // value={[]}
         filterSelectedOptions
         onChange={(e, value) => handleChange(e, value)}

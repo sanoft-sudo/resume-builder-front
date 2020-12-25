@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {TechnicalSkillsContext} from "../../../context/TechnicalSkillsContext";
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { withStyles, makeStyles} from '@material-ui/core/styles';
 import {saveTechSkills} from "../../../stores/actions/technicalSkillsAction";
+import {getNumbers} from '../../../stores/actions/numbersAction'
 import  "../../../styles/TechSkills2.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,24 +34,32 @@ const useStyles = makeStyles((theme) => ({
   export default function TechSkills2() {
     const dispatch = useDispatch();
     const techskills = useSelector(state => state.technicalSkillsReducer.techSkillsList)
+    const numbersRank = useSelector(state => state.numbersReducer.numbersRank)
     const {technicalSkills} = useContext(TechnicalSkillsContext);
-    console.log("tech---->", technicalSkills);
+console.log("num", numbersRank);
     const classes = useStyles();
   const {control } = useForm();
-    const [techSkill, setTechSkill] = useState({});
+    const [techSkill, setTechSkill] = useState([]);
     const [selected, setSelected] = useState(null);
-    
+    const [selectedRank, setSelectedRank] = useState(null);
+
+    useEffect(() => {
+      dispatch(getNumbers())
+      
+  }, [])
     const onSubmit = (e) => {
-        console.log("tech before onsubmit", techSkill);
-        e.preventDefault();
-        if(techSkill!==null){
-            dispatch(saveTechSkills(techSkill))
+ e.preventDefault();
+
+      setTechSkill(...techSkill,
+        ...{tech_skill:selected, tech_skill_rank:selectedRank})
+
+     
+      dispatch(saveTechSkills(techSkill))
         
       setSelected(null)
       setTechSkill({})
       resetForm();
-      console.log("techSkill after submit", techSkill);
-    };
+    }
   const resetForm =() =>{
     setTechSkill(techSkill.tech_skill_rank="")
   }
@@ -66,16 +75,11 @@ const useStyles = makeStyles((theme) => ({
       
       const handleChange = (e)=>{
       const {name,value} = e.target
-      console.log("VALUE", value);
-      console.log("SELECTED", selected.title);
-      if(value){
-           techSkill.tech_skill = selected.title
-        techSkill.tech_skill_rank=value
-      setTechSkill(techSkill)
-      }
-     
-       
-      }
+     setTechSkill({
+       ...techSkill,
+       ...{[e.target.value]: e.target.name}
+     })
+       }
       console.log("TECHSKILL", techSkill);
     return (
         <div className="technical__skillsContainer">
@@ -111,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
                                 getOptionLabel={(option) => option.title}
                                 id={"tech_skill"}
                                 name={"tech_skill"}
+                                required
                                 value={selected}
                                 onChange={((e, newValue)=>{
                                     setSelected(newValue)
@@ -127,12 +132,37 @@ const useStyles = makeStyles((theme) => ({
                          /> 
                         <Controller
                             render={({onChange, value}) =>
+                            <Autocomplete
+                                valiant="outlined"
+                                options={numbersRank}
+                                className="tech__skillsInput"
+                                getOptionLabel={(option) => option.value}
+                                id={"tech_rank"}
+                                name={"tech_skill_rank"}
+                                required
+                                value={selectedRank}
+                                onChange={((e, newValue)=>{
+                                    setSelectedRank(newValue)
+                                })
+                                }
+                                renderInput={(params) => (
+                                <TextField {...params} label="Technical skill rank" variant="outlined" margin="normal" />
+                                )}
+                            />
+                            }
+                            name={"tech_skill_rank"}
+                           control={control}
+                           rules= {{required: true}}
+                         /> 
+                        {/* <Controller
+                            render={({onChange, value}) =>
                             <ValidationTextField
                                 label="Technical skill rank"
                                 className="tech__skillsInput"
                                 id="tech_rank"
-                                defaultValue={techSkill.tech_skill_rank}
-                                onChange={e=>handleChange(e)}
+                                defaultValue={techSkill.tech_skill_rank} 
+                                value={values.tech_skill_rank}
+                                onChange={(e=>handleChange(e))}
                                 placeholder="from 1 to 100"
                                 required
                                 name="tech_skill_rank"
@@ -146,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
                             name="tech_skill_rank"
                             control={control}
                             rules= {{required: true}}
-                        /> 
+                        />  */}
                     </div>
             <button type="submit" className="btn btn-success btn-block">save</button>
             </form>
@@ -181,4 +211,4 @@ function NumberFormatCustom(props) {
     inputRef: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-  };
+  }

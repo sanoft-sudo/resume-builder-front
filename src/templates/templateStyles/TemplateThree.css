@@ -1,0 +1,319 @@
+.templateThree__container{
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+/* header style */
+.templateThree__header{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background-color: #81a351;
+    margin-top: 25px;
+    min-height: 135px;
+}
+
+.templateThree__headerProfile{
+    display: flex;
+    flex-direction: column;
+    margin-right: 220px;
+    text-align: center;
+}
+
+.templateThree__headerName{
+    font-size: 35px;
+    font-weight: 800;
+    font-family: 'Times New Roman', Times, serif;
+    /* color: #ffffff; */
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
+.templateThree__headerJobTitle{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    /* color: #ffffff; */
+    text-transform: uppercase;
+}
+
+.templateThree__headerSocials{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 220px;
+}
+
+.social__contacts{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* color: #ffffff; */
+    font-size: 9px;
+}
+.contact__name{
+    margin-bottom: 0;
+}
+
+/* shadow effects */
+
+.effect1{
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+  }
+/* body style */
+.tempThree__line{
+    display: flex;
+    justify-content: center;
+    border:nthree;
+    border-bottom: 2px solid ;
+}
+.templateThree__body{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-right: 210px;
+    min-height: 350px;
+}
+.templateThree__bodyHeading{
+    margin-bottom: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+    /* color: #81a351; */
+    text-transform: uppercase;
+
+}
+.template__threeExpJobTitle{
+    display: flex;
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: rgb(110, 104, 104);
+}
+.template__threeExpJobContainer{
+    display:flex;
+    flex-direction: column
+}
+
+.template__threeExpJobAddress{
+    display: flex;
+    font-size: 11px;
+    font-weight: 600;
+    color: gray;
+
+}
+.template__threeExpDate{
+    display: flex;
+}
+.template__threeExpCompany, .template__threeExpDateDash, .template__threeExpLocation, .template__threeExpStartDate, .template__threeExpEndDate{
+    margin-right:5px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.template__threeProfessionalProfContentResp{
+    padding-left: 50px;
+    padding-right: 20px;
+    font-size:10px;
+    margin-bottom: 0;
+}
+.template__threeProfessionalProfContent{
+    font-size: 10px;
+}
+.template__threeProfessionalLists > li::marker{
+    color: rgb(110, 104, 104) !important;
+}
+.templateThree__bodyContent{
+    font-size: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+/* Proffesional development styles */
+
+.template__threeProfDevAddress{
+    display: flex;
+    font-size: 11px;
+}
+.template__threeProfDevBox{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-size: 11px;
+}
+
+/* right-side style */
+
+.templateThree__right{
+    background-color: #44736d;
+    z-index: 1;
+    position: absolute;
+    padding: 10px 25px;
+    max-width: 205px;
+    right:25px;
+    top: 18px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+}
+
+.templateThree__avatar{
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.templateThree__avatar > img{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-top: 12px;
+}
+.templateThree__righHeadingContainer{
+    padding:5px;
+   
+}
+
+
+.templateThree__rightHeadings{
+    margin-bottom: 0;
+    /* color: #ffffff; */
+    padding: 7px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0 10px 6px -6px rgb(182, 181, 181);
+    -moz-box-shadow: 0 10px 6px -6px rgb(182, 181, 181);
+         box-shadow: 0 10px 6px -6px rgb(182, 181, 181);
+}
+.templateThree__fieldsHeader{
+    margin-bottom: 7px;
+    background-color: #81a351;
+    margin-top: 0;
+}
+.templateThree__fieldsHeader, .templateThree__rightContact{
+    display: flex;
+    flex-direction: column;
+}
+.templateThree__rightContact, .templateThree__rightContact>i{
+    font-size: 10px;
+    /* color: #ffffff; */
+    text-align: center;
+}
+.contact__titles{
+    margin-bottom: 0;
+}
+
+/* Education info style */
+.temp__threeUniversity{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    /* color: #ffffff; */
+}
+.temp__threeUniDegreeNMajor{
+    display: flex;
+    flex-direction: column;
+}
+.temp__threeUniversityMajor, .temp__threeUniversityName{
+    font-size: 10px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.temp__threeUniversityDegree{
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-right:5px;
+}
+.temp__threeUniversityName, .temp__threeDash, .temp__threeStartYear, .temp__threeEndYear{
+    margin-bottom: 0;
+}
+.temp__threeEductationYears{
+    display: flex; 
+    font-size: 10px;;
+}
+.temp__threeDash, .temp__threeStartYear, .temp__threeEndYear{
+margin-right:5px;
+}
+
+/* Language style  */
+.temp__threeSkillsList, .temp__threeLanguagesList{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+.temp__threeSkill{
+    font-size: 10px;
+    /* color: #ffffff; */
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.temp__threeLanguage{
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+}
+.temp__threeLangTitle{
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-right: 5px;   
+}
+.temp__threeLangTitle, .temp__threeLaguageStick, .temp__threeLangLevel{
+    margin-bottom: 0;
+    /* color: #ffffff; */
+}
+
+.temp__threeLaguageStick, .temp__threeLangLevel{
+    margin-right: 5px;
+}
+
+/* Technical skills */
+
+.temp__threeTechSkillsList{
+    display: flex;
+    flex-direction: column;
+}
+.temp__threeTechSkill{
+    display: flex;
+    flex-direction: column;
+}
+.temp__threeTechSkillTitle{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+    /* color: #ffffff; */
+}
+
+/* Achievements style */
+.template__threeAward{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 9px;
+    /* color: #ffffff; */
+}
+.temp__threeAwardTitle{
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size:11px;
+    /* color: #ffffff; */
+}
+
+.temp__threeAwards{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 11px;
+}

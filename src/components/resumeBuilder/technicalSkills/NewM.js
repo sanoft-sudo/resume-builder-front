@@ -10,7 +10,7 @@ import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { withStyles, makeStyles} from '@material-ui/core/styles';
-import {saveTechSkills} from "../../../stores/actions/technicalSkillsAction";
+import {deleteTechSkill, saveTechSkills, getSelectedTechSkill, editTechSkill} from "../../../stores/actions/technicalSkillsAction";
 import  "../../../styles/TechSkills2.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,46 +33,62 @@ const useStyles = makeStyles((theme) => ({
 function TechSkills2() {
     const dispatch = useDispatch();
     const techskills = useSelector(state => state.technicalSkillsReducer.techSkillsList)
+    const selectedTechSkill = useSelector(state => state.technicalSkillsReducer.selectedTechSkill)
+    console.log("this is I select",selectedTechSkill);
+
     const {technicalSkills} = useContext(TechnicalSkillsContext);
 
-    const classes = useStyles();
+  const classes = useStyles();
   const {control,reset } = useForm();
-  const initialSkill = {
-    tech__skill:"",
+
+  const initialState = {
+    id:"",
+    tech_skill:"",
     tech_skill_rank:""
   }
-    const [techSkill, setTechSkill] = useState({});
-    const [selected, setSelected] = useState(null);
-    
+    const [techSkill, setTechSkill] = useState(initialState);
+    const [selected, setSelected] = useState("");
+    const [editClicked, setEditClicked] = useState(false)
+
+console.log("TECHSKILL", techSkill);
+
+
+
     const onSubmit = (e) => {
-        e.preventDefault();
-      dispatch(saveTechSkills(techSkill))
+      e.preventDefault(); 
+      if(techSkill.id===""){
+        dispatch(saveTechSkills({...techSkill, ...{id:Date.now()}}))
+      }else{
+        dispatch(editTechSkill(techSkill))
+      }      
+      
      e.target.reset();
-      setSelected(null)
-      setTechSkill({
-        tech_skill_rank:""
-      })
+     setSelected("")
+      setTechSkill(initialState)
     };
   
-    const handleRemoveTechSkill =(i)=>{
-        let list = [...techSkill];
-        list.splice(i, 1);
-        setTechSkill(list);
+    const handleRemoveTechSkill =(e, i)=>{
+      e.preventDefault()
+      dispatch(deleteTechSkill(i))
     }
-  
-    const handleAddTechSkill =()=>{
-        setTechSkill([...techSkill, {tech_skill: "",  tech_skill_rank: ""}]);
+    const handleEditTechSkill =(e,id)=>{
+      e.preventDefault()
+      setEditClicked(!editClicked)
+      dispatch(getSelectedTechSkill(id))
+     let selFromReducer = selectedTechSkill?.tech_skill
+technicalSkills.map(item =>(
+  item.title===selFromReducer? setSelected(item) : ""
+))
+      setTechSkill(selectedTechSkill)
+      // setTechSkill({tech_skill: selectedTechSkill.setech_skill, tech_skill_rank: selectedTechSkill.tech_skill_rank}
+    // )
     }
-  
-      
+
       const handleChange = (e)=>{
       const {name,value} = e.target
-     
-        techSkill.tech_skill = selected
-        techSkill.tech_skill_rank=value
-      setTechSkill(techSkill)
+      setTechSkill({...techSkill, ...{tech_skill: selected?.title, tech_skill_rank:value}})
       }
-      console.log("TECHSKILL", techSkill);
+      
     return (
         <div className="technical__skillsContainer">
           <div className="technical__skillsHeader">
@@ -80,13 +96,13 @@ function TechSkills2() {
             techskills.map((sk, i) =>(
                <div className="tech__skillbox">
                    <div className="tech__skillTitleBox">
-                        <h5 className="tech__skillTitle">{sk.tech__skill!=="" &&sk.tech_skill +" "+ sk.tech_skill_rank} %</h5>
+                        <h5 className="tech__skillTitle">{sk.tech_skill +" "+ sk.tech_skill_rank} %</h5>
                    </div>
                   <div className="tech_skillButtons">
-                    <Fab size="small" color="primary" aria-label="edit"  className={classes.margin}>
+                    <Fab size="small" color="primary" aria-label="edit" onClick={e=>handleEditTechSkill(e, sk.id)}  className={classes.margin}>
                         <EditIcon className="tech__skillEdit"/>
                     </Fab>
-                    <Fab size="small" color="secondary" aria-label="delete" className={classes.margin}>
+                    <Fab size="small" color="secondary" aria-label="delete" onClick={e=>handleRemoveTechSkill(e, i)} className={classes.margin}>
                         <DeleteOutlineIcon className="tech__skillDelete"/>
                     </Fab>
                   </div>
@@ -108,6 +124,7 @@ function TechSkills2() {
                                 id={"tech_skill"}
                                 required
                                 name={"tech_skill"}
+                                defaultValue={techSkill?.tech_skill}
                                 value={selected}
                                 onChange={((e, newValue)=>{
                                     setSelected(newValue)
@@ -133,7 +150,7 @@ function TechSkills2() {
                                 onChange={(e=>handleChange(e))}
                                 placeholder="from 1 to 100"
                                 required
-                                value={techSkill.tech_skill_rank}
+                                value={techSkill?.tech_skill_rank}
                                 name="tech_skill_rank"
                                 variant="outlined"
                                 multiline
@@ -147,11 +164,7 @@ function TechSkills2() {
                             rules= {{required: true}}
                         /> 
                     </div>
-            <button type="submit" onClick={()=>{
-                 reset({
-                    tech_skill_rank:''
-                  });
-            }} className="btn btn-success btn-block mt-3">save</button>
+            <button type="submit" className="btn btn-success btn-block mt-3">save</button>
             </form>
             
         </div>
