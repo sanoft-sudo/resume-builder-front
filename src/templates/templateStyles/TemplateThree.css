@@ -2,6 +2,7 @@
     width: 100%;
     padding: 10px;
     position: relative;
+    
 }
 /* header style */
 .templateThree__header{
@@ -88,7 +89,7 @@
     display: flex;
     margin-top: 5px;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 0;
     color: rgb(110, 104, 104);
@@ -122,7 +123,9 @@
 }
 .template__threeProfessionalProfContent{
     font-size: 10px;
+    margin-bottom: 3px;
 }
+
 .template__threeProfessionalLists > li::marker{
     color: rgb(110, 104, 104) !important;
 }
@@ -141,7 +144,7 @@
 .template__threeProfDevBox{
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     font-size: 11px;
 }
 

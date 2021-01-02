@@ -7,8 +7,7 @@ const initialState = {
     {id:999, colorHead: "#6379ba", colorHeadings: "#6379ba", colorLine: "#6379ba", colorSide:"#022075",  textColor: "#ffffff"},
     {id:666, colorHead: "#e6e095", colorHeadings: "#000000", colorLine: "#000000", colorSide:"#dbd144",  textColor: "#000000"},
     {id:555, colorHead: "#de5f5f", colorHeadings: "#de5f5f", colorLine: "#de5f5f", colorSide:"#8c1f1f",  textColor: "#ffffff"},
-    {id:555, colorHead: "#E4E0DC", colorHeadings: "#000000", colorLine: "#000000", colorSide:"#8a7e72",  textColor: "#000000"},
-    {id:555, colorHead: "#E4E0DC", colorHeadings: "#000000", colorLine: "#000000", colorSide:"#E4E0DC",  textColor: "#000000"}
+    {id:555, colorHead: "#E4E0DC", colorHeadings: "#000000", colorLine: "#000000", colorSide:"#8a7e72",  textColor: "#000000"}
 ],
     selectedColor:{}   
 }

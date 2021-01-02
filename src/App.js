@@ -11,6 +11,7 @@ import JobSearch from './pages/JobSearch';
 import BuildCV from './pages/BuildCV';
 import Contacts from './pages/Contacts';
 import Candidates from './pages/Candidates';
+import ResumeCreator from "./pages/ResumeCreator";
 import CandidatesContextProvider from './context/CandidatesContext';
 import EmployerContextProvider from './context/EmployerContext';
 import JobsContextProvider, { JobsContext } from './context/JobsContext';
@@ -51,6 +52,7 @@ function App() {
                                   <Route path="/login" component={Login} />
                                   <Route path="/searchcandidates" component={Candidates}/>
                                   <Route path="/pagenotfount" component={PageNotFound} />
+                                  <Route path="/resumecreator" component={ResumeCreator} />
                                 </Switch>
                               </Transition>
                             </TransitionGroup>

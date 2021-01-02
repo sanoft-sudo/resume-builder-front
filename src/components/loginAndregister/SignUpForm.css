@@ -1,0 +1,117 @@
+.signUp{
+  justify-content: center;
+}
+.signUpform__container{
+  width: 50%;
+  text-align: center;
+}
+.signup__form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__checkboxContainer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.radio__title{
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.radio__image{
+  width: 120px;
+  object-fit: contain;
+}
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img, [type=radio]:checked + .radio__title {
+  outline: 2px solid green;
+  color: green;
+}
+
+.signUp__submitBtn{
+  background-color: green !important;
+  color: #ffffff !important;
+  margin-top: 15px !important;
+  margin-right: 35px !important;
+  margin-left: 35px !important;
+}
+.signIn__submitBtn{
+  background-color: red !important;
+  text-transform: unset !important;
+  color: #ffffff;
+  margin-top: 15px !important;
+  margin-right: 35px !important;
+  margin-left: 35px !important;
+}
+
+.google_icon{
+  margin-right: 15px;
+}
+.signup__passwordInput{
+  position: relative;
+}
+.signup__passwordShow{
+position: absolute;
+right: 10px;
+top:20px;
+color: grey !important;
+cursor: pointer;
+}
+
+.signup__email{
+  display: flex;
+  align-items: baseline !important;
+}
+.signup__passwordIcon, .signup__emailIcon, .signup__userIcon{
+  margin-right: 10px;
+}
+
+.sign__upBox{
+  display: flex;
+  flex-direction: column;
+}
+.sign__upOr{
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+.sign__upWithSocials{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/* signIn style  */
+
+.signIn__container{
+  display: flex;
+  flex-direction: column;
+}
+
+.signIn__imageBox > .signIn__image{
+  width: 120px;
+  object-fit: contain;
+}
+.signIn__imageBox{
+  text-align: center;
+}

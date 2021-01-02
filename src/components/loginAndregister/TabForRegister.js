@@ -6,10 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import TemplateTwo from "../../../templates/TemplateTwo";
-import TemplateTree from '../../../templates/TemplateTree';
-import TemplateFour from '../../../templates/TemplateFour';
-import TemplateOne from '../../../templates/TemplateOne';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import  "./TabForRegister.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -18,8 +17,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -39,8 +38,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `scrollable-force-tab-${index}`,
-    'aria-controls': `scrollable-force-tabpanel-${index}`,
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
   };
 }
 
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TabForTemplates() {
+export default function ScrollableTabsButtonAuto() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -66,32 +65,22 @@ export default function TabForTemplates() {
         <Tabs
           value={value}
           onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="on"
           indicatorColor="primary"
           textColor="primary"
-          aria-label="scrollable force tabs example"
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
         >
-          <Tab label="Template one"  {...a11yProps(0)} />
-          <Tab label="Template Two"  {...a11yProps(1)} />
-          <Tab label="Template Three"  {...a11yProps(2)} />
-          <Tab label="Template Four"  {...a11yProps(3)} />
-          
+          <Tab label="Register" {...a11yProps(0)} className="login_tabButton" />
+          <Tab label="Login" {...a11yProps(1)} className="login_tabButton"/>
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <TemplateOne/>
+        <SignUp/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <TemplateTwo/>
-        </TabPanel>
-      <TabPanel value={value} index={2}>
-        <TemplateTree/>
+        <SignIn/>
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        <TemplateFour/>
-      </TabPanel>
-   
     </div>
   );
 }

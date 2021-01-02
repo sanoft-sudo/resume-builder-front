@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import "./templateStyles/TemplateOne.css";
+import "./templateStyles/TemplateTwo.css";
 import CallIcon from '@material-ui/icons/Call';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import RoomIcon from '@material-ui/icons/Room';
@@ -37,180 +37,206 @@ console.log("selected color>>>>", selectedColor);
 
 
     return (
-        <div className="template__one container">
-            <div className="row">
-                <div className="col-md-4 template__oneLeft"  style={{backgroundColor:selectedColor.colorSide, color:selectedColor.textColor}}>
+        <div className="container">
+            <div className="template__one">
+                
+                    <div className="templateFour__bodyleft" style={{backgroundColor:selectedColor.colorSide, color: selectedColor.textColor}}>
                     <div className="template__oneImage">
                         <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
                     </div>
-                    <div className="left__box">
-                    <div className="template__oneContacts">
-                    <p className="tempOne__educationTitle">
-                            contacts
-                        </p>
-                        <div className="template__onePhone">
-                           {contact.phone ? <><CallIcon/> <p className="contactP">{contact.phone}</p> </> :""} 
+
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                            <p className="templateFour__lefHeadings">contact</p> 
                         </div>
-                        <div className="template__oneEmail">
-                           {contact.email ? <><MailOutlineIcon/> <p className="contactP">{contact.email}</p> </> : ""} 
-                        </div>
-                        <div className="template__oneAddress">
-                           {contact.address ?<> <RoomIcon/> <p className="contactP">{contact.address}</p></> :""}
-                        </div>
-                        <div className="template__oneLinkedIn">
-                        {contact.linkedIn ?<> <LinkedInIcon/> <p className="contactP">{contact.linkedIn}</p></> :""}
-                        </div>
-                        <div className="template__oneTelegram">
-                        {contact.telegram ?<> <TelegramIcon/> <p className="contactP">{contact.telegram}</p></> :""}
-                        </div>
-                        <div className="template__oneTelegram">
-                        {contact.facebook ?<> <FacebookIcon/> <p className="contactP">{contact.facebook}</p></> :""}
-                        </div>
-                        <div className="template__oneTelegram">
-                        {contact.instagram ?<> <InstagramIcon/> <p className="contactP">{contact.instagram}</p></> :""}
-                        </div>
+                        <div className="template__oneContacts">
+                    {contact.address ? (
+                                <div className="templateFour__rightContact">
+                                    <i class="fas fa-home"  style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.address}
+                                    </p>
+                                </div>
+                            ):""}
+                            {contact.email ? (
+                                <div className="templateFour__rightContact">
+                                   <i class="far fa-envelope"  style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.email}
+                                    </p>
+                                </div>
+                            ):""}
+                            {contact.phone ? (
+                                <div className="templateFour__rightContact">
+                                    <i class="fas fa-phone-square-alt"  style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.phone}
+                                    </p>
+                                </div>
+                            ):""}
+                            {contact.facebook ? (
+                                <div className="templateFour__rightContact">
+                                    <i class="fab fa-facebook-square" style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.facebook}
+                                    </p>
+                                </div>
+                            ):""}
+                            {contact.telegram ? (
+                                <div className="templateFour__rightContact">
+                                    <i class="fab fa-telegram-plane"  style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.telegram}
+                                    </p>
+                                </div>
+                            ):""}
+                            {contact.instagram ? (
+                                <div className="templateFour__rightContact">
+                                    <i class="fab fa-instagram"  style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.instagram}
+                                    </p>
+                                </div>
+                            ):""}
+                            {contact.linkedIn ? (
+                                <div className="templateFour__rightContact">
+                                     <i class="fab fa-linkedin"  style={{color: selectedColor.textColor}}></i>
+                                    <p className="contact__titlesFour">
+                                        {contact.linkedIn}
+                                    </p>
+                                </div>
+                            ):""}
                     </div>
-                    <div className="tempOne__line"></div>
-                   
-                            <div className="template__oneEducation" >
-                                <p className="tempOne__educationTitle">
-                                    education
-                                </p>
+                    </div>
+                    <div className="tempFour__line"  style={{borderColor: selectedColor.colorHead}}></div>
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                            <p className="templateFour__lefHeadings">education</p> 
+                        </div>
                             {educations &&
                                 educations.map((education, index) =>(
-                                <div className="temp__oneUniversity" key={index}>
-                                    <div className="temp__oneUniDegreeNMajor">
-                                        <p className="temp__oneUniversityDegree">
+                                <div className="temp_fourUniversity" key={index}>
+                                    <div className="temp_fourUniDegreeNMajor">
+                                        <p className="temp_fourUniversityDegree">
                                            {education.degree}
                                         </p>
                                        
-                                        <p className="temp__oneUniversityMajor">
+                                        <p className="temp_fourUniversityMajor">
                                             {education.major}
                                         </p>
                                     </div>
-                                    <p className="temp__oneUniversityName">
+                                    <p className="temp_fourUniversityName">
                                         {education.university}
                                     </p>
-                                    <div className="temp__oneEductationYears">
-                                        <p className="temp__oneStartYear">
+                                    <div className="temp_fourEductationYears">
+                                        <p className="temp_fourStartYear">
                                             {education.startYear}
                                         </p>
-                                        <p className="temp__oneDash">
+                                        <p className="temp_fourDash">
                                             -
                                         </p>
-                                        <p className="temp__oneEndYear">
+                                        <p className="temp_fourEndYear">
                                             {education.endYear ? education.endYear : "To present"}
                                         </p>
                                     </div>
                                 </div>
                                 ))
                             }
-                            </div>
-                       
-                    
-                    <div className="tempOne__line"></div>
-                    <div className="template__oneSkills">
-                        <p className="tempOne__educationTitle">
-                            key skills
-                        </p>
-                        <div className="temp__oneSkillsList">
-                            {keyskillsList &&
+                    </div>
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorHead}}></div>
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                            <p className="templateFour__lefHeadings">key skills</p>     
+                        </div>
+                        {keyskillsList &&
                                 keyskillsList.map((keyskills, index)=>(
-                                <p className="temp__oneSkill" key={index}>
+                                <p className="temp_fourSkill" key={index}>
                                    {keyskills.title}
                                 </p>
                                 ))
                             }
-                        </div>
                     </div>
-                    <div className="tempOne__line"></div>
-                    <div className="template__oneTechSkills">
-                        <p className="tempOne__educationTitle">
-                            technical skills
-                        </p>
-                        <div className="temp__oneTechSkillsList">
-                            {techSkillsList &&
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorHead}}></div>
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                           <p className="templateFour__lefHeadings">technical skills</p>       
+                        </div>
+                        {techSkillsList &&
                                 techSkillsList.map((techSkill, index) =>(
-                                <div className="temp__oneTechSkill" key={index}>
-                                    <p className="temp__oneTechSkillTitle">
+                                <div className="temp_fourTechSkill" key={index}>
+                                    <p className="temp_fourTechSkillTitle">
                                         {techSkill.tech_skill}
                                     </p>
                                     {/* {progressColors &&
                                         progressColors.map(color =>( */}
-                                            <ProgressBar bgcolor ={"#6a1b9a"} completed={techSkill.tech_skill_rank}/>
+                                            <ProgressBar bgcolor ={selectedColor.colorHead} textColor={selectedColor.textColor} completed={techSkill.tech_skill_rank}/>
                                         {/* ))
                                     } */}
                                    
                                 </div>
                                 ))
                             }
-                            
-                        </div>
                     </div>
-                    <div className="tempOne__line"></div>
-                    <div className="template__oneAwards">
-                        <p className="tempOne__educationTitle">
-                        achievements
-                        </p>
-                        <div className="temp__oneTechSkillsList">
-                            { achievements && achievements.map((achievement, index) =>(
-                                <div className="temp__oneAwards">
-                                    <p className="temp__oneAwardTitle">
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorHead}}></div>
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{color: selectedColor.textColor}}>
+                           <p className="templateFour__lefHeadings">achievement</p> 
+                        </div>
+                        { achievements && achievements.map((achievement, index) =>(
+                                <div className="temp_fourAwards">
+                                    <p className="temp_fourAwardTitle">
                                         {achievement.achievement}
                                     </p>
-                                    <p className="template__oneAward">{achievement.organizationName} / {achievement.address} </p>
-                                    <p className="template__oneAward">{achievement.startYear}</p>
+                                    <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
+                                    <p className="template__fourAward">{achievement.startYear}</p>
                                 </div>
                             ))}
-                            
-                        </div>
                     </div>
-                    <div className="tempOne__line"></div>
-                    <div className="template__oneLanguages">
-                        <p className="tempOne__educationTitle">
-                            languages
-                        </p>
-                        <div className="temp__oneLanguagesList">
-                            {languagesList &&
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorHead}}></div>
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                           <p className="templateFour__lefHeadings">languages</p> 
+                        </div>
+                        {languagesList &&
                                 languagesList.map((language, index)=>(
-                                    <div className="temp__oneLanguage">
-                                        <p className="temp__oneLangTitle">
+                                    <div className="temp_fourLanguage" key={index}>
+                                        <p className="temp_fourLangTitle col-sm-5 px-0">
                                             {language.name}
                                         </p>
-                                        <p className="temp__oneLaguageStick">
+                                        <p className="temp_fourLaguageStick col-sm-2 px-1">
                                             |
                                         </p>
-                                        <p className="temp__oneLangLevel">
+                                        <p className="temp_fourLangLevel col-sm-5 px-0">
                                             {language.level}
                                         </p>
                                     </div>
                                 ))
                             }
-                        </div>
                     </div>
-                    <div className="tempOne__line"></div>
-                    <div className="template__oneDrivingLicence">
-                        <p className="tempOne__educationTitle">
-                            driving licence
-                        </p>
-                        <div className="temp__oneLanguagesList">
-                            {drLicences &&
+                    <div className="tempFour__line"  style={{borderColor: selectedColor.colorHead}}></div>
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                           <p className="templateFour__lefHeadings">driving licence</p> 
+                        </div> 
+                        {drLicences &&
                                 drLicences.map((drL, index)=>(
-                                    <div className="temp__oneLanguage" key={index}>
-                                        <p className="temp__oneLangTitle mt-0">
-                                            class | {drL.title}
+                                    <div className="temp_fourDriving" key={index}>
+                                         <p className="temp_fourDrivingTitle col-sm-5 px-0">
+                                            CLASS
+                                        </p>
+                                        <p className="temp_fourDrivingStick col-sm-2 px-1">
+                                            |
+                                        </p>
+                                        <p className="temp_fourDrivingLevel col-sm-5 px-0">
+                                            {drL.title}
                                         </p>
                                     </div>
                                 ))
                             }
-                            
-                        </div>
                     </div>
-                 
-                    </div>
-                    
                 </div>
-                <div className="col-md-8 template__oneRight" >
+        
+                <div className="template__oneRight" >
                     <div className="template__oneCandidate" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                         <h2 className="template__oneFullname">
                            {profileInfo.firstName && profileInfo?.firstName+" "+ profileInfo?.lastName}
@@ -224,19 +250,19 @@ console.log("selected color>>>>", selectedColor);
                     </div>
                     <div className="template__oneMainContent">
                         <div className="template__oneProfessionalProf">
-                            <p className="template__oneMainContentTitle">
+                            <p className="template__oneMainContentTitle" style={{color:selectedColor.colorHeadings}}>
                                 Professional profile
                             </p>
-                            <div className="tempOne__line"></div>
+                            <div className="tempThree__line"  style={{color:selectedColor.colorLine}}></div>
                             <p className="template__oneProfessionalProfContent">
                                {profileInfo?.aboutMe}
                             </p>
                         </div>
                         <div className="template__oneProfessionalExpr">
-                            <p className="template__oneMainContentTitle">
+                            <p className="template__oneMainContentTitle" style={{color:selectedColor.colorHeadings}}>
                                 experience
                             </p>
-                            <div className="tempOne__line"></div>
+                            <div className="tempThree__line"  style={{color:selectedColor.colorLine}}></div>
                             <div className="template__oneExperience">
                             {experiences &&
                                 experiences.map((experience, index) =>(
@@ -295,10 +321,10 @@ console.log("selected color>>>>", selectedColor);
                             
                         </div>
                         <div className="template__oneProfessionalDev">
-                            <p className="template__oneMainContentTitle">
+                            <p className="template__oneMainContentTitle" style={{color:selectedColor.colorHeadings}}>
                                 Professional development
                             </p>
-                            <div className="tempOne__line"></div>
+                            <div className="tempThree__line"  style={{color:selectedColor.colorLine}}></div>
                             {personalDevInfo && personalDevInfo.map((personal, index)=>(
                             
                                 <div className="template__oneProfDevBox" key={index}>
@@ -330,8 +356,10 @@ console.log("selected color>>>>", selectedColor);
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
+        </div>
+        
     )
 }
 

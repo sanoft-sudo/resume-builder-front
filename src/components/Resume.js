@@ -18,7 +18,7 @@ function Resume() {
                         </p>
                         <div className="resume__leftButtons row">
                             <button className="resume__leftGoogle">{t("resume_start_google_button")}</button>
-                            <button className="resume__leftBuildCv" onClick={e => history.push("/buildresume")}>{t("resume_srart_cv_button")}</button>
+                            <button className="resume__leftBuildCv" onClick={e => history.push("/resumecreator")}>{t("resume_srart_cv_button")}</button>
                         </div>
                         <h4>
                             {t("resume_or")}

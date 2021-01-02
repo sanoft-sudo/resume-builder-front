@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { withStyles, makeStyles} from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import { useTranslation } from "react-i18next";
-import {  } from "../../../styles/LanguageForm.css";
+import "../../../styles/LanguageForm.css";
 import { getLanguagEN, getLanguagRU, getLanguagUZ, saveLanguage } from '../../../stores/actions/languagesAction';
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';

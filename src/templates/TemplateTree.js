@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, createRef} from 'react';
 import ProgressBar from '../components/ProgressBar';
 import {useDispatch, useSelector} from "react-redux";
 import "./templateStyles/TemplateThree.css";
+import Pdf from "react-to-pdf";
 
 function TemplateTree() {
     const [progressColors, setProgressColors] = useState([
@@ -11,7 +12,7 @@ function TemplateTree() {
         {id:666, color: "#dbd144"},
         {id:555, color: "#c42121"},
     ])
-    
+    const ref = createRef();
     
     const dispatch = useDispatch();
     const profileInfo = useSelector(state => state.profileReducer.profileInfo);
@@ -27,7 +28,10 @@ function TemplateTree() {
     const selectedColor = useSelector(state => state.colorReducer.selectedColor)
     return (
         <div className="container">
-            <div className="templateThree__container">
+             <Pdf targetRef={ref} fileName="template-four.pdf" >
+                {({toPdf})=> <button onClick={toPdf}>save as pdf</button>}
+            </Pdf>
+            <div className="templateThree__container" ref={ref}>
                 <div className="templateThree__header effect1" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                     <div className="templateThree__headerProfile">
                         <p className="templateThree__headerName">
@@ -277,7 +281,7 @@ function TemplateTree() {
                                     </p>
                                     {/* {progressColors &&
                                         progressColors.map(color =>( */}
-                                            <ProgressBar bgcolor ={"#81a351"} completed={techSkill.tech_skill_rank}/>
+                                            <ProgressBar bgcolor ={selectedColor.colorHead} completed={techSkill.tech_skill_rank}/>
                                         {/* ))
                                     } */}
                                    
@@ -306,13 +310,13 @@ function TemplateTree() {
                         {languagesList &&
                                 languagesList.map((language, index)=>(
                                     <div className="temp__threeLanguage">
-                                        <p className="temp__threeLangTitle">
+                                        <p className="temp__threeLangTitle col-sm-5 px-0">
                                             {language.name}
                                         </p>
-                                        <p className="temp__threeLaguageStick">
+                                        <p className="temp__threeLaguageStick col-sm-2 px-1">
                                             |
                                         </p>
-                                        <p className="temp__threeLangLevel">
+                                        <p className="temp__threeLangLevel col-sm-5 px-0">
                                             {language.level}
                                         </p>
                                     </div>
@@ -325,11 +329,17 @@ function TemplateTree() {
                         </div> 
                         {drLicences &&
                                 drLicences.map((drL, index)=>(
-                                    <div className="temp__threeLanguage" key={index}>
-                                        <p className="temp__threeLangTitle mt-0">
-                                            class | {drL.title}
-                                        </p>
-                                    </div>
+                                    <div className="temp_fourDriving" key={index}>
+                                    <p className="temp_fourDrivingTitle col-sm-5 px-0">
+                                       CLASS
+                                   </p>
+                                   <p className="temp_fourDrivingStick col-sm-2 px-1">
+                                       |
+                                   </p>
+                                   <p className="temp_fourDrivingLevel col-sm-5 px-0">
+                                       {drL.title}
+                                   </p>
+                               </div>
                                 ))
                             }
                     </div>

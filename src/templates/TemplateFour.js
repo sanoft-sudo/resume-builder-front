@@ -1,14 +1,10 @@
-import React, {useState} from 'react';
+import React, {createRef, useState} from 'react';
 import "./templateStyles/TemplateFour.css";
-import CallIcon from '@material-ui/icons/Call';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import RoomIcon from '@material-ui/icons/Room';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import ProgressBar from '../components/ProgressBar';
 import {useDispatch, useSelector} from "react-redux";
+import Pdf from "react-to-pdf";
+
+
 
 
 function TemplateFour() {
@@ -19,7 +15,7 @@ const [progressColors, setProgressColors] = useState([
     {id:666, color: "#dbd144"},
     {id:555, color: "#c42121"},
 ])
-
+const ref = createRef();
 
 const dispatch = useDispatch();
 const profileInfo = useSelector(state => state.profileReducer.profileInfo);
@@ -34,11 +30,18 @@ const drLicences = useSelector(state => state.drivingLReducer.drLicences)
 const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
 const selectedColor = useSelector(state => state.colorReducer.selectedColor)
 console.log("selected color>>>>", selectedColor);
-
+const options = {
+    orientation: 'portrait',
+    unit: 'cm',
+    format: [4,2]
+};
 
     return (
         <div className="container">
-            <div className="templateFour__container">
+            <Pdf targetRef={ref} fileName="template-four.pdf"  >
+                {({toPdf})=> <button onClick={toPdf}>save as pdf</button>}
+            </Pdf>
+            <div className="templateFour__container" ref={ref}>
                 <div className="templateFour__header" style={{backgroundColor:selectedColor.colorSide, color: selectedColor.textColor}}>
                     <div className="templateFour__headerContacts">
                     {contact.address ? (
@@ -68,7 +71,7 @@ console.log("selected color>>>>", selectedColor);
                     </div>
                     <div className="templateFour__headerName">
                         <div className="templateFour__headerProfile">
-                            <p className="templateFour__headerName">
+                            <p className="templateFour__headerFullName">
                             {profileInfo.firstName && profileInfo?.firstName+" "+ profileInfo?.lastName}
                             </p>
                             <p className="templateFour__headerJobTitle">
@@ -115,38 +118,38 @@ console.log("selected color>>>>", selectedColor);
                             ): ""}
                     </div>
                 </div>
-                <div className="templateFour__image">
+                <div className="templateFour__image effect1">
                     <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
                 </div>
                 <div className="templateFour__body">
                 <div className="templateFour__bodyleft" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                            <p className="templateFour__rightHeadings">education</p> 
+                            <p className="templateFour__lefHeadings">education</p> 
                         </div>
                             {educations &&
                                 educations.map((education, index) =>(
-                                <div className="temp__threeUniversity" key={index}>
-                                    <div className="temp__threeUniDegreeNMajor">
-                                        <p className="temp__threeUniversityDegree">
+                                <div className="temp_fourUniversity" key={index}>
+                                    <div className="temp_fourUniDegreeNMajor">
+                                        <p className="temp_fourUniversityDegree">
                                            {education.degree}
                                         </p>
                                        
-                                        <p className="temp__threeUniversityMajor">
+                                        <p className="temp_fourUniversityMajor">
                                             {education.major}
                                         </p>
                                     </div>
-                                    <p className="temp__threeUniversityName">
+                                    <p className="temp_fourUniversityName">
                                         {education.university}
                                     </p>
-                                    <div className="temp__threeEductationYears">
-                                        <p className="temp__threeStartYear">
+                                    <div className="temp_fourEductationYears">
+                                        <p className="temp_fourStartYear">
                                             {education.startYear}
                                         </p>
-                                        <p className="temp__threeDash">
+                                        <p className="temp_fourDash">
                                             -
                                         </p>
-                                        <p className="temp__threeEndYear">
+                                        <p className="temp_fourEndYear">
                                             {education.endYear ? education.endYear : "To present"}
                                         </p>
                                     </div>
@@ -154,31 +157,33 @@ console.log("selected color>>>>", selectedColor);
                                 ))
                             }
                     </div>
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                            <p className="templateFour__rightHeadings">key skills</p>     
+                            <p className="templateFour__lefHeadings">key skills</p>     
                         </div>
                         {keyskillsList &&
                                 keyskillsList.map((keyskills, index)=>(
-                                <p className="temp__threeSkill" key={index}>
+                                <p className="temp_fourSkill" key={index}>
                                    {keyskills.title}
                                 </p>
                                 ))
                             }
                     </div>
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                           <p className="templateFour__rightHeadings">technical skills</p>       
+                           <p className="templateFour__lefHeadings">technical skills</p>       
                         </div>
                         {techSkillsList &&
                                 techSkillsList.map((techSkill, index) =>(
-                                <div className="temp__threeTechSkill" key={index}>
-                                    <p className="temp__threeTechSkillTitle">
+                                <div className="temp_fourTechSkill" key={index}>
+                                    <p className="temp_fourTechSkillTitle">
                                         {techSkill.tech_skill}
                                     </p>
                                     {/* {progressColors &&
                                         progressColors.map(color =>( */}
-                                            <ProgressBar bgcolor ={"#81a351"} completed={techSkill.tech_skill_rank}/>
+                                            <ProgressBar bgcolor ={selectedColor.colorSide} completed={techSkill.tech_skill_rank}/>
                                         {/* ))
                                     } */}
                                    
@@ -186,56 +191,65 @@ console.log("selected color>>>>", selectedColor);
                                 ))
                             }
                     </div>
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                           <p className="templateFour__rightHeadings">achievement</p> 
+                           <p className="templateFour__lefHeadings">achievement</p> 
                         </div>
                         { achievements && achievements.map((achievement, index) =>(
-                                <div className="temp__threeAwards">
-                                    <p className="temp__threeAwardTitle">
+                                <div className="temp_fourAwards">
+                                    <p className="temp_fourAwardTitle">
                                         {achievement.achievement}
                                     </p>
-                                    <p className="template__threeAward">{achievement.organizationName} / {achievement.address} </p>
-                                    <p className="template__threeAward">{achievement.startYear}</p>
+                                    <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
+                                    <p className="template__fourAward">{achievement.startYear}</p>
                                 </div>
                             ))}
                     </div>
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                           <p className="templateFour__rightHeadings">languages</p> 
+                           <p className="templateFour__lefHeadings">languages</p> 
                         </div>
                         {languagesList &&
                                 languagesList.map((language, index)=>(
-                                    <div className="temp__threeLanguage">
-                                        <p className="temp__threeLangTitle">
+                                    <div className="temp_fourLanguage" key={index}>
+                                        <p className="temp_fourLangTitle col-sm-5 px-0">
                                             {language.name}
                                         </p>
-                                        <p className="temp__threeLaguageStick">
+                                        <p className="temp_fourLaguageStick col-sm-2 px-1">
                                             |
                                         </p>
-                                        <p className="temp__threeLangLevel">
+                                        <p className="temp_fourLangLevel col-sm-5 px-0">
                                             {language.level}
                                         </p>
                                     </div>
                                 ))
                             }
                     </div>
+                    <div className="tempFour__line"  style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                           <p className="templateFour__rightHeadings">driving licence</p> 
+                           <p className="templateFour__lefHeadings">driving licence</p> 
                         </div> 
                         {drLicences &&
                                 drLicences.map((drL, index)=>(
-                                    <div className="temp__threeLanguage" key={index}>
-                                        <p className="temp__threeLangTitle mt-0">
-                                            class | {drL.title}
+                                    <div className="temp_fourDriving" key={index}>
+                                         <p className="temp_fourDrivingTitle col-sm-5 px-0">
+                                            CLASS
+                                        </p>
+                                        <p className="temp_fourDrivingStick col-sm-2 px-1">
+                                            |
+                                        </p>
+                                        <p className="temp_fourDrivingLevel col-sm-5 px-0">
+                                            {drL.title}
                                         </p>
                                     </div>
                                 ))
                             }
                     </div>
                 </div>
-                <div className="templateFour__right">
+                <div className="templateFour__bodyRight">
                     <div className="templateFour__profile">
                         <div className="templateFour__bodyHeadings">
                             <p className="templateFour__bodyHeading"  style={{color:selectedColor.colorHeadings}}>
@@ -244,7 +258,7 @@ console.log("selected color>>>>", selectedColor);
                         </div>
                         <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
                         
-                        <div className="templateFour__bodyContent">
+                        <div className="templateThree__bodyContent">
                             <p>{profileInfo?.aboutMe}</p>
                         </div>
                     </div>
