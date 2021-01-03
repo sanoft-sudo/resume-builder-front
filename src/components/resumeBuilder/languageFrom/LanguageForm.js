@@ -36,7 +36,12 @@ const classes = useStyles();
 const {control } = useForm();
 const [selectedLanguage, setSelectedLanguage] = useState(null);
 const [selectedLevel, setSelectedLevel] = useState();
-const [language, setLanguage] = useState({});
+const [language, setLanguage] = useState({
+    id:'',
+    name:'',
+    level:'',
+    flag:''
+});
 
 useEffect(() => {
     dispatch(getLanguagUZ())
@@ -50,17 +55,24 @@ useEffect(() => {
 }, [])
 
 console.log("selected Language>>>", selectedLanguage);
-console.log("selected  level", selectedLevel);
+console.log("EN", languageEN);
 
 const handleChange = (e) =>{
     console.log("onchange>>>", e.target.value);
     const {name,value} = e.target
-     
+     language.id=selectedLanguage.id
     language.name = selectedLanguage.name
     language.level=value
+    languageEN.map(lan=>(
+        lan.id===selectedLanguage.id ?(
+            language.flag=lan.flag
+        ):""
+    ))
+    language.flag = selectedLanguage.flag
       setLanguage(language)
       
 }
+console.log("LANGUAGE", language);
 const onSubmit = (e) =>{
     e.preventDefault()
     dispatch(saveLanguage(language))

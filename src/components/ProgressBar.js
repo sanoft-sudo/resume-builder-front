@@ -5,7 +5,7 @@ const {bgcolor, textColor, completed} = props;
 
 const containerStyles = {
     height: 13,
-    width: '80%',
+    width: '100%',
     backgroundColor: "#fff",
     borderRadius: 50,
     marginBottom: 8,

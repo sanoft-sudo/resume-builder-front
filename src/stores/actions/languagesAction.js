@@ -16,6 +16,7 @@ try {
         axios.get('http://localhost:5000/languagesUZ')
         .then(res =>{
             const language_uz = res.data
+            console.log("Res.data UZ", language_uz);
             dispatch({
                 type: GET_LANGUAGES_UZ,
                 payload: language_uz
@@ -36,6 +37,7 @@ try {
         axios.get('http://localhost:5000/languagesRU')
         .then(res =>{
             const language_ru = res.data
+            console.log("Res.data RU", language_ru);
             dispatch({
                 type: GET_LANGUAGES_RU,
                 payload: language_ru
@@ -55,6 +57,7 @@ try {
         axios.get('http://localhost:5000/languagesEN')
         .then(res =>{
             const language_en = res.data
+            console.log("Res.data EN", language_en);
             dispatch({
                 type: GET_LANGUAGES_EN,
                 payload: language_en

@@ -3,11 +3,25 @@ import "./templateStyles/TemplateOne.css";
 import ProgressBar from '../components/ProgressBar';
 import {useDispatch, useSelector} from "react-redux";
 import Pdf from "react-to-pdf";
+import { makeStyles } from '@material-ui/core/styles';
+import Timeline from '@material-ui/lab/Timeline';
+import TimelineItem from '@material-ui/lab/TimelineItem';
+import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
+import TimelineConnector from '@material-ui/lab/TimelineConnector';
+import TimelineContent from '@material-ui/lab/TimelineContent';
+import TimelineDot from '@material-ui/lab/TimelineDot';
 
+
+const useStyles = makeStyles((theme) => ({
+    secondaryTail: {
+      backgroundColor: theme.palette.secondary.main,
+    },
+  }));
 
 
 
 function TemplateOne() {
+    const classes = useStyles();
 const [progressColors, setProgressColors] = useState([
     {id:777, color: "#6a1b9a"},
     {id:888, color: "#32a852"},
@@ -29,7 +43,7 @@ const languagesList = useSelector(state => state.languagesReducer.languagesList)
 const drLicences = useSelector(state => state.drivingLReducer.drLicences)
 const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
 const selectedColor = useSelector(state => state.colorReducer.selectedColor)
-console.log("selected color>>>>", selectedColor);
+console.log("Language+flag>>>>", languagesList);
 const options = {
     orientation: 'portrait',
     unit: 'cm',
@@ -122,7 +136,7 @@ const options = {
                     <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
                 </div>
                 <div className="templateFirst__body">
-                <div className="templateFirst__bodyleft">
+                <div className="templateFirst__bodyleft"  style={{borderColor:selectedColor.colorSide}}>
                     <div className="templateFirst__righHeadingContainer">
                         <div className="templateFirst__fieldsHeader" style={{color: selectedColor.colorSide}}>
                             <div className="icon__box" style={{color: selectedColor.colorSide}}>
@@ -130,35 +144,50 @@ const options = {
                             </div>
                             <p className="templateFirst__lefHeadings">education</p> 
                         </div>
-                            {educations &&
+                        <Timeline className="my__timeline">
+                        {educations &&
                                 educations.map((education, index) =>(
-                                <div className="temp_fourUniversity" key={index}>
-                                    <div className="temp_fourUniDegreeNMajor">
-                                        <p className="temp_fourUniversityDegree">
-                                           {education.degree}
-                                        </p>
-                                       
-                                        <p className="temp_fourUniversityMajor">
-                                            {education.major}
-                                        </p>
-                                    </div>
-                                    <p className="temp_fourUniversityName">
-                                        {education.university}
-                                    </p>
-                                    <div className="temp_fourEductationYears">
-                                        <p className="temp_fourStartYear">
-                                            {education.startYear}
-                                        </p>
-                                        <p className="temp_fourDash">
-                                            -
-                                        </p>
-                                        <p className="temp_fourEndYear">
-                                            {education.endYear ? education.endYear : "To present"}
-                                        </p>
-                                    </div>
+                                <div className="temp_oneOneUniversity" key={index}>
+                                    <TimelineItem>
+                                        <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <i class="fas fa-book-reader timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                                <div className="temp_fourUniDegreeNMajor">
+                                                    <p className="temp_fourUniversityDegree" style={{color: selectedColor.colorSide}}>
+                                                    {education.degree}
+                                                    </p>
+                                                    <p className="temp_fourUniversityMajor">
+                                                    {education.major}
+                                                    </p>
+                                                </div>
+                                                
+                                                <p className="temp_fourUniversityName">
+                                                    {education.university}
+                                                </p>
+                                                <div className="temp_fourEductationYears">
+                                                    <p className="temp_fourStartYear">
+                                                        {education.startYear}
+                                                    </p>
+                                                    <p className="temp_fourDash">
+                                                         -
+                                                    </p>
+                                                    <p className="temp_fourEndYear">
+                                                        {education.endYear ? education.endYear : "To present"}
+                                                    </p>
+                                                </div>
+                                        </TimelineContent>
+                                    </TimelineItem>
+                                    
                                 </div>
                                 ))
                             }
+                            
+                        </Timeline>
+                           
                     </div>
                     <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFirst__righHeadingContainer">
@@ -168,13 +197,27 @@ const options = {
                             </div>
                             <p className="templateFirst__lefHeadings">key skills</p>     
                         </div>
+                        <Timeline className="my__timeline">
                         {keyskillsList &&
                                 keyskillsList.map((keyskills, index)=>(
-                                <p className="temp_fourSkill" key={index}>
-                                   {keyskills.title}
-                                </p>
+                                    <div className="temp_oneOneUniversity" key={index}>
+                                    <TimelineItem>
+                                        <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <i class="fas fa-bookmark timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                            <p className="temp_fourSkill" key={index}>
+                                                {keyskills.title}
+                                            </p>
+                                        </TimelineContent>
+                                    </TimelineItem>
+                                    </div>
                                 ))
                             }
+                        </Timeline>
                     </div>
                     <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFirst__righHeadingContainer">
@@ -184,21 +227,29 @@ const options = {
                             </div>
                            <p className="templateFirst__lefHeadings">technical skills</p>       
                         </div>
-                        {techSkillsList &&
+                        <Timeline className="my__timeline">
+                             {techSkillsList &&
                                 techSkillsList.map((techSkill, index) =>(
-                                <div className="temp_fourTechSkill" key={index}>
-                                    <p className="temp_fourTechSkillTitle">
-                                        {techSkill.tech_skill}
-                                    </p>
-                                    {/* {progressColors &&
-                                        progressColors.map(color =>( */}
-                                            <ProgressBar bgcolor ={selectedColor.colorSide} completed={techSkill.tech_skill_rank}/>
-                                        {/* ))
-                                    } */}
-                                   
+                                <div className="temp_oneOneUniversity" key={index}>
+                                    <TimelineItem>
+                                        <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <i class="fas fa-lightbulb timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                            <p className="temp_fourTechSkillTitle">
+                                                {techSkill.tech_skill}
+                                            </p>
+                                            <ProgressBar bgcolor ={selectedColor.colorSide} textColor={selectedColor.textColor} completed={techSkill.tech_skill_rank}/>
+                                        </TimelineContent>
+                                    </TimelineItem>
                                 </div>
                                 ))
                             }
+                        </Timeline>
+                       
                     </div>
                     <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFirst__righHeadingContainer">
@@ -208,15 +259,29 @@ const options = {
                             </div>
                            <p className="templateFirst__lefHeadings">achievement</p> 
                         </div>
-                        { achievements && achievements.map((achievement, index) =>(
-                                <div className="temp_fourAwards">
-                                    <p className="temp_fourAwardTitle">
-                                        {achievement.achievement}
-                                    </p>
-                                    <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
-                                    <p className="template__fourAward">{achievement.startYear}</p>
+                        <Timeline className="my__timeline">
+                            { achievements && achievements.map((achievement, index) =>(
+                                <div className="temp_oneOneUniversity">
+                                    <TimelineItem>
+                                        <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <i class="fas fa-trophy timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                            <p className="temp_fourAwardTitle">
+                                                {achievement.achievement}
+                                            </p>
+                                            <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
+                                            <p className="template__fourAward">{achievement.startYear}</p>
+                                        </TimelineContent>
+                                    </TimelineItem>
+                                    
                                 </div>
                             ))}
+                        </Timeline>
+                        
                     </div>
                     <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFirst__righHeadingContainer">
@@ -226,21 +291,32 @@ const options = {
                             </div>
                            <p className="templateFirst__lefHeadings">languages</p> 
                         </div>
-                        {languagesList &&
+                        <Timeline className="my__timeline">
+                             {languagesList &&
                                 languagesList.map((language, index)=>(
-                                    <div className="temp_fourLanguage" key={index}>
-                                        <p className="temp_fourLangTitle col-sm-5 px-0">
-                                            {language.name}
-                                        </p>
-                                        <p className="temp_fourLaguageStick col-sm-2 px-1">
-                                            |
-                                        </p>
-                                        <p className="temp_fourLangLevel col-sm-5 px-0">
-                                            {language.level}
-                                        </p>
+                                    <div className="temp_oneOneUniversity">
+                                        <TimelineItem>
+                                        <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <img className="flag__size" src={language.flag}/>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                            <div className="temp_oneoneLanguage" key={index}>
+                                                <p className="temp_fourLangTitle col-sm-5 px-0">
+                                                    {language.name}
+                                                </p>
+                                                <p className="temp_fourLangLevel col-sm-5 px-0">
+                                                    {language.level}
+                                                </p>
+                                            </div>
+                                        </TimelineContent>
+                                    </TimelineItem>
                                     </div>
                                 ))
                             }
+                        </Timeline>
                     </div>
                     <div className="tempFour__line"  style={{borderColor: selectedColor.colorSide}}></div>
                     <div className="templateFirst__righHeadingContainer">
@@ -250,31 +326,44 @@ const options = {
                             </div>
                            <p className="templateFirst__lefHeadings">driving licence</p> 
                         </div> 
+                        <Timeline className="my__timeline">
                         {drLicences &&
                                 drLicences.map((drL, index)=>(
-                                    <div className="temp_fourDriving" key={index}>
-                                         <p className="temp_fourDrivingTitle col-sm-5 px-0">
-                                            CLASS
-                                        </p>
-                                        <p className="temp_fourDrivingStick col-sm-2 px-1">
-                                            |
-                                        </p>
-                                        <p className="temp_fourDrivingLevel col-sm-5 px-0">
-                                            {drL.title}
-                                        </p>
+                                    <div className="temp_oneOneUniversity" key={index}>
+                                        <TimelineItem>
+                                        <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <i class="fas fa-id-card timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                            <p className="temp_fourDrivingLevel col-sm-5 px-0">
+                                                {drL.title}
+                                            </p>
+                                        </TimelineContent>
+                                    </TimelineItem>
+                                         
                                     </div>
                                 ))
                             }
+                            </Timeline>
                     </div>
                 </div>
                 <div className="templateFirst__bodyRight">
                     <div className="templateFirst__profile">
                         <div className="templateFirst__bodyHeadings">
-                            <p className="templateFirst__bodyHeading"  style={{color:selectedColor.colorHeadings}}>
-                               professional profile
-                            </p>
+                        <div className="icon__box" style={{color: selectedColor.colorSide}}>
+                               <i class="fas fa-user-tie"  style={{color: selectedColor.colorSide}}></i> 
+                            </div>
+                            <div className="body__headingTitle">
+                                <p className="templateFirst__bodyHeading" style={{color:selectedColor.colorHeadings}}>
+                                    professional profile
+                                </p>
+                                <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
+                            </div>
                         </div>
-                        <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
+                        
                         
                         <div className="templateThree__bodyContent">
                             <p>{profileInfo?.aboutMe}</p>
@@ -282,72 +371,99 @@ const options = {
                     </div>
                     <div className="templateFirst__experience">
                         <div className="templateFirst__bodyHeadings">
-                            <p className="templateFirst__bodyHeading" style={{color:selectedColor.colorHeadings}}>
-                                experience
-                            </p>
+                        <div className="icon__box" style={{color: selectedColor.colorSide}}>
+                               <i class="fas fa-suitcase"  style={{color: selectedColor.colorSide}}></i> 
+                            </div>
+                            <div className="body__headingTitle">
+                                <p className="templateFirst__bodyHeading" style={{color:selectedColor.colorHeadings}}>
+                                    experience
+                                </p>
+                                <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
+                            </div>
                         </div>
-                        <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
-                        {experiences &&
+                        <Timeline>
+                             {experiences &&
                                 experiences.map((experience, index) =>(
-
+                                    <TimelineItem>
+                                         <TimelineSeparator>
+                                            <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                                <i class="fas fa-book-reader timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                            </TimelineDot>
+                                            <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                                        </TimelineSeparator>
+                                         <TimelineContent>
                                     <div key={index} className="template__threeExpJobContainer">
-                                    <div className="template__threeExpJobBox">
-                                        <p className="template__threeExpJobTitle">
-                                            {experience.jobTitle}
+                                        <div className="template__threeExpJobBox">
+                                            <p className="template__threeExpJobTitle">
+                                                {experience.jobTitle}
+                                            </p>
+                                        </div>
+                                        <div className="template__threeExpJobAddress">
+                                            <p className="template__threeExpCompany">
+                                                {experience.companyName}
+                                            </p>
+                                            <p className="template__threeExpDateDash">
+                                                /
+                                            </p>
+                                            <p className="template__threeExpLocation">
+                                            {experience.address}
+                                            </p>
+                                            <p className="template__threeExpDateDash">
+                                                /
+                                            </p>
+                                            <div className="template__threeExpDate">
+                                            <p className="template__threeExpStartDate">
+                                                {experience.startYear}
+                                            </p>
+                                            <p className="template__threeExpDateDash">
+                                                -
+                                            </p>
+                                            <p className="template__threeExpEndDate">
+                                                {experience.endYear ? experience.endYear: "To present"}
+                                            </p>
+                                        </div>
+                                        </div>
+                                        <p className="template__threeProfessionalProfContent">
+                                        {experience.aboutJob}
                                         </p>
-                                    </div>
-                                    <div className="template__threeExpJobAddress">
-                                        <p className="template__threeExpCompany">
-                                            {experience.companyName}
-                                        </p>
-                                        <p className="template__threeExpDateDash">
-                                            /
-                                        </p>
-                                        <p className="template__threeExpLocation">
-                                        {experience.address}
-                                        </p>
-                                        <p className="template__threeExpDateDash">
-                                            /
-                                        </p>
-                                        <div className="template__threeExpDate">
-                                        <p className="template__threeExpStartDate">
-                                            {experience.startYear}
-                                        </p>
-                                        <p className="template__threeExpDateDash">
-                                            -
-                                        </p>
-                                        <p className="template__threeExpEndDate">
-                                            {experience.endYear ? experience.endYear: "To present"}
-                                        </p>
-                                    </div>
-                                    </div>
-                                    <p className="template__threeProfessionalProfContent">
-                                       {experience.aboutJob}
-                                    </p>
-                                    <p className="template__threeProfessionalProfContentResp">
-                                        <ul className="template__threeProfessionalLists">
-                                            {experience.projects.map((proj, index)=>(
-                                                <li key={index} className="template__threeProfessionalList">
-                                                       {proj.project}
-                                                 </li> 
-                                            ))}
+                                        <p className="template__threeProfessionalProfContentResp">
+                                            <ul className="template__threeProfessionalLists">
+                                                {experience.projects.map((proj, index)=>(
+                                                    <li key={index} className="template__threeProfessionalList">
+                                                        {proj.project}
+                                                    </li> 
+                                                ))}
+                                                
                                             
-                                           
-                                        </ul>
-                                    </p>
+                                            </ul>
+                                        </p>
+                                        
+                                    </div>
+                                    </TimelineContent>
+                                    </TimelineItem>
+                                   
+
                                     
-                                </div>
 
                                 ))
                             }
+                        </Timeline>
+                       
                     </div>
                     <div className="templateFirst__personalDev">
                         <div className="templateFirst__bodyHeadings">
-                            <p className="templateFirst__bodyHeading" style={{color:selectedColor.colorHeadings}}>
-                                personal development
-                            </p>
+                            <div className="icon__box" style={{color: selectedColor.colorSide}}>
+                               <i class="fas fa-user-cog"  style={{color: selectedColor.colorSide}}></i> 
+                            </div>
+                            <div className="body__headingTitle">
+                                <p className="templateFirst__bodyHeading" style={{color:selectedColor.colorHeadings}}>
+                                    personal development
+                                </p>
+                                <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
+                            </div>
+                            
                         </div>
-                        <div className="tempThree__line" style={{color:selectedColor.colorLine}}></div>
+                        
                         <div className="templateFirst__bodyContent">
                         {personalDevInfo && personalDevInfo.map((personal, index)=>(
                             

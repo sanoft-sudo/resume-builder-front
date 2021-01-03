@@ -97,12 +97,19 @@
 
 
 /* body left style */
-
+.MuiTimelineItem-missingOppositeContent:before{
+    
+}
 .templateFirst__bodyleft{
     min-width: 170px;
     padding: 15px;
     color: #000000;
+    border-right: 2px solid;
     position: relative;
+}
+.templateFirst__righHeadingContainer > ul{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .templateFirst__fieldsHeader{
     display: flex;
@@ -125,16 +132,42 @@
     letter-spacing: 1px;
     margin-bottom: 3px;
 }
+.timeline__icons{
+    font-size: 10px;
+    text-align: center;
+}
+.body__leftTimeLIneDot{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
 /* university style  */
-.temp_fourUniversity{
-    padding-left: 5px;
-    margin-bottom: 10px;
+.temp_oneOneUniversity{
+    margin-bottom: 0;
 
 }
-.temp_fourUniversityDegree, .temp_fourUniversityMajor{
+.flag__size{
+    width: 35px;
+}
+.temp_oneOneUniversity > li.MuiTimelineItem-missingOppositeContent:before{
+    flex: 1;
+    padding: 0 !important;
+}
+.MuiTimelineItem-missingOppositeContent:before {
+    display: none !important;
+}
+.temp_fourUniversityDegree{
     text-transform: uppercase;
     font-size: 11px;
+    font-weight: 700;
     margin-bottom: 0;
+}
+.temp_fourUniversityMajor{
+    text-transform: uppercase;
+    font-size: 11px;
 }
 .temp_fourEductationYears >p, .temp_fourUniversityName{
     text-transform: capitalize;
@@ -179,26 +212,31 @@
     padding-left: 5px;
     margin-bottom: 5px;
 }
-.temp_fourAwards >p{
-    margin-bottom: 0;
-}
+
 .temp_fourAwardTitle{
     font-size: 11px;
     text-transform: uppercase;
+    margin-bottom: 0;
 }
 
 .template__fourAward{
 text-transform: capitalize;
 font-size: 10px;
+margin-bottom: 0;
+}
+.my__timeline{
+    padding: 0 !important;
 }
 
 /* language style  */
-.temp_fourLanguage{
-    padding-left: 5px;
+.temp_oneoneLanguage{
+    padding-top: 5px;
     font-size: 10px;
     display: flex;
+    flex-direction: column;
+
 }
-.temp_fourLanguage> p{
+.temp_oneoneLanguage> p{
     margin-bottom: 0;
 }
 .temp_fourLangTitle{
@@ -240,6 +278,9 @@ font-size: 10px;
 .templateFirst__profile{
     display:flex;
     flex-direction: column;
+}
+.templateFirst__bodyHeadings{
+    display: flex;
 }
 .templateFirst__bodyHeading{
     margin-bottom: 0;
