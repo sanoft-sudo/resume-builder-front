@@ -465,8 +465,16 @@ const options = {
                         </div>
                         
                         <div className="templateFirst__bodyContent">
+                        <Timeline>
                         {personalDevInfo && personalDevInfo.map((personal, index)=>(
-                            
+                             <TimelineItem>
+                             <TimelineSeparator>
+                                <TimelineDot className="body__leftTimeLIneDot" style={{backgroundColor:"#ffffff", borderColor:selectedColor.colorSide, color: selectedColor.colorSide}}>
+                                    <i class="fas fa-book-reader timeline__icons"  style={{color: selectedColor.colorSide}}></i>
+                                </TimelineDot>
+                                <TimelineConnector style={{backgroundColor: selectedColor.colorSide}}/>
+                            </TimelineSeparator>
+                             <TimelineContent>
                             <div className="template__threeProfDevBox" key={index}>
                                 <p className="template__threeExpJobTitle">
                                     {personal.theme}
@@ -490,9 +498,12 @@ const options = {
                                 </div>
                                 </div>
                             </div>
+                            </TimelineContent>
+                            </TimelineItem>
                         )
                         )
                        }
+                       </Timeline>
                         </div>
                     </div>
                 </div>

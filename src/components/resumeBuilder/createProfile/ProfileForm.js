@@ -183,7 +183,7 @@ const handleInputChange = (e)=>{
                             render={({onChange, value}) =>
                               <TextField
                                 id="aboutMe__text"
-                                label="About me"
+                                label="About me *"
                                 multiline
                                 className="aboutMe__text"
                                 rows={6}
