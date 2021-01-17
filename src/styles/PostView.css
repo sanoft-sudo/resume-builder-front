@@ -25,7 +25,7 @@
             box-shadow: 0 7px 5px -7px black;
 }
 .header__content{
-    padding:25px;
+    padding:25px 25px 5px 25px;
     margin-right: auto;
 }
  .apply__button{

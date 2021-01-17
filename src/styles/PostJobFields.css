@@ -1,27 +1,35 @@
-.jobpost__form > input, .jobpost__form > select, .salary_inputs> select, .salary_inputs> input, .sal_type > select{
+/* .jobpost__form > input, .jobpost__form > select, .salary_inputs> select, .salary_inputs> input, .sal_type > select{
     height:40px;
     margin-bottom: 15px;
     border-color: blue;
     border-radius: 5px;
     margin-right: 10px;
+} */
+.jobpost__form{
+    display: flex;
+    flex-direction: column;
 }
 .jobpost__form > label, .additional > label{
     font-size: 16px;
     font-weight: 700;
 }
-.radios{
-    display: flex;
-    flex-direction: column;
+.jobpost__form> .react-tel-input .form-control {
+    height: 56px !important;
+    margin-right: 0;
+    width: 100%;
+    padding-left: 60px;
 }
-.radio__btn{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.profileInfoF{
+    margin-top: 30px !important;
 }
-.radios > .radio__btn> label{
-    margin-bottom: 0;
+
+.PrivateSwitchBase-root-6 {
+    padding: 4px !important;
+} 
+.MuiFormControlLabel-root{
+    margin-left: 0 !important;
 }
-.radio__btn > input, .nightShift> input{
+.nightShift> input{
     margin-right: 10px;
 }
 .salary_inputs >.salary_box> .col-md-4> input{
@@ -30,14 +38,8 @@
     border-radius: 5px;
     width: 100%;
 }
-.sal_type{
-    display: flex;
-    flex-direction: column;
-    margin-right: 0;
-}
-.sal_type>select{
-    margin-right: 0;
-    border-color: blue;
+.css-g1d714-ValueContainer{
+    height: 56px !important;
 }
 .additional{
     display: flex;

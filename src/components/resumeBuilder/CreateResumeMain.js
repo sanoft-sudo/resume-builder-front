@@ -4,6 +4,7 @@ import CreateResumeAcardion from './resumeAcardion/CreateResumeAcardion';
 import TemplateTwo from "../../templates/TemplateTwo"
 import ColorPicker from './ColorPicker';
 import TabForTemplates from './tab/TabForTemplates';
+import TabForResumeAndObjective from './tab/TabForResumeAndObjective';
 
 
 function CreateResumeMain() {
@@ -19,8 +20,7 @@ function CreateResumeMain() {
                     
                 </div>
                 <div className="col-md-4">
-                    <ColorPicker/>
-                    <CreateResumeAcardion/>
+                    <TabForResumeAndObjective/>
                 </div>
             </div>
         </div>

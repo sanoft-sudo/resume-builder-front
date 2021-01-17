@@ -12,6 +12,7 @@ import { drivingLReducer } from "./drivingLReducer";
 import { personalDevReducer } from "./personalDevReducer";
 import { colorReducer } from "./colorReducer";
 import { numbersReducer } from "./numbersReducer";
+import { obektivkaReducer } from "./obektivkaReducer";
 
 export const rootReducer = combineReducers({
     profileReducer,
@@ -26,6 +27,7 @@ export const rootReducer = combineReducers({
     drivingLReducer,
     personalDevReducer,
     colorReducer,
-    numbersReducer
+    numbersReducer,
+    obektivkaReducer
     
 })

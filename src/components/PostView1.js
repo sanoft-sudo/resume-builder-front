@@ -13,8 +13,8 @@ function PostView() {
             <div className="card__header">
                     <div className="header__content">
                         <p className="job__title">{postjob.jobTitle}</p>
-                        <p className="job__company">{postjob.companyName}</p>
-                        <p className="job__address">{postjob.country}</p>
+                        <p className="job__company">{postjob.company}</p>
+                        <p className="job__address">{postjob.address_street}</p>
                     </div>
                     <div className="apply__button">
                         <Button variant="contained" color="primary" onClick={e => history.push("/buildresume")}>
@@ -24,7 +24,7 @@ function PostView() {
                 </div>
             <div className="card_view">
                 <div className="card__body">
-                    <p>{postjob.jobTitle}</p>
+                    <p style={{textTransform:"capitalize"}}>{postjob.jobTitle}</p>
                     <p className="job__decs">Job Description</p>
                     <p className="about__job">
                     {postjob.aboutJob}
@@ -32,9 +32,13 @@ function PostView() {
                     <p className="job__requires">Responsibilities</p>
                     <p>{postjob.addRequirement}
                     </p>
-                    <p><strong>Job location</strong> : {postjob.adRegion}</p>
+                    <p><strong>Job location</strong> : <ul>{postjob.adRegion && postjob.adRegion?.map(adreg =>(
+                        <li key={adreg.id}>{ adreg.name}</li>
+                        ))}
+                       
+                        </ul> </p>
                     <p><strong>Employee Status</strong> : {postjob.jobCondition}</p>
-                    <p><strong>Shift</strong> : {postjob.isNightShift}</p>
+                    <p><strong>Shift</strong> : {postjob.jobShift}</p>
                     <p><strong>Placeto work</strong> : {postjob.workplace}</p>
                     <p><strong>Job type</strong> : {postjob.jobType}</p>
                     <p><strong>Salary range</strong> : from $ {postjob.fromSalary} to $ {postjob.toSalary} per {postjob.salaryType}</p>
@@ -44,7 +48,7 @@ function PostView() {
                         <div className="languages">
                             {postjob.languages ?(
                                 postjob.languages?.map(language =>(
-                                <p className="laguages__list">{language.label}</p>
+                                <p className="laguages__list" key={language.id}>{language.name}</p>
                                 ))
                             ):""}
                         </div>

@@ -12,6 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import countries from "i18n-iso-countries";
 import uzbek from "i18n-iso-countries/langs/uz.json";
+import MyDatePicker from '../../datePicker/MyDatePicker';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,39 +33,67 @@ const ValidationTextField = withStyles({
 
 function EducationForm() {
   const [checked, setChecked] = useState(false); 
-  const initialValue={
-     endYear: '',
-    startYear:'',
-  }
-  const [values, setValues] = useState(initialValue);
   const classes = useStyles();
   const {control } = useForm();
   const education  = useSelector(state => state.educationReducer.education);
   const dispatch = useDispatch();
   const [educationFields, setEducationFields] = useState([])
+  var initialDate = Date.parse(new Date());
+  const [startDate, setStartDate] = useState(initialDate);
+  const [endDate, setEndDate] = useState(initialDate); 
    
  const onSubmit = (e) => {
       e.preventDefault();
     dispatch(saveEducation(educationFields))
     setChecked(false)
-    setValues(initialValue)
+    setStartDate(initialDate);
+    setEndDate(initialDate)
     e.target.reset()
   };
+  const handleCheck =()=>{
+    setChecked(!checked);
+    setEducationFields({
+      ...educationFields,
+      ...{toNow:"to Present"}
+    })
+  }
+  console.log("ck", checked);
+
+  const handleChange1 = (date) => {
+    setStartDate(date)
+    setEducationFields({
+      ...educationFields,
+      ...{startDate:date}
+    })
+  };
+    
+const handleChange2 = (date) => {
+  setEndDate(date);
+  !checked ? (
+    setEducationFields({
+        ...educationFields,
+        ...{endDate:date}
+      })
+  ):(
+    setEducationFields({
+      ...educationFields,
+      ...{endDate:null}
+    })
+  )
  
+  };
+ 
+  console.log("STARTYEAR>>", startDate);
+  console.log("ENDYEAR>>", endDate);
     const handleChange = (e)=>{
      
-      setValues({
-        ...values,
-        [e.target.name]: e.target.value,
-      });
       setEducationFields({
         ...educationFields,
         ...{[e.target.name]: e.target.value}
       })
       // const {name, value} = e.target
       // education[name]=value
-      
-      console.log("education>>>", education);
+      console.log("education>>>", educationFields);
     }
     countries.registerLocale(uzbek);
     const uz = countries.getNames("uz", {select: "official"})
@@ -127,72 +156,18 @@ function EducationForm() {
                 rules= {{required: true}}
             /> 
             <div className="study__years">
-            <Controller
-                render={({onChange, value}) =>
-                   <ValidationTextField
-                      className="profileInfoFields"
-                      label="Start"
-                      required
-                      value={values.startYear}
-                      placeholder="2016"
-                      multiline
-                      onChange={handleChange}
-                      variant="outlined"
-                      id="startYear"
-                      name="startYear"
-                      InputProps={{
-                        inputComponent: NumberFormatCustom,
-                      }}
-                    />
-                  }
-                name="startYear"
-                control={control}
-                rules= {{required: true}}
-            /> 
-            {checked ? " " : ( 
-            <Controller
-                render={({onChange, value}) =>
-                <ValidationTextField
-                    label="End"
-                    className="profileInfoFields"
-                    value={values.endYear}
-                    onChange={handleChange}
-                    placeholder="2021"
-                    required
-                    name="endYear"
-                    variant="outlined"
-                    multiline
-                    id="endYear"
-                    InputProps={{
-                      inputComponent: NumberFormatCustom,
-                    }}
-              />
-                  }
-                name="endYear"
-                control={control}
-                rules= {{required: true}}
-            /> 
-            )} 
-            <Controller
-                render={({onChange, value}) =>
-                   <FormGroup>
-                   <FormControlLabel
-                       control={<Switch checked={checked} color="primary" 
-                       name="toPresent" 
-                       onChange={e=>{setChecked(!checked)}} 
-                       value={checked}
-                       />}
-                       label={checked? "To present" : ""}
-                   />
-                   </FormGroup>
-                   }
-                   name="toPresent"
-                   control={control}
-                   // rules= {{required:false}} 
+            <MyDatePicker 
+            startDate={startDate} 
+            endDate={endDate} 
+            checked={checked} 
+            handleChange1={handleChange1} 
+            handleChange2={handleChange2} 
+            handleCheck={handleCheck}
             />
+            
 
             </div>
-            <button type="submit" className="btn btn-success btn-block">save</button>
+            <button type="submit" className="btn btn-success btn-block mt-2">save</button>
         </form>}
         </div>
     )

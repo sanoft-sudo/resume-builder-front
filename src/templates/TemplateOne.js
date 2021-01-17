@@ -10,8 +10,8 @@ import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
-
-
+import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import moment from "moment";
 const useStyles = makeStyles((theme) => ({
     secondaryTail: {
       backgroundColor: theme.palette.secondary.main,
@@ -44,18 +44,11 @@ const drLicences = useSelector(state => state.drivingLReducer.drLicences)
 const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
 const selectedColor = useSelector(state => state.colorReducer.selectedColor)
 console.log("Language+flag>>>>", languagesList);
-const options = {
-    orientation: 'portrait',
-    unit: 'cm',
-    format: [4,2]
-};
+
 
     return (
         <div className="container">
-            <Pdf targetRef={ref} fileName="template-four.pdf"  >
-                {({toPdf})=> <button onClick={toPdf}>save as pdf</button>}
-            </Pdf>
-            <div className="templateFirst__container" ref={ref}>
+            <div className="templateFirst__container">
                 <div className="templateFirst__header" style={{backgroundColor:selectedColor.colorSide, color: selectedColor.textColor}}>
                     <div className="templateFirst__headerContacts">
                     {contact.address ? (
@@ -170,13 +163,13 @@ const options = {
                                                 </p>
                                                 <div className="temp_fourEductationYears">
                                                     <p className="temp_fourStartYear">
-                                                        {education.startYear}
+                                                        {moment(education.startDate).utc().year()}
                                                     </p>
                                                     <p className="temp_fourDash">
                                                          -
                                                     </p>
                                                     <p className="temp_fourEndYear">
-                                                        {education.endYear ? education.endYear : "To present"}
+                                                        {education.endDate ? moment(education.endDate).utc().year() : "To present"}
                                                     </p>
                                                 </div>
                                         </TimelineContent>

@@ -6,12 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import TemplateTwo from "../../../templates/TemplateTwo";
-import TemplateTree from '../../../templates/TemplateTree';
-import TemplateFour from '../../../templates/TemplateFour';
-import TemplateOne from '../../../templates/TemplateOne';
-import ObektivkaTemplate from '../../../templates/ObektivkaTemplate';
-
+import ObektivkaFields from '../../obektivka/ObektivkaFields';
+import CreateResumeAcardion from '../resumeAcardion/CreateResumeAcardion';
+import ColorPicker from '../ColorPicker';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -53,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TabForTemplates() {
+export default function TabForResumeAndObjective() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -73,29 +70,19 @@ export default function TabForTemplates() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Template one"  {...a11yProps(0)} />
-          <Tab label="Template Two"  {...a11yProps(1)} />
-          <Tab label="Template Three"  {...a11yProps(2)} />
-          <Tab label="Template Four"  {...a11yProps(3)} />
-          <Tab label="Obektivka"  {...a11yProps(4)} />
+          <Tab label="Resume"  {...a11yProps(0)} />
+          <Tab label="Objective"  {...a11yProps(1)} />
           
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <TemplateOne/>
+        <ColorPicker/>
+        <CreateResumeAcardion/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <TemplateTwo/>
-        </TabPanel>
-      <TabPanel value={value} index={2}>
-        <TemplateTree/>
+        <ObektivkaFields/>
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        <TemplateFour/>
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <ObektivkaTemplate/>
-      </TabPanel>
+      
    
     </div>
   );

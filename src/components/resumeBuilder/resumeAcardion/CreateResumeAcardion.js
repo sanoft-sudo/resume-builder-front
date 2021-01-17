@@ -17,6 +17,7 @@ import AchievementForm from '../achivements/AchievementForm';
 import LanguageForm from '../languageFrom/LanguageForm';
 import DrivingLicence from '../drivingL/DrivingLicence';
 import PersonalDevelopment from '../personalDevelopment/PersonalDevelopment';
+import ImageUploader from '../imageUploader/ImageUploader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const fields = [
+    {id: "aa", label: "Profile image", icon: <i class="fas fa-camera"></i>,
+    data: <ImageUploader/>},
     {id: "ab", label: "Personal information", icon: <i class="fas fa-user"></i>,
     data: <ProfileForm/>},
     {id: "cb", label: "Contact information", icon: <i class="far fa-address-book"></i>,

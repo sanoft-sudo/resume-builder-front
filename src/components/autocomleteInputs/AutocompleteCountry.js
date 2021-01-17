@@ -24,7 +24,6 @@ const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [count, setCount] = useState([]);
 
-  console.log("Count", count);
   useEffect(() => {
     if(i18n.language==="uz"){
         Object.keys(uz).forEach((key, i) => {
@@ -63,7 +62,7 @@ const { t, i18n } = useTranslation();
     <div>
       <Autocomplete
         id="country"
-        style={{ width: "100% " }}
+        style={{ width: "100% ", marginBottom:"30px" }}
         open={open}
         onOpen={() => {
           setOpen(true);

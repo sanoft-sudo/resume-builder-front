@@ -1,0 +1,13 @@
+.obektivka__form{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+}
+.obektivka__imageUploader{
+    text-align: center !important;
+}
+
+.obektivka__inputs{
+    display: flex;
+    flex-direction: column;
+}

@@ -28,11 +28,13 @@
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 0;
+    text-transform: capitalize;
 }
 
 .job__company, .job__address{
     font-size: 18px;
     margin-bottom: 0;
+    text-transform: capitalize;
 }
 
 .job__about, .job__aboutMore{

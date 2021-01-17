@@ -84,6 +84,7 @@ function ContactInformation() {
                                   multiline
                                   variant="outlined"
                                   id="email"
+                                  type="email"
                                   name="email"
                                   ref={register({
                                     required: true,

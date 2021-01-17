@@ -233,3 +233,4 @@
 [1215/030601.704:ERROR:exception_snapshot_win.cc(99)] thread ID 15832 not found in process
 [1222/202125.777:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
 [1229/220744.812:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[0105/184744.866:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)

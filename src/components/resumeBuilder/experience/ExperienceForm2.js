@@ -13,6 +13,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import MyDatePicker from '../../datePicker/MyDatePicker';
 
 
 
@@ -35,19 +36,14 @@ const ValidationTextField = withStyles({
 })(TextField);
 
 function ExperienceForm() {
-  const [checked, setChecked] = useState(false);  
-  const initialDate={
-    endYear: '',
-    startYear:'',
-  }
-  const [values, setValues] = useState(initialDate);
   const [projectInputList, setProjectInputList] = useState([{project: ""}]);
   const initialState = {
     jobTitle:"",
     companyName:"",
     address:"",
-    startYear:"",
-    endYear:"",
+    startDate:Date.parse(new Date()),
+    endDate:Date.parse(new Date()),
+    toNow:"",
     aboutJob:"",
     projects:[{project:""}]
   }
@@ -59,6 +55,42 @@ function ExperienceForm() {
   const experience  = useSelector(state => state.experienceReducer.experience);
   const dispatch = useDispatch();
 
+  var initialDate = Date.parse(new Date());
+  const [startDate, setStartDate] = useState(initialDate);
+  const [endDate, setEndDate] = useState(initialDate); 
+  const [checked, setChecked] = useState(false);
+
+  const handleCheck =()=>{
+    setChecked(!checked);
+    setExpr({
+      ...expr,
+      ...{toNow:"to Present"}
+    })
+  }
+
+  const handleChange1 = (date) => {
+    setStartDate(date)
+    setExpr({
+      ...expr,
+      ...{startDate:date}
+    })
+  };
+    
+const handleChange2 = (date) => {
+  setEndDate(date);
+  !checked ? (
+    setExpr({
+        ...expr,
+        ...{endDate:date}
+      })
+  ):(
+    setExpr({
+      ...expr,
+      ...{endDate:null}
+    })
+  )
+ 
+  };
   const onSubmit = (e) => {
       e.preventDefault();
     dispatch(saveExperience(expr))
@@ -66,7 +98,6 @@ function ExperienceForm() {
     // startYear:''})
     setChecked(false)
     setExpr(initialState)
-    setValues(initialDate)
     e.target.reset()
   };
 
@@ -105,10 +136,6 @@ function ExperienceForm() {
   console.log("aaa>>>", expr);
     
     const handleChange =(e) =>{
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value,
-          });
           setExpr({
             ...expr,
             ...{[e.target.name]: e.target.value}
@@ -184,71 +211,16 @@ function ExperienceForm() {
                 rules= {{required: true}}
             /> 
             <div className="study__years">
-            <Controller
-                render={({onChange, value}) =>
-                   <ValidationTextField
-                      className="profileInfoFields"
-                      label="Start"
-                      required
-                      value={values.startYear}
-                      placeholder="2016"
-                      multiline
-                      onChange={e=>handleChange(e)}
-                      variant="outlined"
-                      id="startYear"
-                      name="startYear"
-                      InputProps={{
-                        inputComponent: NumberFormatCustom,
-                      }}
-                    />
-                  }
-                name="startYear"
-                control={control}
-                rules= {{required: true}}
-            />
-            {checked ? " " : ( 
-            <Controller
-                render={({onChange, value}) =>
-                <ValidationTextField
-                    label="End"
-                    className="profileInfoFields"
-                    value={values.endYear}
-                    onChange={e=>handleChange(e)}
-                    placeholder="2021"
-                    required
-                    name="endYear"
-                    variant="outlined"
-                    multiline
-                    id="endYear"
-                    InputProps={{
-                      inputComponent: NumberFormatCustom,
-                    }}
-              />
-                  }
-                name="endYear"
-                control={control}
-                rules= {{required: true}}
-            /> 
-            )} 
-            <Controller
-                render={({onChange, value}) =>
-                   <FormGroup>
-                   <FormControlLabel
-                       control={<Switch checked={checked} color="primary" 
-                       name="To present" 
-                       onChange={toggleChecked} 
-                       value={!checked}
-                       />}
-                       label={checked? "To present" : ""}
-                   />
-                   </FormGroup>
-                   }
-                   name="toPresent"
-                   control={control}
-                   // rules= {{required:false}} 
+            <MyDatePicker 
+             startDate={startDate} 
+             endDate={endDate} 
+             checked={checked} 
+             handleChange1={handleChange1} 
+             handleChange2={handleChange2} 
+             handleCheck={handleCheck}
             />
             </div>
-            <div className="special_box">
+            <div className="special_box mt-4">
                 <Controller
                     render={({onChange, value}) =>
                        <TextField
