@@ -40,7 +40,7 @@ function MyDatePicker(props) {
   // const [checked, setChecked] = useState(false); 
   const classes = useStyles();
   const {control } = useForm();
-  var {startDate, endDate, handleChange1, handleChange2, handleCheck, checked} = props;
+  var {startDate, disabled, endDate, handleChange1, handleChange2, handleCheck, checked} = props;
 // const [startYear, setStartYear] = useState(Date.parse(new Date()));
 // const [endYear, setEndYear] = useState(Date.parse(new Date()));
 
@@ -59,12 +59,12 @@ function MyDatePicker(props) {
 
 //   console.log("daySt>", daySt);
 //   console.log("dayEn>", dayEnd);
-const handleCheck2 =(e)=>{
-  setChecked(e)
-}
+// const handleCheck2 =(e)=>{
+//   setChecked(e)
+// }
 console.log("ckecked>>>", checked);
     return (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex" , marginBottom:"20px"}}>
         <ThemeProvider
           theme={theme}
           
@@ -84,6 +84,7 @@ console.log("ckecked>>>", checked);
                 views={["year"]}
                 value={startDate}
                 cancelLabel={"Cancel"}
+                disabled={disabled}
                 name="startDate"
                 okLabel={"OK"}
                 label="Start year"
@@ -107,6 +108,7 @@ console.log("ckecked>>>", checked);
                     views={["year"]}
                     value={endDate}
                     name="endDate"
+                    disabled={disabled}
                     cancelLabel={"Cancel"}
                     okLabel={"OK"}
                     label="End year"
@@ -124,6 +126,7 @@ console.log("ckecked>>>", checked);
                        name="toPresent" 
                        onChange={(e)=>handleCheck(!checked)} 
                        value={checked}
+                       disabled={disabled}
                        />}
                        label={checked? "To present" : ""}
                    />

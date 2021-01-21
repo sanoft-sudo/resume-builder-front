@@ -19,7 +19,10 @@
 .left__box{
     padding-left: 15px;
 }
-
+.MuiAutocomplete-inputRoot .MuiAutocomplete-input {
+    
+    width: 100% !important;
+}
 /* Contact info style  */
 
 .template__oneContacts{
@@ -172,7 +175,7 @@ margin-right:5px;
 
 .template__oneFullname{
     text-transform: capitalize;
-    font-size: 50px;
+    font-size: 35px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 

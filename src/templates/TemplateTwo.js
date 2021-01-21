@@ -9,7 +9,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import ProgressBar from '../components/ProgressBar';
 import {useDispatch, useSelector} from "react-redux";
-
+import moment from "moment";
 
 function TemplateOne() {
 const [progressColors, setProgressColors] = useState([
@@ -45,6 +45,18 @@ console.log("selected color>>>>", selectedColor);
                         <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
                     </div>
 
+                    <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
+                            <p className="templateFour__lefHeadings">Date of birth</p> 
+                        </div>
+                        <div className="template__oneContacts">
+                                <div className="templateFour__rightContact">
+                                <p className="dateOFBirth">{moment(profileInfo.birthday).utc().format("DD / MM / YYYY")}</p>
+                                </div>
+                            
+                    </div>
+                    </div>
+                    <div className="tempFour__line"  style={{borderColor: selectedColor.colorHead}}></div>
                     <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{ color: selectedColor.textColor}}>
                             <p className="templateFour__lefHeadings">contact</p> 
@@ -130,13 +142,13 @@ console.log("selected color>>>>", selectedColor);
                                     </p>
                                     <div className="temp_fourEductationYears">
                                         <p className="temp_fourStartYear">
-                                            {education.startYear}
+                                        {moment(education.startDate).utc().year()}
                                         </p>
                                         <p className="temp_fourDash">
                                             -
                                         </p>
                                         <p className="temp_fourEndYear">
-                                            {education.endYear ? education.endYear : "To present"}
+                                        {education.endDate ? moment(education.endDate).utc().year() : "To present"}
                                         </p>
                                     </div>
                                 </div>
@@ -188,7 +200,7 @@ console.log("selected color>>>>", selectedColor);
                                         {achievement.achievement}
                                     </p>
                                     <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
-                                    <p className="template__fourAward">{achievement.startYear}</p>
+                                    <p className="template__fourAward">{ moment(achievement.selectedYear).utc().year()}</p>
                                 </div>
                             ))}
                     </div>
@@ -238,7 +250,7 @@ console.log("selected color>>>>", selectedColor);
         
                 <div className="template__oneRight" >
                     <div className="template__oneCandidate" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
-                        <h2 className="template__oneFullname">
+                        <h2 className="template__oneFullname" style={{color: selectedColor.textColor}}>
                            {profileInfo.firstName && profileInfo?.firstName+" "+ profileInfo?.lastName}
                         </h2>
                         <div className="template__oneJobTitleContainer" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
@@ -288,13 +300,13 @@ console.log("selected color>>>>", selectedColor);
                                         </p>
                                         <div className="template__oneExpDate">
                                         <p className="template__oneExpStartDate">
-                                            {experience.startYear}
+                                        {moment(experience.startDate).utc().year()}
                                         </p>
                                         <p className="template__oneExpDateDash">
                                             -
                                         </p>
                                         <p className="template__oneExpEndDate">
-                                            {experience.endYear ? experience.endYear: "To present"}
+                                        {experience.toNow ==="" ? moment(experience.endDate).utc().year() : "To present"}
                                         </p>
                                     </div>
                                     </div>
@@ -345,7 +357,7 @@ console.log("selected color>>>>", selectedColor);
                                     </div>
                                     <div className="template__oneExpDate">
                                         <p className="template__oneExpStartDate">
-                                        {personal.year}
+                                        {moment(personal.selectedYear).utc().year()}
                                         </p>
                                     </div>
                                     </div>

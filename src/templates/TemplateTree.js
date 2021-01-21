@@ -2,6 +2,7 @@ import React, {useState, createRef} from 'react';
 import ProgressBar from '../components/ProgressBar';
 import {useDispatch, useSelector} from "react-redux";
 import "./templateStyles/TemplateThree.css";
+import moment from "moment";
 import Pdf from "react-to-pdf";
 
 function TemplateTree() {
@@ -121,13 +122,13 @@ function TemplateTree() {
                                         </p>
                                         <div className="template__threeExpDate">
                                         <p className="template__threeExpStartDate">
-                                            {experience.startYear}
+                                            {moment(experience.startDate).utc().year()}
                                         </p>
                                         <p className="template__threeExpDateDash">
                                             -
                                         </p>
                                         <p className="template__threeExpEndDate">
-                                            {experience.endYear ? experience.endYear: "To present"}
+                                        {experience.toNow ==="" ? moment(experience.endDate).utc().year() : "To present"}
                                         </p>
                                     </div>
                                     </div>
@@ -179,7 +180,7 @@ function TemplateTree() {
                                 </div>
                                 <div className="template__threeExpDate">
                                     <p className="template__threeExpStartDate">
-                                    {personal.year}
+                                    {moment(personal.selectedYear).utc().year()}
                                     </p>
                                 </div>
                                 </div>
@@ -193,6 +194,12 @@ function TemplateTree() {
                 <div className="templateThree__right" style={{backgroundColor:selectedColor.colorSide, color: selectedColor.textColor}}>
                     <div className="templateThree__avatar">
                        <img src="../../assets/images/templateImages/mini.jpg" alt=""/>
+                    </div>
+                    <div className="templateThree__righHeadingContainer">
+                            <div className="templateThree__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
+                                <p className="templateThree__rightHeadings">contact</p> 
+                            </div>
+                            <p className="dateOFBirth" style={{textAlign:"center"}}>{moment(profileInfo.birthday).utc().format("DD / MM / YYYY")}</p>
                     </div>
                     <div className="templateThree__righHeadingContainer">
                             <div className="templateThree__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
@@ -244,13 +251,13 @@ function TemplateTree() {
                                     </p>
                                     <div className="temp__threeEductationYears">
                                         <p className="temp__threeStartYear">
-                                            {education.startYear}
+                                            {moment(education.startDate).utc().year()}
                                         </p>
                                         <p className="temp__threeDash">
                                             -
                                         </p>
                                         <p className="temp__threeEndYear">
-                                            {education.endYear ? education.endYear : "To present"}
+                                        {education.endDate ? moment(education.endDate).utc().year() : "To present"}
                                         </p>
                                     </div>
                                 </div>
@@ -299,7 +306,7 @@ function TemplateTree() {
                                         {achievement.achievement}
                                     </p>
                                     <p className="template__threeAward">{achievement.organizationName} / {achievement.address} </p>
-                                    <p className="template__threeAward">{achievement.startYear}</p>
+                                    <p className="template__threeAward">{ moment(achievement.selectedYear).utc().year()}</p>
                                 </div>
                             ))}
                     </div>

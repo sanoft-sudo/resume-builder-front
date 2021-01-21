@@ -10,6 +10,7 @@ import NumberFormat from 'react-number-format';
 import Fab from '@material-ui/core/Fab';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
+import SingleYearPicker from '../../datePicker/SingleYearPicker';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,9 @@ function PersonalDevelopment() {
   const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
   const dispatch = useDispatch();
   const [personalD, setPersonalD] =useState({})
+  
+  var initialDate = Date.parse(new Date());
+  const [selectedYear, setSelectedYear] = useState(initialDate)
 
   const onSubmit = (e) => {
       e.preventDefault();
@@ -52,6 +56,13 @@ function PersonalDevelopment() {
        [e.target.name] : e.target.value
      }}))
     }
+    const handleChange1 = (date) => {
+      setSelectedYear(date)
+      setPersonalD({
+        ...personalD,
+        ...{selectedYear:date}
+      })
+    };
 
     return (
       <div className="technical__skillsContainer">
@@ -134,27 +145,7 @@ function PersonalDevelopment() {
                 rules= {{required: true}}
             /> 
             <div className="study__years">
-            <Controller
-                render={({onChange, value}) =>
-                   <ValidationTextField
-                      className="profileInfoFields"
-                      label="Year"
-                      required
-                      placeholder="2019"
-                      multiline
-                      onChange={e => handleChange(e)}
-                      variant="outlined"
-                      id="year"
-                      name="year"
-                      InputProps={{
-                        inputComponent: NumberFormatCustom,
-                      }}
-                    />
-                  }
-                name="year"
-                control={control}
-                rules= {{required: true}}
-            />
+            <SingleYearPicker takenYear={selectedYear} handleChange1={handleChange1} />
             </div>
             <button type="submit" className="btn btn-success btn-block">save</button>
         </form>}

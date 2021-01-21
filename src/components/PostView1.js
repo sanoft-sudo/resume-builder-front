@@ -25,11 +25,11 @@ function PostView() {
             <div className="card_view">
                 <div className="card__body">
                     <p style={{textTransform:"capitalize"}}>{postjob.jobTitle}</p>
-                    <p className="job__decs">Job Description</p>
+                    <p className="job__decs"><strong>Job Description</strong></p>
                     <p className="about__job">
                     {postjob.aboutJob}
                     </p>
-                    <p className="job__requires">Responsibilities</p>
+                    <p className="job__requires"><strong>Responsibilities</strong></p>
                     <p>{postjob.addRequirement}
                     </p>
                     <p><strong>Job location</strong> : <ul>{postjob.adRegion && postjob.adRegion?.map(adreg =>(

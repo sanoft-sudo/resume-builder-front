@@ -1,23 +1,20 @@
-import React, {useState, useContext, useRef} from 'react';
-import  "../../styles/ObektivkaFields.css";
-import ImageUploader from '../resumeBuilder/imageUploader/ImageUploader';
+import React, {useState, useRef} from 'react';
+import  "../../../styles/ObektivkaFields.css"
+import ImageUploader from '../../resumeBuilder/imageUploader/ImageUploader';
 import { withStyles, makeStyles} from '@material-ui/core/styles';
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import NumberFormat from 'react-number-format';
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import PropTypes from 'prop-types';
 import { useTranslation } from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import { saveObektivka } from '../../stores/actions/obektivkaAction';
+import { saveObektivkaProfile } from '../../../stores/actions/obektivkaProfileAction';
 import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
 import Button from '@material-ui/core/Button';
+import DateYearMonthPicker from '../../datePicker/DateYearMonthPicker';
+import ObektivkaImageUploader from '../obektivkaImageUploader/ObektivkaImageUploader';
 
 
   const ValidationTextField = withStyles({
@@ -72,40 +69,48 @@ function NumberFormatCustom(props) {
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
-function ObektivkaFields() {
+function ObektivkaProfile() {
   const { register, errors, handleSubmit, control, formState } = useForm();
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const classes = useStyles();
     const formRef = useRef();
-    const obektiv = useSelector(state => state.obektivkaReducer.obektiv)
+    const obektivkaProfile = useSelector(state => state.obektivkaProfileReducer.obektivkaProfile)
     const [obektivka, setObektivka] = useState()
     const [isChecked, setIsChecked] = useState(false);
-   const [selectedDate, setSelectedDate] = useState(
-      new Date("2021-01-01")
-    );
-    console.log(selectedDate);
+    const initialDate = Date.parse(new Date());
+    const [selectedDate, setSelectedDate] = useState(initialDate)
+  // setObektivka(obektiv)
+    const handleChange1 =(date)=>{
+        setSelectedDate(date)
+    }
   
-    const handleChange = (event) => {
+    const handleChecked = (event) => {
       setIsChecked(event.target.checked);
     };
     console.log("checked", isChecked);
     
-    const handleDateChange = (date) => {
-      setSelectedDate(date);
-    };
+    // const handleDateChange = (date) => {
+    //   setSelectedDate(date);
+    // };
   
 
     const handleInputChange = (event) =>{
-      setIsChecked(event.target.checked);
-      const {name, value} = event.target
-        obektiv[name]= value
+      setObektivka({
+        ...obektivka,
+        ...{[event.target.name]: event.target.value, 
+          currentFromDate:selectedDate,
+        isWorking: isChecked}
+      })
+      // const {name, value} = event.target
+      //   obektiv[name]= value
         
     }
+    console.log("OBJ>>>", obektivka);
     
     const onSubmit = (e) => {
         e.preventDefault()
-        dispatch(saveObektivka(obektiv))
+        dispatch(saveObektivkaProfile(obektivka))
         // e.target.reset();
     }
 
@@ -113,12 +118,12 @@ function ObektivkaFields() {
         <div className="obektivka__container">
             <ValidatorForm
                 ref={formRef}
-                className="obektivka__form" id="obektivka" onSubmit={onSubmit}
+                className="obektivka__form" id="obektivka_form1" onSubmit={onSubmit}
                 onError={(errors) => console.log(errors)}
                 noValidate
             >     
                <div className="obektivka__imageUploader">
-                <ImageUploader/>
+                <ObektivkaImageUploader/>
                 </div>
                 <div className="obektivka__inputs">
                     <ValidationTextField
@@ -128,7 +133,8 @@ function ObektivkaFields() {
                         required
                         placeholder="Sanjar Juraev"
                         multiline
-                        defaultValue={obektiv.fullName}
+                        defaultValue={obektivka?.fullName}
+                        value={obektivka?.fullName}
                         onChange={e => handleInputChange(e)}
                         variant="outlined"
                         id="fullName"
@@ -141,7 +147,7 @@ function ObektivkaFields() {
                           control={
                             <Checkbox
                               checked={isChecked}
-                              onChange={handleInputChange}
+                              onChange={handleChecked}
                               name="isWorking"
                               color="primary"
                               value={isChecked}
@@ -150,43 +156,16 @@ function ObektivkaFields() {
                           label="Vaqtincha ishsiz"
                         />
                             
-                      <Controller 
-                           render={({onChange, value}) =>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils} >
-                              <KeyboardDatePicker
-                                disableToolbar
-                                variant="inline"
-                                format="dd/MM/yyyy"
-                                style={{marginBottom:"20px"}}
-                                margin="normal"
-                                id="date-picker-inline"
-                                label="Select date"
-                                required
-                                name="currentFromDate"
-                                defaultValue={selectedDate}
-                                value={selectedDate ? obektiv.currentFromDate = selectedDate:""}
-                                onChange={handleDateChange}
-                                disabled={isChecked===true? true : false}
-                                KeyboardButtonProps={{
-                                  "aria-label": "change date"
-                                }}
-                              />
-                            </MuiPickersUtilsProvider>
-                          }
-                          name="currentFromDate"
-                          control={control}
-                          rules= {{required: true}}
-                      />
-                     
-                    
+                    <DateYearMonthPicker handleChange1={handleChange1} selectedDate={selectedDate}/>
                     <ValidationTextField
                         style={{marginBottom:"30px"}}
                         className={"profileInfoF"}
                         label="Company"
-                        required
+                        // required
                         placeholder="Amazon"
                         multiline
-                        defaultValue={obektiv.currentCompany}
+                        // defaultValue={obektivka?.currentCompany}
+                        value={isChecked === false ? obektivka?.currentCompany : ""}
                         onChange={e => handleInputChange(e)}
                         variant="outlined"
                         id="currentCompany"
@@ -199,10 +178,11 @@ function ObektivkaFields() {
                         style={{marginBottom:"30px"}}
                         className={"profileInfoF"}
                         label="Position"
-                        required
+                        // required
                         placeholder="Front-end Developer"
                         multiline
-                        defaultValue={obektiv.currentPosition}
+                        // defaultValue={obektivka?.currentPosition}
+                        value={isChecked === false ? obektivka?.currentPosition : ""}
                         onChange={handleInputChange}
                         variant="outlined"
                         id="currentPosition"
@@ -212,11 +192,11 @@ function ObektivkaFields() {
                         errorMessages={isChecked===false ? ["Position name is required"] : [""]}
                     />
                 </div>  
-                <Button variant="contained" style={{backgroundColor:"green"}} type="onSubmit">Save</Button>
+                <Button variant="contained" style={{backgroundColor:"green"}} type="submit">Save</Button>
             </ValidatorForm>
            
         </div>
     )
 }
 
-export default ObektivkaFields
+export default ObektivkaProfile

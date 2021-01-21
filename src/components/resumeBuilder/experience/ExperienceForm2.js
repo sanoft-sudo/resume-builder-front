@@ -62,11 +62,19 @@ function ExperienceForm() {
 
   const handleCheck =()=>{
     setChecked(!checked);
-    setExpr({
+    {checked ? (
+      setExpr({
       ...expr,
-      ...{toNow:"to Present"}
+      ...{toNow:""}
     })
+    ):(
+      setExpr({
+        ...expr,
+        ...{toNow:"to Present", endDate:""}
+      })
+    )}
   }
+  console.log("exCeck", checked);
 
   const handleChange1 = (date) => {
     setStartDate(date)
@@ -101,10 +109,10 @@ const handleChange2 = (date) => {
     e.target.reset()
   };
 
-  const toggleChecked = (e) => {
-    setChecked((prev) => !prev);
-    console.log(e.target.value);
-  };
+  // const toggleChecked = (e) => {
+  //   setChecked((prev) => !prev);
+  //   console.log(e.target.value);
+  // };
 
   const handleRemoveProject =(e,proI)=>{
       e.preventDefault()

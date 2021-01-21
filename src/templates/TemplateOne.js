@@ -43,7 +43,7 @@ const languagesList = useSelector(state => state.languagesReducer.languagesList)
 const drLicences = useSelector(state => state.drivingLReducer.drLicences)
 const personalDevInfo  = useSelector(state => state.personalDevReducer.personalDevInfo);
 const selectedColor = useSelector(state => state.colorReducer.selectedColor)
-console.log("Language+flag>>>>", languagesList);
+console.log("Profile info>>>", profileInfo);
 
 
     return (
@@ -78,12 +78,12 @@ console.log("Language+flag>>>>", languagesList);
                     </div>
                     <div className="templateFirst__headerName">
                         <div className="templateFirst__headerProfile">
-                            <p className="templateFirst__headerFullName">
+                            <p className="templateFirst__headerFullName" style={{color: selectedColor.textColor}}>
                             {profileInfo.firstName && profileInfo?.firstName+" "+ profileInfo?.lastName}
                             </p>
-                            {/* <p className="templateFirst__headerJobTitle">
+                            <p className="templateFirst__headerJobTitle">
                             {profileInfo?.currentJob}
-                            </p> */}
+                            </p>
                         </div>
                     </div>
                     <div className="templateFirst__headerSocials">
@@ -130,6 +130,21 @@ console.log("Language+flag>>>>", languagesList);
                 </div>
                 <div className="templateFirst__body">
                 <div className="templateFirst__bodyleft"  style={{borderColor:selectedColor.colorSide}}>
+
+                    <div className="templateFirst__righHeadingContainer">
+                        <div className="templateFirst__fieldsHeader" style={{color: selectedColor.colorSide}}>
+                            <div className="icon__box" style={{color: selectedColor.colorSide}}>
+                               <i class="fas fa-birthday-cake"  style={{color: selectedColor.colorSide}}></i> 
+                            </div>
+                            <p className="templateFirst__lefHeadings">Date of birth</p> 
+                        </div>
+                        <div className="birthday">
+                            <p className="dateOFBirth">{moment(profileInfo.birthday).utc().format("DD / MM / YYYY")}</p>
+                        </div>
+                           
+                    </div>
+                     <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
+                    
                     <div className="templateFirst__righHeadingContainer">
                         <div className="templateFirst__fieldsHeader" style={{color: selectedColor.colorSide}}>
                             <div className="icon__box" style={{color: selectedColor.colorSide}}>
@@ -267,7 +282,7 @@ console.log("Language+flag>>>>", languagesList);
                                                 {achievement.achievement}
                                             </p>
                                             <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
-                                            <p className="template__fourAward">{achievement.startYear}</p>
+                                            <p className="template__fourAward">{ moment(achievement.selectedYear).utc().year()}</p>
                                         </TimelineContent>
                                     </TimelineItem>
                                     
@@ -406,13 +421,13 @@ console.log("Language+flag>>>>", languagesList);
                                             </p>
                                             <div className="template__threeExpDate">
                                             <p className="template__threeExpStartDate">
-                                                {experience.startYear}
+                                            {moment(experience.startDate).utc().year()}
                                             </p>
                                             <p className="template__threeExpDateDash">
                                                 -
                                             </p>
                                             <p className="template__threeExpEndDate">
-                                                {experience.endYear ? experience.endYear: "To present"}
+                                            {experience.toNow ==="" ? moment(experience.endDate).utc().year() : "To present"}
                                             </p>
                                         </div>
                                         </div>
@@ -486,7 +501,7 @@ console.log("Language+flag>>>>", languagesList);
                                 </div>
                                 <div className="template__threeExpDate">
                                     <p className="template__threeExpStartDate">
-                                    {personal.year}
+                                    {moment(personal.selectedYear).utc().year()}
                                     </p>
                                 </div>
                                 </div>

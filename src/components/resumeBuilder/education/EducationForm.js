@@ -52,10 +52,18 @@ function EducationForm() {
   };
   const handleCheck =()=>{
     setChecked(!checked);
-    setEducationFields({
+    {checked ? (
+      setEducationFields({
       ...educationFields,
-      ...{toNow:"to Present"}
+      ...{toNow:""}
     })
+    ):(
+      setEducationFields({
+        ...educationFields,
+        ...{toNow:"to Present", endDate:""}
+      })
+    )}
+    
   }
   console.log("ck", checked);
 

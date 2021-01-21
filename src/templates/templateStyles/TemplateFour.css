@@ -49,22 +49,29 @@
     margin-bottom: 0;
 }
 
+.MuiTab-root{
+    min-width: 130px !important;
+    padding: 6px 8px !important;
+}
+
 .templateFour__headerName{
     flex: 1;
+    padding-left: 1%;
 }
 .templateFour__headerProfile{
-    margin-left: 20px;
+    margin-left: 60px;
 }
 .templateFour__headerFullName{
     text-transform: capitalize;
-    font-size: 45px;
+    font-size: 35px;
     font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 0;
 }
 .templateFour__headerJobTitle{
     text-transform: uppercase;
     padding-left: 10px;
     font-size: 15px;
-    margin-top: 20px;
+   
 }
 
 
@@ -99,7 +106,7 @@
 
 .templateFour__bodyleft{
     min-width: 170px;
-    padding: 15px;
+    padding:  26px 15px 15px 15px;
     background-color: lightgray;
     color: #000000;
     position: relative;

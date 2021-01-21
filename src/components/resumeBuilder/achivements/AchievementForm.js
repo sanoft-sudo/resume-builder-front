@@ -10,7 +10,7 @@ import NumberFormat from 'react-number-format';
 import Fab from '@material-ui/core/Fab';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
-
+import SingleYearPicker from "../../datePicker/SingleYearPicker";
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -29,21 +29,19 @@ const ValidationTextField = withStyles({
 })(TextField);
 
 function AchievementForm() {
-  const initialYear ={
-     startYear:'',
-  }
-  const [values, setValues] = useState(initialYear);
+
   const classes = useStyles();
   const {control } = useForm();
   const achievements  = useSelector(state => state.achievementsReducer.achievements);
   const dispatch = useDispatch();
   const [achievementsArr, setAchievementsArr] =useState({})
+  var initialDate = Date.parse(new Date());
+  const [selectedYear, setSelectedYear] = useState(initialDate)
 
   const onSubmit = (e) => {
       e.preventDefault();
     dispatch(saveAchievement(achievementsArr))
     setAchievementsArr({})
-    setValues(initialYear)
     e.target.reset()
   };
 
@@ -53,6 +51,13 @@ function AchievementForm() {
        [e.target.name] : e.target.value
      }}))
     }
+    const handleChange1 = (date) => {
+      setSelectedYear(date)
+      setAchievementsArr({
+        ...achievementsArr,
+        ...{selectedYear:date}
+      })
+    };
 
     return (
       <div className="technical__skillsContainer">
@@ -135,27 +140,7 @@ function AchievementForm() {
                 rules= {{required: true}}
             /> 
             <div className="study__years">
-            <Controller
-                render={({onChange, value}) =>
-                   <ValidationTextField
-                      className="profileInfoFields"
-                      label="Start"
-                      required
-                      placeholder="2016"
-                      multiline
-                      onChange={e => handleChange(e)}
-                      variant="outlined"
-                      id="startYear"
-                      name="startYear"
-                      InputProps={{
-                        inputComponent: NumberFormatCustom,
-                      }}
-                    />
-                  }
-                name="startYear"
-                control={control}
-                rules= {{required: true}}
-            />
+            <SingleYearPicker takenYear={selectedYear} handleChange1={handleChange1} />
             </div>
             <button type="submit" className="btn btn-success btn-block">save</button>
         </form>}

@@ -2,6 +2,7 @@ import React, {createRef, useState} from 'react';
 import "./templateStyles/TemplateFour.css";
 import ProgressBar from '../components/ProgressBar';
 import {useDispatch, useSelector} from "react-redux";
+import moment from "moment";
 import Pdf from "react-to-pdf";
 
 
@@ -43,7 +44,7 @@ const options = {
             </Pdf>
             <div className="templateFour__container" ref={ref}>
                 <div className="templateFour__header" style={{backgroundColor:selectedColor.colorSide, color: selectedColor.textColor}}>
-                    <div className="templateFour__headerContacts">
+                    <div className="templateFour__headerContacts col-3">
                     {contact.address ? (
                                 <div className="templateFour__rightContact">
                                     <i class="fas fa-home"  style={{color: selectedColor.textColor}}></i>
@@ -69,7 +70,7 @@ const options = {
                                 </div>
                             ):""}
                     </div>
-                    <div className="templateFour__headerName">
+                    <div className="templateFour__headerName col-7">
                         <div className="templateFour__headerProfile">
                             <p className="templateFour__headerFullName">
                             {profileInfo.firstName && profileInfo?.firstName+" "+ profileInfo?.lastName}
@@ -79,7 +80,7 @@ const options = {
                             </p>
                         </div>
                     </div>
-                    <div className="templateFour__headerSocials">
+                    <div className="templateFour__headerSocials col-2">
                     {contact.facebook ? (
                                 <div className="social__contactsFour">
                                      <p className="contact__nameFour">
@@ -124,6 +125,13 @@ const options = {
                 <div className="templateFour__body">
                 <div className="templateFour__bodyleft" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                     <div className="templateFour__righHeadingContainer">
+                        <div className="templateFour__fieldsHeader pt-2" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
+                            <p className="templateFour__lefHeadings">Date of birth</p> 
+                        </div>
+                        <p className="dateOFBirth pl-2" >{moment(profileInfo.birthday).utc().format("DD / MM / YYYY")}</p>
+                    </div>
+                    <div className="tempFour__line" style={{borderColor: selectedColor.colorSide}}></div>
+                    <div className="templateFour__righHeadingContainer">
                         <div className="templateFour__fieldsHeader" style={{backgroundColor:selectedColor.colorHead, color: selectedColor.textColor}}>
                             <p className="templateFour__lefHeadings">education</p> 
                         </div>
@@ -144,13 +152,13 @@ const options = {
                                     </p>
                                     <div className="temp_fourEductationYears">
                                         <p className="temp_fourStartYear">
-                                            {education.startYear}
+                                        {moment(education.startDate).utc().year()}
                                         </p>
                                         <p className="temp_fourDash">
                                             -
                                         </p>
                                         <p className="temp_fourEndYear">
-                                            {education.endYear ? education.endYear : "To present"}
+                                        {education.endDate ? moment(education.endDate).utc().year() : "To present"}
                                         </p>
                                     </div>
                                 </div>
@@ -202,7 +210,7 @@ const options = {
                                         {achievement.achievement}
                                     </p>
                                     <p className="template__fourAward">{achievement.organizationName} / {achievement.address} </p>
-                                    <p className="template__fourAward">{achievement.startYear}</p>
+                                    <p className="template__fourAward">{ moment(achievement.selectedYear).utc().year()}</p>
                                 </div>
                             ))}
                     </div>
@@ -293,13 +301,13 @@ const options = {
                                         </p>
                                         <div className="template__threeExpDate">
                                         <p className="template__threeExpStartDate">
-                                            {experience.startYear}
+                                        {moment(experience.startDate).utc().year()}
                                         </p>
                                         <p className="template__threeExpDateDash">
                                             -
                                         </p>
                                         <p className="template__threeExpEndDate">
-                                            {experience.endYear ? experience.endYear: "To present"}
+                                        {experience.toNow ==="" ? moment(experience.endDate).utc().year() : "To present"}
                                         </p>
                                     </div>
                                     </div>
@@ -351,7 +359,7 @@ const options = {
                                 </div>
                                 <div className="template__threeExpDate">
                                     <p className="template__threeExpStartDate">
-                                    {personal.year}
+                                    {moment(personal.selectedYear).utc().year()}
                                     </p>
                                 </div>
                                 </div>

@@ -6,9 +6,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import ObektivkaFields from '../../obektivka/ObektivkaFields';
 import CreateResumeAcardion from '../resumeAcardion/CreateResumeAcardion';
 import ColorPicker from '../ColorPicker';
+import ObektivkaProfile from '../../obektivka/obektivkaProfile/ObektivkaProfile';
+import ObektivkaAccardion from '../../obektivka/obektivaAccardion/ObektivaAccardion';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -80,7 +81,7 @@ export default function TabForResumeAndObjective() {
         <CreateResumeAcardion/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ObektivkaFields/>
+        <ObektivkaAccardion/>
       </TabPanel>
       
    

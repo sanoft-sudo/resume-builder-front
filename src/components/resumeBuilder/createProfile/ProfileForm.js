@@ -8,7 +8,8 @@ import { Controller, useForm } from "react-hook-form";
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-
+import BirthdayPicker from '../../datePicker/BirthdayPicker';
+import moment from "moment";
 const ValidationTextField = withStyles({
   root: {
     '& input:valid + fieldset': {
@@ -28,20 +29,6 @@ const ValidationTextField = withStyles({
 
 
 function ProfileInformationForm() {
-
-  const {handleSubmit, register, control} = useForm();
-  const dispatch = useDispatch();
-
-  const profileInfo  = useSelector(state => state.profileReducer.profileInfo);
-  console.log("myprofile", profileInfo);
-  const initialValue = {
-    firstName:"",
-    lastName:"",
-    fatherName:"",
-    aboutMe:"",
-    currentJob:""
-  }
-  const [ fromFields, setFormFields] = useState({})
  
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,6 +40,28 @@ function ProfileInformationForm() {
     },
   }));
   const classes = useStyles();
+  const {handleSubmit, register, control} = useForm();
+  const dispatch = useDispatch();
+
+  const profileInfo  = useSelector(state => state.profileReducer.profileInfo);
+  console.log("myprofile", profileInfo);
+  const initialValue = {
+    firstName:"",
+    lastName:"",
+    fatherName:"",
+    birthday:"",
+    aboutMe:"",
+    currentJob:""
+  }
+  const [fromFields, setFormFields] = useState({})
+  const [birthDay, setBirthDay] = useState()
+  const initialDate = Date.parse(new Date());
+  const [birthday, setBirthday] = useState(initialDate)
+
+  const handleChange1 =(date)=>{
+      setBirthday(date)
+  }
+  console.log("BIRTHDAY>>>", moment(birthday).utc().format("DD / MM / YYYY"));
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -63,6 +72,7 @@ function ProfileInformationForm() {
 const handleInputChange = (e)=>{
   const {name,value} = e.target
   profileInfo[name] =value;
+  profileInfo.birthday=birthday;
   profileInfo.id =Date.now().toString()
 }
 
@@ -158,6 +168,7 @@ const handleInputChange = (e)=>{
                                 control={control}
                                 rules= {{required: false}}
                                 /> 
+                    <BirthdayPicker handleChange1={handleChange1} birthday={birthday}/>
                     <Controller
                          render={({onChange, value}) =>
                    <ValidationTextField

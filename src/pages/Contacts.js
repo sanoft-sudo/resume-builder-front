@@ -5,7 +5,6 @@ import TemplateOne from '../templates/TemplateOne'
 function Contacts() {
     return (
         <div id="contact">
-            <TemplateOne/>
         </div>
     )
 }

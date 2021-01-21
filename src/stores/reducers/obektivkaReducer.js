@@ -10,7 +10,8 @@ const initialState = {
         currentCompany:"",
         currentPosition:"",
         birthDate:"",
-        birthPlace:"",
+        birthRegion:"", 
+        birthCityOrDistrict:"",
         nationality:"",
         party_membership:"",
         degree:"",
@@ -60,7 +61,7 @@ const initialState = {
 export const obektivkaReducer = (state = initialState, action)=>{
     switch (action.type) {
         case CREATE_OBEKTIVKA:
-            return {...state, obektiv: action.payload}
+            return {...state, ...{obektiv: action.payload}}
         case EDIT_OBEKTIVKA:
             return {...state, obektiv: action.payload}
     

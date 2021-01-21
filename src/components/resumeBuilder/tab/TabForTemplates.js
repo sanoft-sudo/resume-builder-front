@@ -73,11 +73,11 @@ export default function TabForTemplates() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Template one"  {...a11yProps(0)} />
-          <Tab label="Template Two"  {...a11yProps(1)} />
-          <Tab label="Template Three"  {...a11yProps(2)} />
-          <Tab label="Template Four"  {...a11yProps(3)} />
-          <Tab label="Obektivka"  {...a11yProps(4)} />
+          <Tab icon={<img style={{width:"50px"}} src="assets/images/templateImages/templateOne.jpg" alt="image"/>} {...a11yProps(0)}/>
+          <Tab icon={<img style={{width:"50px"}} src="assets/images/templateImages/templateTwo.jpg" alt="image"/>}  {...a11yProps(1)} />
+          <Tab icon={<img style={{width:"50px"}} src="assets/images/templateImages/templateThree.jpg" alt="image"/>}  {...a11yProps(2)} />
+          <Tab icon={<img style={{width:"50px"}} src="assets/images/templateImages/templateFour.jpg" alt="image"/>}  {...a11yProps(3)} />
+          <Tab icon={<img style={{width:"50px"}} src="assets/images/templateImages/templateFive.jpg" alt="image"/>}  {...a11yProps(4)} />
           
         </Tabs>
       </AppBar>

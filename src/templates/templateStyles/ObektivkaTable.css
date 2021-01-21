@@ -1,0 +1,13 @@
+.MuiTableCell-root{
+    font-size: 12px !important;
+    padding: 16px 5px !important;
+}
+.MuiTableContainer-root{
+    width: 100% !important;
+}
+th > p{
+    font-weight: 600;
+}
+.MuiTableCell-root > p{
+    margin-bottom: 0 !important;
+}
